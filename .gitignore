@@ -230,6 +230,7 @@ _pkginfo.txt
 *.appxupload
 
 bin/Debug/net8.0
+obj
 
 # Visual Studio cache files
 # files ending in .cache can be ignored
