@@ -1,0 +1,16 @@
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+::ng-deep .btn-icon .mdc-button__label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    svg {
+        width: 16px;
+    }
+}
