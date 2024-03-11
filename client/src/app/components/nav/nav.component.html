@@ -1,14 +1,19 @@
 <mat-toolbar>
     <div class="nav-container">
-        <div>
+        <div routerLink="/">
             <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
                 <mat-icon>menu</mat-icon>
             </button> -->
             <span>Dating App</span>
-            <span class="example-spacer"></span>
         </div>
 
-        <ng-container *ngIf="isAuth; else noAuth">
+        <nav *ngIf="isAuth | async">
+            <div class="nav-item" routerLink="/members" routerLinkActive="active">Matches</div>
+            <div class="nav-item" routerLink="/lists" routerLinkActive="active">Lists</div>
+            <div class="nav-item" routerLink="/messages" routerLinkActive="active">Messages</div>
+        </nav>
+
+        <ng-container *ngIf="isAuth | async; else noAuth">
             <button class="btn-icon" mat-button [matMenuTriggerFor]="menu">Welcome user
                 <svg xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->

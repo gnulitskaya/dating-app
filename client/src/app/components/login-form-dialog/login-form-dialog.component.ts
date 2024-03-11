@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AccountService } from '../../services/account.service';
+import { ToastrService } from 'ngx-toastr';
 
 export interface User {
   username: string
@@ -30,6 +31,7 @@ export class LoginFormDialogComponent {
   constructor(
     private _snackBar: MatSnackBar,
     private _accountService: AccountService,
+    private _toastr: ToastrService
   ) { }
 
   ngOnInit() {
@@ -47,22 +49,14 @@ export class LoginFormDialogComponent {
     }
 
     this._accountService.login(user).subscribe((res) => {
-      // this.form.reset()
-      // this.router.navigate(['/admin', 'dashboard'])
       console.log('%cLogin',
         'color: blue; font-size: 16px; font-weight: bold; background-color: white',
         res);
-      this.openSnackBar('Вы вошли!', '');
+      this._toastr.success('Вы вошли!');
       this.submitted = false;
-      this._accountService.isAuth = true;
-    }, () => {
+    }, (err) => {
       this.submitted = false;
-      this._accountService.isAuth = false;
-      this.openSnackBar('Неверные данные!', '');
+      this._toastr.error('Неверные данные!', err.error);
     })
-  }
-
-  openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action);
   }
 }

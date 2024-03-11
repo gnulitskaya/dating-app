@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { LoginFormDialogComponent } from '../components/login-form-dialog/login-form-dialog.component';
-import { AccountService } from '../services/account.service';
+import { LoginFormDialogComponent } from '../login-form-dialog/login-form-dialog.component';
+import { AccountService } from '../../services/account.service';
 
 @Component({
   selector: 'app-nav',
@@ -22,10 +22,10 @@ export class NavComponent {
   }
 
   get isAuth() {
-    return this._accountService.isAuth;
+    return this._accountService.isAuth$;
   }
 
   logout() {
-    this._accountService.isAuth = false;
+    this._accountService.logout();
   }
 }

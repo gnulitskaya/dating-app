@@ -1,8 +1,11 @@
 <app-nav></app-nav>
 
-<ul>
-  <li *ngFor="let user of users">
-    {{user.userName}}
-  </li>
-</ul>
-<!-- <router-outlet></router-outlet> -->
+<div class="container">
+  <ul>
+    <li *ngFor="let user of users">
+      {{user.userName}}
+    </li>
+  </ul>
+  <!-- <app-home></app-home> -->
+  <router-outlet></router-outlet>
+</div>

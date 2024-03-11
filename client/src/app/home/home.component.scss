@@ -1,0 +1,18 @@
+.home {
+
+    text-align: center;
+
+    &__title {
+    }
+
+    &__text {
+        margin-bottom: 24px;
+    }
+
+    &__btns {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+    }
+}
