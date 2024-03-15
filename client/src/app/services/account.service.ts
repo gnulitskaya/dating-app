@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { User } from '../models/user.model';
 import { map } from 'rxjs/operators';
 import { Observable, ReplaySubject } from 'rxjs';
@@ -10,7 +10,7 @@ import { ToastrService } from 'ngx-toastr';
   providedIn: 'root'
 })
 export class AccountService {
-  baseUrl = 'http://localhost:5001/api/';
+  baseUrl = 'https://localhost:5001/api/';
 
   isAuth$!: Observable<User | null>;
 
