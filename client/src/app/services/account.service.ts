@@ -10,7 +10,7 @@ import { ToastrService } from 'ngx-toastr';
   providedIn: 'root'
 })
 export class AccountService {
-  baseUrl = 'https://localhost:5001/api/';
+  baseUrl = 'http://localhost:5000/api/';
 
   isAuth$!: Observable<User | null>;
 

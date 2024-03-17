@@ -22,6 +22,7 @@ import { MessagesComponent } from './components/messages/messages.component';
 import { MemberDetailComponent } from './components/members/member-detail/member-detail.component';
 import { MemberListComponent } from './components/members/member-list/member-list.component';
 import { ToastrModule } from 'ngx-toastr';
+import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ToastrModule } from 'ngx-toastr';
     MemberListComponent,
     MemberDetailComponent,
     ListsComponent,
-    MessagesComponent
+    MessagesComponent,
+    TestErrorsComponent
   ],
   imports: [
     BrowserModule,
