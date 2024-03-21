@@ -5,6 +5,11 @@
     width: 100%;
 }
 
+mat-toolbar {
+    background-color: #d9905e;
+    color: #fff;
+}
+
 ::ng-deep .btn-icon .mdc-button__label {
     display: flex;
     align-items: center;
@@ -26,4 +31,12 @@ nav {
     .nav-item.active {
         opacity: 1;
     }
+}
+
+.mat-mdc-button:not(:disabled) {
+    color: #fff;
+}
+
+button svg {
+    fill: #fff;
 }
