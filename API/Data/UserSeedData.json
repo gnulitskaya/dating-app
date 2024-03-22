@@ -13,8 +13,8 @@
         "Country": "United States",
         "Photos": [
             {
-                "url": "https://randomuser.me/api/portraits/women/22.jpg",
-                "isMain": true
+                "Url": "https://randomuser.me/api/portraits/women/22.jpg",
+                "IsMain": true
             }
         ]
     },
@@ -32,8 +32,8 @@
         "Country": "Guatemala",
         "Photos": [
             {
-                "url": "https://randomuser.me/api/portraits/women/41.jpg",
-                "isMain": true
+                "Url": "https://randomuser.me/api/portraits/women/41.jpg",
+                "IsMain": true
             }
         ]
     },
@@ -51,8 +51,8 @@
         "Country": "Argentina",
         "Photos": [
             {
-                "url": "https://randomuser.me/api/portraits/women/14.jpg",
-                "isMain": true
+                "Url": "https://randomuser.me/api/portraits/women/14.jpg",
+                "IsMain": true
             }
         ]
     },
@@ -70,8 +70,8 @@
         "Country": "Mexico",
         "Photos": [
             {
-                "url": "https://randomuser.me/api/portraits/women/61.jpg",
-                "isMain": true
+                "Url": "https://randomuser.me/api/portraits/women/61.jpg",
+                "IsMain": true
             }
         ]
     },
@@ -89,8 +89,8 @@
         "Country": "Iraq",
         "Photos": [
             {
-                "url": "https://randomuser.me/api/portraits/women/30.jpg",
-                "isMain": true
+                "Url": "https://randomuser.me/api/portraits/women/30.jpg",
+                "IsMain": true
             }
         ]
     },
@@ -108,8 +108,8 @@
         "Country": "British Indian Ocean Territory",
         "Photos": [
             {
-                "url": "https://randomuser.me/api/portraits/men/34.jpg",
-                "isMain": true
+                "Url": "https://randomuser.me/api/portraits/men/34.jpg",
+                "IsMain": true
             }
         ]
     },
@@ -127,8 +127,8 @@
         "Country": "Palau",
         "Photos": [
             {
-                "url": "https://randomuser.me/api/portraits/men/80.jpg",
-                "isMain": true
+                "Url": "https://randomuser.me/api/portraits/men/80.jpg",
+                "IsMain": true
             }
         ]
     },
@@ -146,8 +146,8 @@
         "Country": "Algeria",
         "Photos": [
             {
-                "url": "https://randomuser.me/api/portraits/men/28.jpg",
-                "isMain": true
+                "Url": "https://randomuser.me/api/portraits/men/28.jpg",
+                "IsMain": true
             }
         ]
     },
@@ -165,8 +165,8 @@
         "Country": "Comoros",
         "Photos": [
             {
-                "url": "https://randomuser.me/api/portraits/men/16.jpg",
-                "isMain": true
+                "Url": "https://randomuser.me/api/portraits/men/16.jpg",
+                "IsMain": true
             }
         ]
     },
@@ -184,8 +184,8 @@
         "Country": "Mali",
         "Photos": [
             {
-                "url": "https://randomuser.me/api/portraits/men/45.jpg",
-                "isMain": true
+                "Url": "https://randomuser.me/api/portraits/men/45.jpg",
+                "IsMain": true
             }
         ]
     }
