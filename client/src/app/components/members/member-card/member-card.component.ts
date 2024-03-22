@@ -14,4 +14,6 @@ export class MemberCardComponent implements OnInit {
   ngOnInit() {
   }
 
+  addLike(member: Member) {}
+
 }
