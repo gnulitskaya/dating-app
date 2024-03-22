@@ -1,0 +1,6 @@
+.member-list {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(6, 1fr);
+    align-items: center;
+}

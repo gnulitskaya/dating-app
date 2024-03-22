@@ -1,0 +1,22 @@
+img {
+    border-radius: 10px;
+    width: 100%;
+    min-width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: antiquewhite;
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.card-title {
+    margin-bottom: 0;
+}
