@@ -24,6 +24,14 @@ img {
     border-radius: 10px;
 }
 
+.card-body {
+    padding-top: 10px;
+}
+
+.card-title {
+    font-weight: bold;
+}
+
 .card-title,
 .card-text {
     margin-bottom: 0;
@@ -64,6 +72,7 @@ img {
 
     svg {
         width: 20px;
+        height: 20px;
         cursor: pointer;
     }
 }
