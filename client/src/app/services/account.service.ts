@@ -5,12 +5,13 @@ import { map } from 'rxjs/operators';
 import { Observable, ReplaySubject } from 'rxjs';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from '../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
-  baseUrl = 'http://localhost:5000/api/';
+  baseUrl = environment.apiUrl;
 
   isAuth$!: Observable<User | null>;
 

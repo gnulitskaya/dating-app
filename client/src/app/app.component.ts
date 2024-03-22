@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getUsers();
+    // this.getUsers();
     this.setCurrentUser();
   }
 
@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
   }
 
   getUsers() {
-    this.http.get('http://localhost:5000/api/users')
+    this.http.get('http://localhost:5001/api/users')
       .pipe(
         tap(users => {
           this.users = users;
