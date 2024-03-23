@@ -4,13 +4,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Member } from '../models/member';
 import { Observable } from 'rxjs';
 
-const user = localStorage.getItem('user');
-const httpOptions = {
-  headers: new HttpHeaders({ 
-    Authorization: 'Bearer '+ (user ? JSON.parse(user)?.token : null),
-  })
-}
-
 @Injectable({
   providedIn: 'root'
 })
@@ -19,10 +12,10 @@ export class MembersService {
   constructor(private http: HttpClient) { }
 
   getMembers(): Observable<Member[]> {
-    return this.http.get<Member[]>(this.baseUrl + 'users', httpOptions);
+    return this.http.get<Member[]>(this.baseUrl + 'users');
   }
 
   getMember(username: string): Observable<Member> {
-    return this.http.get<Member>(this.baseUrl + 'users/' + username, httpOptions);
+    return this.http.get<Member>(this.baseUrl + 'users/' + username);
   }
 }
