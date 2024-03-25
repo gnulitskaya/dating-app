@@ -29,6 +29,7 @@ import { ServerErrorComponent } from './errors/server-error/server-error.compone
 import { MemberCardComponent } from './components/members/member-card/member-card.component';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import {MatTabsModule} from '@angular/material/tabs';
+import { MemberEditComponent } from './components/members/member-edit/member-edit.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import {MatTabsModule} from '@angular/material/tabs';
     TestErrorsComponent,
     NotFoundComponent,
     ServerErrorComponent,
-    MemberCardComponent
+    MemberCardComponent,
+    MemberEditComponent
   ],
   imports: [
     BrowserModule,

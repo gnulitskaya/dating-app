@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 import { Observable, ReplaySubject } from 'rxjs';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { environment } from '../../environments/environment.prod';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
