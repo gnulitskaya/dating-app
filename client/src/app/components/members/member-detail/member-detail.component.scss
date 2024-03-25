@@ -4,12 +4,8 @@
     object-fit: cover;
     border-radius: 10px;
 }
-
 .card-body {
-    padding: 0 15px;
-    @media (max-width: 800px) {
-        padding: 15px 0;
-    }
+    padding: 15px 0;
 }
 
 .btn-group {
@@ -22,8 +18,20 @@
 .card {
     display: grid;
     grid-template-columns: 400px auto;
+    gap: 20px;
 
     @media (max-width: 800px) {
         grid-template-columns: 1fr;
+    }
+}
+
+/* Styles for tab labels */
+::ng-deep {
+    .mdc-tab__text-label {
+        color: #141414 !important;
+    }
+
+    .mat-mdc-tab .mdc-tab-indicator__content--underline {
+        border-color: #d9905e !important;
     }
 }

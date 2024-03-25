@@ -28,6 +28,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
 import { MemberCardComponent } from './components/members/member-card/member-card.component';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { JwtInterceptor } from './interceptors/jwt.interceptor';
     MatFormFieldModule,
     MatInputModule,
     MatMenuModule,
+    MatTabsModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right'
     })
