@@ -4,6 +4,7 @@ import { User } from '../../../models/user.model';
 import { AccountService } from '../../../services/account.service';
 import { MembersService } from '../../../services/members.service';
 import { take } from 'rxjs';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-member-edit',
@@ -13,6 +14,24 @@ import { take } from 'rxjs';
 export class MemberEditComponent implements OnInit {
   member!: Member;
   user!: User;
+
+  form: FormGroup = new FormGroup({
+    description: new FormControl(null, [
+      Validators.required,
+    ]),
+    lookingFor: new FormControl(null, [
+      Validators.required,
+    ]),
+    interests: new FormControl(null, [
+      Validators.required,
+    ]),
+    city: new FormControl(null, [
+      Validators.required,
+    ]),
+    country: new FormControl(null, [
+      Validators.required,
+    ]),
+  });
 
   constructor(private accountService: AccountService, private memberService: MembersService) {
     this.accountService.currentUser$.pipe(take(1)).subscribe(user => {
