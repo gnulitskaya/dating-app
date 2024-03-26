@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Host, HostListener, OnInit } from '@angular/core';
 import { Member } from '../../../models/member';
 import { User } from '../../../models/user.model';
 import { AccountService } from '../../../services/account.service';
@@ -14,6 +14,12 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class MemberEditComponent implements OnInit {
   member!: Member;
   user!: User;
+
+  @HostListener('window:beforeunload', ['$event']) unloadHandler(event: Event) {
+    if(this.form.dirty) {
+      event.returnValue = true;
+    }
+  }
 
   form: FormGroup = new FormGroup({
     description: new FormControl(null, [

@@ -1,1 +1,9 @@
 @import url(../member-detail/member-detail.component.scss);
+
+mat-form-field {
+    width: 100%;
+}
+
+.edit-form {
+    padding-top: 30px;
+}

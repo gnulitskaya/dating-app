@@ -27,3 +27,9 @@ $my-theme: mat.define-light-theme((
 @include mat.button-theme($my-theme);
 
 // Include the theme mixins for other components you use here.
+
+.alert-info {
+  background-color: blanchedalmond;
+  border-radius: 10px;
+  padding: 15px;
+}
