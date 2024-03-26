@@ -34,6 +34,7 @@ import { SnackbarService } from './services/snackbar.service';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { BusyService } from './services/busy.service';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
+import { GalleryComponent } from '@daelmaak/ngx-gallery';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,7 @@ import { LoadingInterceptor } from './interceptors/loading.interceptor';
     NotFoundComponent,
     ServerErrorComponent,
     MemberCardComponent,
-    MemberEditComponent
+    MemberEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,6 +68,7 @@ import { LoadingInterceptor } from './interceptors/loading.interceptor';
     MatMenuModule,
     MatTabsModule,
     NgxSpinnerModule,
+    GalleryComponent,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right'
     })

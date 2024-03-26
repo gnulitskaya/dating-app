@@ -5,7 +5,7 @@
 
                 <div class="card-body">
                     <img src="{{member.photoUrl || './assets/user.png'}}" alt="{{member.knownAs}}"
-                    class="card-img-top img-thumbnail">
+                        class="card-img-top img-thumbnail">
                     <!-- <div class="mb-2" *ngIf="(presence.onlineUsers$ | async).includes(member.username)" >
                         <i class="fa fa-user-circle text-success"></i> Online now
                     </div> -->
@@ -35,10 +35,12 @@
                                 <!-- <mat-icon class="example-tab-icon">thumb_up</mat-icon> -->
                                 About {{member.knownAs}}
                             </ng-template>
-                            <h4>Description</h4>
-                            <p>{{member.introduction}}</p>
-                            <h4>Looking for</h4>
-                            <p>{{member.lookingFor}}</p>
+                            <div class="detail">
+                                <h3>Description</h3>
+                                <p>{{member.introduction}}</p>
+                                <h3>Looking for</h3>
+                                <p>{{member.lookingFor}}</p>
+                            </div>
                         </mat-tab>
 
                         <mat-tab>
@@ -46,7 +48,10 @@
                                 <!-- <mat-icon class="example-tab-icon">thumb_up</mat-icon> -->
                                 Interests
                             </ng-template>
-                            <p>{{member.interests}}</p>
+                            <div class="detail">
+                                <p>{{member.interests}}</p>
+                            </div>
+
                         </mat-tab>
 
                         <mat-tab>
@@ -54,9 +59,10 @@
                                 <!-- <mat-icon class="example-tab-icon">thumb_up</mat-icon> -->
                                 Photos
                             </ng-template>
+                            <div class="detail">
+                                <gallery [items]="images"></gallery>
+                            </div>
 
-                            <!-- <ngx-gallery [options]="galleryOptions" [images]="galleryImages" 
-                        style="display: inline-block; margin-bottom: 20px;"></ngx-gallery> -->
                         </mat-tab>
 
                         <mat-tab>
