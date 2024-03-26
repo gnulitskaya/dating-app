@@ -28,9 +28,12 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
 import { MemberCardComponent } from './components/members/member-card/member-card.component';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
-import {MatTabsModule} from '@angular/material/tabs';
+import { MatTabsModule } from '@angular/material/tabs';
 import { MemberEditComponent } from './components/members/member-edit/member-edit.component';
 import { SnackbarService } from './services/snackbar.service';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { BusyService } from './services/busy.service';
+import { LoadingInterceptor } from './interceptors/loading.interceptor';
 
 @NgModule({
   declarations: [
@@ -63,12 +66,14 @@ import { SnackbarService } from './services/snackbar.service';
     MatInputModule,
     MatMenuModule,
     MatTabsModule,
+    NgxSpinnerModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right'
     })
   ],
   providers: [
     SnackbarService,
+    BusyService,
     provideAnimationsAsync(),
     {
       provide: HTTP_INTERCEPTORS,
@@ -80,6 +85,11 @@ import { SnackbarService } from './services/snackbar.service';
       useClass: JwtInterceptor,
       multi: true,
     },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptor,
+      multi: true,
+    }
   ],
   bootstrap: [AppComponent]
 })
