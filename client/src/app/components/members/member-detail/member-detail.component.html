@@ -9,22 +9,29 @@
                     <!-- <div class="mb-2" *ngIf="(presence.onlineUsers$ | async).includes(member.username)" >
                         <i class="fa fa-user-circle text-success"></i> Online now
                     </div> -->
-                    <div>
-                        <strong>Location:</strong>
-                        <p>{{member.city}}, {{member.country}}</p>
+                    <div class="card-body__inner">
+                        <div>
+                            <strong>Location:</strong>
+                            <p>{{member.city}}, {{member.country}}</p>
+                        </div>
+                        <div>
+                            <strong>Age:</strong>
+                            <p>{{member.age}}</p>
+                        </div>
+                        <div>
+                            <strong>Last Active:</strong>
+                            <!-- <p>{{member.lastActive | timeago}}</p> -->
+                            <p>{{member.lastActive}}</p>
+                        </div>
+                        <div>
+                            <strong>Member since:</strong>
+                            <p>{{member.created | date: 'dd MMM yyyy'}}</p>
+                        </div>
                     </div>
-                    <div>
-                        <strong>Age:</strong>
-                        <p>{{member.age}}</p>
-                    </div>
-                    <div>
-                        <strong>Last Active:</strong>
-                        <!-- <p>{{member.lastActive | timeago}}</p> -->
-                        <p>{{member.lastActive}}</p>
-                    </div>
-                    <div>
-                        <strong>Member since:</strong>
-                        <p>{{member.created | date: 'dd MMM yyyy'}}</p>
+
+                    <div class="btn-group">
+                        <button mat-raised-button color="primary">Like</button>
+                        <button (click)="selectTab(3)" mat-raised-button color="accent">Message</button>
                     </div>
                 </div>
 
@@ -73,12 +80,6 @@
                             <!-- <p>{{member.interests}}</p> -->
                         </mat-tab>
                     </mat-tab-group>
-                </div>
-                <div class="card-footer">
-                    <div class="btn-group">
-                        <button mat-raised-button color="primary">Like</button>
-                        <button (click)="selectTab(3)" mat-raised-button color="accent">Message</button>
-                    </div>
                 </div>
             </div>
         </div>
