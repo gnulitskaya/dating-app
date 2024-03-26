@@ -1,5 +1,5 @@
 <div class="member-list">
-    <div class="member-item" *ngFor="let member of members">
+    <div class="member-item" *ngFor="let member of members$ | async">
         <app-member-card [member]="member"></app-member-card>
     </div>
 </div>
