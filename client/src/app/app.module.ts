@@ -30,6 +30,7 @@ import { MemberCardComponent } from './components/members/member-card/member-car
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import {MatTabsModule} from '@angular/material/tabs';
 import { MemberEditComponent } from './components/members/member-edit/member-edit.component';
+import { SnackbarService } from './services/snackbar.service';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { MemberEditComponent } from './components/members/member-edit/member-edi
     })
   ],
   providers: [
+    SnackbarService,
     provideAnimationsAsync(),
     {
       provide: HTTP_INTERCEPTORS,

@@ -36,7 +36,7 @@
                     </div>
 
                     <div class="btn-group">
-                        <button mat-raised-button color="primary">Save changes</button>
+                        <button [disabled]="!form.dirty" (click)="updateMember()" mat-raised-button color="primary">Save changes</button>
                     </div>
                 </div>
 

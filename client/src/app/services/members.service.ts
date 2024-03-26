@@ -18,4 +18,8 @@ export class MembersService {
   getMember(username: string): Observable<Member> {
     return this.http.get<Member>(this.baseUrl + 'users/' + username);
   }
+
+  updateMember(member: Member): Observable<Member> {
+    return this.http.put<Member>(this.baseUrl + 'users', member);
+  }
 }

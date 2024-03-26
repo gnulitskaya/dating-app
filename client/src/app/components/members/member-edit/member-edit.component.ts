@@ -5,6 +5,7 @@ import { AccountService } from '../../../services/account.service';
 import { MembersService } from '../../../services/members.service';
 import { take } from 'rxjs';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { SnackbarService } from '../../../services/snackbar.service';
 
 @Component({
   selector: 'app-member-edit',
@@ -16,7 +17,7 @@ export class MemberEditComponent implements OnInit {
   user!: User;
 
   @HostListener('window:beforeunload', ['$event']) unloadHandler(event: Event) {
-    if(this.form.dirty) {
+    if (this.form.dirty) {
       event.returnValue = true;
     }
   }
@@ -39,7 +40,9 @@ export class MemberEditComponent implements OnInit {
     ]),
   });
 
-  constructor(private accountService: AccountService, private memberService: MembersService) {
+  constructor(private accountService: AccountService, 
+    private memberService: MembersService,
+    public snackbarService: SnackbarService) {
     this.accountService.currentUser$.pipe(take(1)).subscribe(user => {
       if (user) {
         this.user = user
@@ -51,14 +54,23 @@ export class MemberEditComponent implements OnInit {
     this.loadMember();
   }
 
-  loadMember() {  
+  loadMember() {
     console.log(this.user.username);
-    
+
     this.memberService.getMember(this.user.username).subscribe(
       (member: Member) => {
         console.log(member);
-        
+
         this.member = member;
+      }
+    )
+  }
+
+  updateMember() {
+    this.memberService.updateMember(this.member).subscribe(
+      (member: Member) => {
+        console.log(member);
+        this.snackbarService.openSnackBar('Profile updated successfully', '');
       }
     )
   }
