@@ -35,6 +35,9 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { BusyService } from './services/busy.service';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
 import { GalleryComponent } from '@daelmaak/ngx-gallery';
+import { TestsComponent } from './components/tests/tests.component';
+import { Test2Component } from './components/tests/test2/test2.component';
+import { PostsService } from './components/tests/test2/posts.service';
 
 @NgModule({
   declarations: [
@@ -52,6 +55,8 @@ import { GalleryComponent } from '@daelmaak/ngx-gallery';
     ServerErrorComponent,
     MemberCardComponent,
     MemberEditComponent,
+    Test2Component,
+    TestsComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,6 +81,7 @@ import { GalleryComponent } from '@daelmaak/ngx-gallery';
   providers: [
     SnackbarService,
     BusyService,
+    PostsService,
     provideAnimationsAsync(),
     {
       provide: HTTP_INTERCEPTORS,

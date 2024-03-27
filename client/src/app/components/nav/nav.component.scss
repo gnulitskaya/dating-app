@@ -24,9 +24,10 @@ nav {
     font-size: 14px;
     font-weight: normal;
     display: flex; 
-    gap: 10px;
+    gap: 20px;
     .nav-item {
         opacity: 0.5;
+        cursor: pointer;
     }
     .nav-item.active {
         opacity: 1;
