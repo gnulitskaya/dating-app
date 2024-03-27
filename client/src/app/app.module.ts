@@ -38,6 +38,7 @@ import { GalleryComponent } from '@daelmaak/ngx-gallery';
 import { TestsComponent } from './components/tests/tests.component';
 import { Test2Component } from './components/tests/test2/test2.component';
 import { PostsService } from './components/tests/test2/posts.service';
+import { Test3Component } from './components/tests/test3/test3.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { PostsService } from './components/tests/test2/posts.service';
     MemberEditComponent,
     Test2Component,
     TestsComponent,
+    Test3Component
   ],
   imports: [
     BrowserModule,
