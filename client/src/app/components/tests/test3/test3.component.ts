@@ -24,5 +24,4 @@ export class Test3Component implements OnInit {
   goBack() {
     this.router.navigate(['/posts']);
   }
-
 }
