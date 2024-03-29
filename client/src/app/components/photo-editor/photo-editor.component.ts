@@ -28,18 +28,18 @@ export class PhotoEditorComponent implements OnInit {
     console.log(this.fileUploadControl.value[0]);
 
     this.fileUploadControl.valueChanges.pipe(
-      switchMap(x => this.membersService.sendPhoto(x[0])),
+      switchMap(photo => this.membersService.sendPhoto(photo[0])),
       tap((response: any) => {
         console.log(response);
         this.member.photos.push(response);
 
-        // if (response.isMain) {
-        //   this.user!.photoUrl = response.url;
-        //   this.member.photoUrl = response.url;
-        //   if(this.user !== null)
-        //   this.accountService.setCurrentUser(this.user);
-        // }
-      })
+        if (response.isMain) {
+          this.user!.photoUrl = response.url;
+          this.member.photoUrl = response.url;
+          if(this.user !== null)
+          this.accountService.setCurrentUser(this.user);
+        }
+      }),
     ).subscribe();
   }
 

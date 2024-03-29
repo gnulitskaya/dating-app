@@ -35,7 +35,7 @@ export class RegisterFormDialogComponent implements OnInit {
 
     this.accountService.register(this.registerForm.value).subscribe(res => {
       this._toastr.success('Вы зарегистрированы!');
-      // this._router.navigateByUrl('/members');
+      this._router.navigateByUrl('/members');
     }, (err) => {
       // this.submitted = false;
       this.validationErrors = err.error.errors;
