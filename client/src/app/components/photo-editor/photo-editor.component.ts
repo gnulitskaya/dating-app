@@ -2,7 +2,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Photo } from '../../models/photo';
 import { FileUploadControl, FileUploadValidators } from '@iplab/ngx-file-upload';
 import { MembersService } from '../../services/members.service';
-import { switchMap, tap } from 'rxjs';
+import { switchMap, take, tap } from 'rxjs';
+import { AccountService } from '../../services/account.service';
+import { User } from '../../models/user.model';
 
 @Component({
   selector: 'app-photo-editor',
@@ -11,9 +13,13 @@ import { switchMap, tap } from 'rxjs';
 })
 export class PhotoEditorComponent implements OnInit {
   @Input() member: any;
+  user: User | null = null;
   public fileUploadControl = new FileUploadControl(undefined, FileUploadValidators.filesLimit(1));
 
-  constructor(private membersService: MembersService) { }
+  constructor(private membersService: MembersService,
+    private accountService: AccountService) {
+    this.accountService.currentUser$.pipe(take(1)).subscribe(user => this.user = user);
+  }
 
   ngOnInit() {
   }
@@ -37,15 +43,15 @@ export class PhotoEditorComponent implements OnInit {
   }
 
   setMainPhoto(photo: Photo) {
-    // this.memberService.setMainPhoto(photo.id).subscribe(() => {
-    //   this.user.photoUrl = photo.url;
-    //   this.accountService.setCurrentUser(this.user);
-    //   this.member.photoUrl = photo.url;
-    //   this.member.photos.forEach(p => {
-    //     if (p.isMain) p.isMain = false;
-    //     if (p.id === photo.id) p.isMain = true;
-    //   })
-    // })
+    this.membersService.setMainPhoto(photo.id).subscribe(() => {
+      this.user!.photoUrl = photo.url;
+      if (this.user !== null) this.accountService.setCurrentUser(this.user);
+      this.member.photoUrl = photo.url;
+      this.member.photos.forEach((p: Photo) => {
+        if (p.isMain) p.isMain = false;
+        if (p.id === photo.id) p.isMain = true;
+      })
+    })
   }
 
   deletePhoto(photoId: number) {
