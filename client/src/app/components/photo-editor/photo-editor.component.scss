@@ -1,0 +1,37 @@
+.photos {
+    padding-top: 30px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    img {
+        width: 100%;
+        height: 100px;
+        object-fit: cover;
+    }
+
+    svg {
+        width: 15px;
+        fill: aliceblue;
+    }
+}
+.photos-item {
+    max-width: 150px;
+}
+.photos-nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.app-photos {
+    margin-top: 20px;
+    h2 {
+        font-weight: bold;
+    }
+}
+
+::ng-deep .mdc-button__label {
+    display: flex;
+}

@@ -13,7 +13,7 @@ export class MembersService {
   constructor(private http: HttpClient) { }
 
   getMembers(): Observable<Member[]> {
-    if(this.members.length > 0) return of(this.members);
+    if (this.members.length > 0) return of(this.members);
     return this.http.get<Member[]>(this.baseUrl + 'users').pipe(
       map(members => {
         this.members = members;
@@ -24,7 +24,7 @@ export class MembersService {
 
   getMember(username: string): Observable<Member> {
     const member = this.members.find(member => member.username === username);
-    if(member !== undefined) return of(member);
+    if (member !== undefined) return of(member);
     return this.http.get<Member>(this.baseUrl + 'users/' + username);
   }
 
@@ -36,6 +36,19 @@ export class MembersService {
         return member;
       })
     );
-}
+  }
+
+  sendPhoto(file: File): any {
+    let data = new FormData();
+
+    data.append('file', file);
+    return this.http.post(this.baseUrl + 'users/add-photo',
+      data
+    )
+  }
+
+  deletePhoto(photoId: number) {
+    return this.http.delete(this.baseUrl + 'users/delete-photo/' + photoId);
+  }
 
 }

@@ -39,6 +39,9 @@ import { TestsComponent } from './components/tests/tests.component';
 import { Test2Component } from './components/tests/test2/test2.component';
 import { PostsService } from './components/tests/test2/posts.service';
 import { Test3Component } from './components/tests/test3/test3.component';
+import { PhotoEditorComponent } from './components/photo-editor/photo-editor.component';
+import { FileUploadModule } from '@iplab/ngx-file-upload';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -56,6 +59,8 @@ import { Test3Component } from './components/tests/test3/test3.component';
     ServerErrorComponent,
     MemberCardComponent,
     MemberEditComponent,
+    PhotoEditorComponent,
+
     Test2Component,
     TestsComponent,
     Test3Component
@@ -75,7 +80,9 @@ import { Test3Component } from './components/tests/test3/test3.component';
     MatMenuModule,
     MatTabsModule,
     NgxSpinnerModule,
+    FileUploadModule,
     GalleryComponent,
+    BrowserAnimationsModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right'
     })
