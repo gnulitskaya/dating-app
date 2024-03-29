@@ -1,0 +1,19 @@
+<div class="mb-3">
+  <mat-form-field>
+    <mat-label>{{label}}</mat-label>
+    <input matInput [class.is-invalid]="ngControl.touched && ngControl.invalid" type={{type}} class="form-control"
+      [formControl]="control" placeholder={{label}}>
+
+    <mat-error *ngIf="ngControl.control?.errors?.['required']" class="invalid-feedback">Please enter a
+      {{label}}</mat-error>
+    <mat-error *ngIf="ngControl.control?.errors?.['minlength']" class="invalid-feedback">
+      {{label}} must be at least {{ngControl.control?.errors!['minlength']['requiredLength']}}
+    </mat-error>
+    <mat-error *ngIf="ngControl.control?.errors?.['maxlength']" class="invalid-feedback">
+      {{label}} must be at most {{ngControl.control?.errors!['maxlength']['requiredLength']}}
+    </mat-error>
+    <mat-error *ngIf="ngControl.control?.errors?.['isMatching']" class="invalid-feedback">
+      Passwords do not match
+    </mat-error>
+  </mat-form-field>
+</div>

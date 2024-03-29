@@ -42,6 +42,11 @@ import { Test3Component } from './components/tests/test3/test3.component';
 import { PhotoEditorComponent } from './components/photo-editor/photo-editor.component';
 import { FileUploadModule } from '@iplab/ngx-file-upload';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TextInputComponent } from './components/forms/text-input/text-input.component';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { DateInputComponent } from './components/forms/date-input/date-input.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +65,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MemberCardComponent,
     MemberEditComponent,
     PhotoEditorComponent,
+    TextInputComponent,
+    DateInputComponent,
 
     Test2Component,
     TestsComponent,
@@ -83,6 +90,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FileUploadModule,
     GalleryComponent,
     BrowserAnimationsModule,
+    MatRadioModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right'
     })
