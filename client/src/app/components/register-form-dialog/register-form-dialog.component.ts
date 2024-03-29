@@ -4,6 +4,7 @@ import { AccountService } from '../../services/account.service';
 import { User } from '../login-form-dialog/login-form-dialog.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-form-dialog',
@@ -13,9 +14,12 @@ import { ToastrService } from 'ngx-toastr';
 export class RegisterFormDialogComponent implements OnInit {
 
   public registerForm: FormGroup = new FormGroup({});
-  submitted = false;
+  public validationErrors: string[] = [];
+  // submitted = false;
 
-  constructor(private accountService: AccountService, private _snackBar: MatSnackBar,
+  constructor(private accountService: AccountService, 
+    private _snackBar: MatSnackBar,
+    private _router: Router,
     private _toastr: ToastrService,
     private fb: FormBuilder) { }
 
@@ -26,15 +30,17 @@ export class RegisterFormDialogComponent implements OnInit {
   register() {
     if (this.registerForm && this.registerForm.invalid) { return }
 
-    this.submitted = true;
-    console.log(this.registerForm.value);
+    // this.submitted = true;
+    console.log(this.registerForm.value, '888');
 
-    // this.accountService.register(this.registerForm.value).subscribe(res => {
-    //   this._toastr.success('Вы зарегистрированы!');
-    // }, (err) => {
-    //   this.submitted = false;
-    //   this._toastr.error('Неверные данные!', err.error);
-    // })
+    this.accountService.register(this.registerForm.value).subscribe(res => {
+      this._toastr.success('Вы зарегистрированы!');
+      // this._router.navigateByUrl('/members');
+    }, (err) => {
+      // this.submitted = false;
+      this.validationErrors = err.error.errors;
+      // this._toastr.error('Неверные данные!', err.error);
+    })
 
   }
 

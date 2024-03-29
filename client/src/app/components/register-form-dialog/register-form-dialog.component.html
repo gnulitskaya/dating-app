@@ -1,4 +1,4 @@
-<form class="mt-5 login-form" [formGroup]="registerForm" (ngSubmit)="register()">
+<form class="mt-5 login-form" [formGroup]="registerForm" (ngSubmit)="registerForm.valid && register()">
     <div class="close" [mat-dialog-close]="false">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
             <path
@@ -23,6 +23,14 @@
         </app-text-input>
         <app-text-input [formControl]="getControl('confirmPassword')" [label]='"Confirm Password"'
             [type]='"password"'></app-text-input>
+
+        <div class="row" *ngIf="validationErrors.length > 0">
+            <ul class="text-danger">
+                <li *ngFor="let error of validationErrors">
+                    {{error}}
+                </li>
+            </ul>
+        </div>
     </div>
 
     <div class="form-btns">
