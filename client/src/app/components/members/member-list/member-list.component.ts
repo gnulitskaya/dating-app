@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Member } from '../../../models/member';
 import { MembersService } from '../../../services/members.service';
 import { Observable, of } from 'rxjs';
+import { Pagination } from '../../../models/pagination';
 
 @Component({
   selector: 'app-member-list',
@@ -9,20 +10,24 @@ import { Observable, of } from 'rxjs';
   styleUrl: './member-list.component.scss'
 })
 export class MemberListComponent implements OnInit {
-  // members: Member[] = [];
-  members$: Observable<Member[]> = of([]);
+  members: Member[] | null = [];
+  pagination!: Pagination;
+  pageNumber = 1;
+  pageSize = 5;
+  // members$: Observable<Member[]> = of([]);
 
   constructor(private memberService: MembersService) {}
 
   ngOnInit(): void {
-    // this.loadMembers();
-    this.members$ = this.memberService.getMembers();
+    this.loadMembers();
+    // this.members$ = this.memberService.getMembers();
   }
 
-  // loadMembers() {
-  //   this.memberService.getMembers().subscribe(members => {
-  //     this.members = members;
-  //   });
-  // }
+  loadMembers() {
+    this.memberService.getMembers(this.pageNumber, this.pageSize).subscribe(response => {
+      this.members = response.result;
+      this.pagination = response.pagination;
+    });
+  }
 
 }
