@@ -16,7 +16,6 @@ export class MembersService {
 
   getMembers(page?: number, itemsPerPage?: number) {
     let params = new HttpParams();
-    // if (this.members.length > 0) return of(this.members);
     if(page !== null && itemsPerPage!== null) {
       params = params.append('pageNumber', page!.toString());
       params = params.append('pageSize', itemsPerPage!.toString());
@@ -24,8 +23,6 @@ export class MembersService {
 
     return this.http.get<Member[]>(this.baseUrl + 'users', { observe: 'response', params }).pipe(
       map(response => {
-        // this.members = members;
-        // return members;
         this.paginationResult.result = response.body;
         
         if(response.headers.get('Pagination')!== null) {

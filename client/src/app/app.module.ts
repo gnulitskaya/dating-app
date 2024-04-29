@@ -47,6 +47,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { DateInputComponent } from './components/forms/date-input/date-input.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -93,6 +94,7 @@ import { DateInputComponent } from './components/forms/date-input/date-input.com
     MatRadioModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatPaginatorModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right'
     })

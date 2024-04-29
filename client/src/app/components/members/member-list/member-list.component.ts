@@ -3,6 +3,7 @@ import { Member } from '../../../models/member';
 import { MembersService } from '../../../services/members.service';
 import { Observable, of } from 'rxjs';
 import { Pagination } from '../../../models/pagination';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-member-list',
@@ -30,4 +31,10 @@ export class MemberListComponent implements OnInit {
     });
   }
 
+  onPageChange(event: PageEvent) {
+    console.log(event);
+    this.pageNumber = event.pageIndex + 1;
+
+    this.loadMembers();
+  }
 }

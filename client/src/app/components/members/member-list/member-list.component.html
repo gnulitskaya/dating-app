@@ -3,3 +3,17 @@
         <app-member-card [member]="member"></app-member-card>
     </div>
 </div>
+<div *ngIf="pagination" class="pagination">
+    <!-- <mat-paginator
+    [pageIndex]="pagination.currentPage"
+    [length]="pagination.totalItems"
+    (page)="handlePageEvent($event)"
+    [pageSize]="pagination.itemsPerPage" aria-label="Select page">
+    </mat-paginator> -->
+    <mat-paginator 
+    [length]="pagination.totalItems" 
+    [pageSize]="pagination.itemsPerPage"
+    [pageIndex]="pagination.currentPage - 1" 
+    (page)="onPageChange($event)">
+    </mat-paginator>
+</div>
