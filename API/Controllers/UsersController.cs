@@ -34,6 +34,12 @@ namespace API.Controllers
         // [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers([FromQuery]UserParams userParams)
         {
+            var user = await _userRepository.GetUserByUsernameAsync(User.GetUserName());
+            userParams.CurrentUsername = user.UserName;
+
+            if(string.IsNullOrEmpty(userParams.CurrentUsername)) 
+            userParams.Gender = user.Gender == "male" ? "female" : "male";
+
             var users = await _userRepository.GetMembersAsync(userParams);
 
             // var usersToReturn = _mapper.Map<IEnumerable<MemberDto>>(users);
