@@ -48,7 +48,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { DateInputComponent } from './components/forms/date-input/date-input.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
-
+import {MatSelectModule} from '@angular/material/select';
 @NgModule({
   declarations: [
     AppComponent,
@@ -95,6 +95,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatDatepickerModule,
     MatNativeDateModule,
     MatPaginatorModule,
+    MatSelectModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right'
     })
