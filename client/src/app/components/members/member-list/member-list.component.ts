@@ -21,13 +21,8 @@ export class MemberListComponent implements OnInit {
   genderList = [{value:'male', display: 'Male'}, {value: 'female', display: 'Female'}];
   // members$: Observable<Member[]> = of([]);
 
-  constructor(private memberService: MembersService, private accountService: AccountService) {
-    this.accountService.currentUser$.subscribe(user => {
-      if (user) {
-        this.user = user;
-        this.userParams = new UserParams(user);
-      }
-    })
+  constructor(private memberService: MembersService) {
+    this.userParams = this.memberService.getUserParams();
   }
 
   ngOnInit(): void {
@@ -37,7 +32,7 @@ export class MemberListComponent implements OnInit {
 
   loadMembers() {
     // console.log(this.userParams);
-    
+    this.memberService.setUserParams(this.userParams);
     this.memberService.getMembers(this.userParams).subscribe(response => {
       this.members = response.result;
       this.pagination = response.pagination;
@@ -46,13 +41,12 @@ export class MemberListComponent implements OnInit {
 
   onPageChange(event: PageEvent) {
     this.userParams.pageNumber = event.pageIndex + 1;
-
+    this.memberService.setUserParams(this.userParams);
     this.loadMembers();
   }
 
   resetFilters() {
-    if(this.user != null)
-    this.userParams = new UserParams(this.user);
+    this.userParams = this.memberService.resetUserParams();
     this.loadMembers();
   }
 }

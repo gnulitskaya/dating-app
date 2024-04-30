@@ -2,9 +2,11 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Member } from '../models/member';
-import { Observable, map, of } from 'rxjs';
+import { Observable, map, of, take } from 'rxjs';
 import { PaginatedResult } from '../models/pagination';
 import { UserParams } from '../models/userParams';
+import { AccountService } from './account.service';
+import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,11 +15,36 @@ export class MembersService {
   baseUrl = environment.apiUrl;
   members: Member[] = [];
   memberCache = new Map();
-  constructor(private http: HttpClient) { }
+  user!: User;
+  userParams!: UserParams;
+
+  constructor(
+    private http: HttpClient,
+    private accountService: AccountService) {
+    this.accountService.currentUser$.pipe(take(1)).subscribe(user => {
+      if (user) {
+        this.user = user;
+        this.userParams = new UserParams(user);
+      }
+    })
+  }
+
+  getUserParams() {
+    return this.userParams;
+  }
+
+  setUserParams(userParams: UserParams) {
+    this.userParams = userParams;
+  }
+
+  resetUserParams() { 
+    this.userParams = new UserParams(this.user);
+    return this.userParams;
+  }
 
   getMembers(userParams: UserParams) {
     let response = this.memberCache.get(Object.values(userParams).join('-'));
-    if(response) return of(response);
+    if (response) return of(response);
 
     console.log(this.memberCache);
 
@@ -67,7 +94,7 @@ export class MembersService {
       .find((member: Member) => member.username === username);
     // console.log(member);
 
-    if(member) return of(member);
+    if (member) return of(member);
     return this.http.get<Member>(this.baseUrl + 'users/' + username);
   }
 
