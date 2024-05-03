@@ -49,6 +49,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { DateInputComponent } from './components/forms/date-input/date-input.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSelectModule} from '@angular/material/select';
+import { ConfettiService } from './services/confetti.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -104,6 +105,7 @@ import {MatSelectModule} from '@angular/material/select';
     SnackbarService,
     BusyService,
     PostsService,
+    ConfettiService,
     provideAnimationsAsync(),
     {
       provide: HTTP_INTERCEPTORS,

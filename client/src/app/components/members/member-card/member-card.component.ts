@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Member } from '../../../models/member';
+import { MembersService } from '../../../services/members.service';
+import { SnackbarService } from '../../../services/snackbar.service';
+import { ConfettiService } from '../../../services/confetti.service';
 
 @Component({
   selector: 'app-member-card',
@@ -9,11 +12,18 @@ import { Member } from '../../../models/member';
 export class MemberCardComponent implements OnInit {
   @Input() member!: Member;
   
-  constructor() { }
+  constructor(private memberService: MembersService, 
+    private snackbarService: SnackbarService,
+    private confettiService: ConfettiService) { }
 
   ngOnInit() {
   }
 
-  addLike(member: Member) {}
+  addLike(member: Member) {
+    this.memberService.addLike(member.username).subscribe(() => {
+      this.confettiService.canon();
+      this.snackbarService.openSnackBar('You liked this member', '');
+    })
+  }
 
 }
