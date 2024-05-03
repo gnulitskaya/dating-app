@@ -15,10 +15,11 @@
             <app-member-card [member]="member"></app-member-card>
         </div>
     </div>
-</div>
 
-<div *ngIf="pagination" class="pagination">
-    <mat-paginator [length]="pagination.totalItems" [pageSize]="pagination.itemsPerPage"
-        [pageIndex]="pagination.currentPage - 1" (page)="onPageChange($event)">
-    </mat-paginator>
+
+    <div *ngIf="pagination" class="pagination">
+        <mat-paginator [length]="pagination.totalItems" [pageSize]="pagination.itemsPerPage"
+            [pageIndex]="pagination.currentPage - 1" (page)="onPageChange($event)">
+        </mat-paginator>
+    </div>
 </div>
