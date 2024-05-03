@@ -50,6 +50,8 @@ import { DateInputComponent } from './components/forms/date-input/date-input.com
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSelectModule} from '@angular/material/select';
 import { ConfettiService } from './services/confetti.service';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -97,6 +99,7 @@ import { ConfettiService } from './services/confetti.service';
     MatNativeDateModule,
     MatPaginatorModule,
     MatSelectModule,
+    MatButtonToggleModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right'
     })
