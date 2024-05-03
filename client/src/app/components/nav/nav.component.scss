@@ -41,6 +41,22 @@ nav {
     border-radius: 50%;
 }
 
+.logo {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    gap: 10px;
+    .opacity {
+        opacity: 0.5;
+        margin-left: 2px;
+    }
+    svg {
+        width: 25px;
+        fill: #fff;
+    }
+}
+
 .mat-mdc-button:not(:disabled) {
     color: #fff;
 }

@@ -1,101 +1,103 @@
-<ng-container *ngIf="member">
-    <div class="row card">
-        <div class="col-6">
-            <h2>Your profile</h2>
-        </div>
-        <div class="col-6">
-            <div class="alert alert-info" *ngIf="form.dirty">
-                <strong>Information: </strong> You have made changes.  Any unsaved changes will be lost
+<div class="container">
+    <ng-container *ngIf="member">
+        <div class="row card">
+            <div class="col-6">
+                <h2>Your profile</h2>
             </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-4">
-            <div class="card">
-
-                <div class="card-body">
-                    <img src="{{member.photoUrl || '../../../../assets/images/user.png'}}" alt="{{member.knownAs}}"
-                    class="card-img-top img-thumbnail">
-
-                    <div>
-                        <strong>Location:</strong>
-                        <p>{{member.city}}, {{member.country}}</p>
-                    </div>
-                    <div>
-                        <strong>Age:</strong>
-                        <p>{{member.age}}</p>
-                    </div>
-                    <div>
-                        <strong>Last Active:</strong>
-                        <!-- <p>{{member.lastActive | timeago}}</p> -->
-                        <p>{{member.lastActive }}</p>
-                    </div>
-                    <div>
-                        <strong>Member since:</strong>
-                        <p>{{member.created | date: 'dd MMM yyyy'}}</p>
-                    </div>
-
-                    <div class="btn-group">
-                        <button [disabled]="!form.dirty" (click)="updateMember()" mat-raised-button color="primary">Save changes</button>
-                    </div>
-                </div>
-
-                <div class="card-tabs">
-                    <mat-tab-group>
-                        <mat-tab>
-                            <ng-template mat-tab-label>
-                                About {{member.knownAs}}
-                            </ng-template>
-                            <div class="edit-form" [formGroup]="form">
-                                <h4>Description</h4>
-                                <mat-form-field appearance="outline">
-                                    <mat-label>Description</mat-label>
-                                    <textarea [(ngModel)]="member.introduction" matInput formControlName="description" placeholder="Placeholder"></textarea>
-                                </mat-form-field>
-                                <!-- <textarea class="form-control" [(ngModel)]="member.introduction" name="introduction" rows="6"></textarea> -->
-                                <h4 class="mt-2">Looking for</h4>
-                                <mat-form-field appearance="outline">
-                                    <mat-label>Looking for</mat-label>
-                                    <textarea [(ngModel)]="member.lookingFor" matInput formControlName="lookingFor" placeholder="Placeholder"></textarea>
-                                </mat-form-field>
-                                <h4 class="mt-2">Interests</h4>
-                                <mat-form-field appearance="outline">
-                                    <mat-label>Interests</mat-label>
-                                    <textarea [(ngModel)]="member.interests" matInput formControlName="interests" placeholder="Placeholder"></textarea>
-                                </mat-form-field>
-                                <h4 class="mt-2">Location Details: </h4>
-                                <mat-form-field appearance="outline">
-                                    <mat-label>City</mat-label>
-                                    <input [(ngModel)]="member.city" matInput formControlName="city" placeholder="Placeholder">
-                                </mat-form-field>
-                                <mat-form-field appearance="outline">
-                                    <mat-label>Country</mat-label>
-                                    <input [(ngModel)]="member.country" matInput formControlName="country" placeholder="Placeholder">
-                                </mat-form-field>
-                                <!-- <textarea class="form-control" [(ngModel)]="member.lookingFor" name="lookingFor" rows="6"></textarea>
-                                
-                                <textarea class="form-control" [(ngModel)]="member.interests" name="interests" rows="6"></textarea>
-                                <h4 class="mt-2">Location Details: </h4>
-                                <div class="form-inline">
-                                    <label for="city">City: </label>
-                                    <input [(ngModel)]="member.city" type="text" name="city" class="form-control mx-2">
-                                    <label for="city">Country: </label>
-                                    <input [(ngModel)]="member.country" type="text" name="country" class="form-control mx-2">
-                                </div> -->
-                            </div>
-                        </mat-tab>
-
-                        <mat-tab>
-                            <ng-template mat-tab-label>
-                                Photos
-                            </ng-template>
-                            <div>
-                                <app-photo-editor [member]="member"></app-photo-editor>
-                            </div>
-                        </mat-tab>
-                    </mat-tab-group>
+            <div class="col-6">
+                <div class="alert alert-info" *ngIf="form.dirty">
+                    <strong>Information: </strong> You have made changes.  Any unsaved changes will be lost
                 </div>
             </div>
         </div>
-    </div>
-</ng-container>
+        <div class="row">
+            <div class="col-4">
+                <div class="card">
+    
+                    <div class="card-body">
+                        <img src="{{member.photoUrl || '../../../../assets/images/user.png'}}" alt="{{member.knownAs}}"
+                        class="card-img-top img-thumbnail">
+    
+                        <div>
+                            <strong>Location:</strong>
+                            <p>{{member.city}}, {{member.country}}</p>
+                        </div>
+                        <div>
+                            <strong>Age:</strong>
+                            <p>{{member.age}}</p>
+                        </div>
+                        <div>
+                            <strong>Last Active:</strong>
+                            <!-- <p>{{member.lastActive | timeago}}</p> -->
+                            <p>{{member.lastActive }}</p>
+                        </div>
+                        <div>
+                            <strong>Member since:</strong>
+                            <p>{{member.created | date: 'dd MMM yyyy'}}</p>
+                        </div>
+    
+                        <div class="btn-group">
+                            <button [disabled]="!form.dirty" (click)="updateMember()" mat-raised-button color="primary">Save changes</button>
+                        </div>
+                    </div>
+    
+                    <div class="card-tabs">
+                        <mat-tab-group>
+                            <mat-tab>
+                                <ng-template mat-tab-label>
+                                    About {{member.knownAs}}
+                                </ng-template>
+                                <div class="edit-form" [formGroup]="form">
+                                    <h4>Description</h4>
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Description</mat-label>
+                                        <textarea [(ngModel)]="member.introduction" matInput formControlName="description" placeholder="Placeholder"></textarea>
+                                    </mat-form-field>
+                                    <!-- <textarea class="form-control" [(ngModel)]="member.introduction" name="introduction" rows="6"></textarea> -->
+                                    <h4 class="mt-2">Looking for</h4>
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Looking for</mat-label>
+                                        <textarea [(ngModel)]="member.lookingFor" matInput formControlName="lookingFor" placeholder="Placeholder"></textarea>
+                                    </mat-form-field>
+                                    <h4 class="mt-2">Interests</h4>
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Interests</mat-label>
+                                        <textarea [(ngModel)]="member.interests" matInput formControlName="interests" placeholder="Placeholder"></textarea>
+                                    </mat-form-field>
+                                    <h4 class="mt-2">Location Details: </h4>
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>City</mat-label>
+                                        <input [(ngModel)]="member.city" matInput formControlName="city" placeholder="Placeholder">
+                                    </mat-form-field>
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Country</mat-label>
+                                        <input [(ngModel)]="member.country" matInput formControlName="country" placeholder="Placeholder">
+                                    </mat-form-field>
+                                    <!-- <textarea class="form-control" [(ngModel)]="member.lookingFor" name="lookingFor" rows="6"></textarea>
+                                    
+                                    <textarea class="form-control" [(ngModel)]="member.interests" name="interests" rows="6"></textarea>
+                                    <h4 class="mt-2">Location Details: </h4>
+                                    <div class="form-inline">
+                                        <label for="city">City: </label>
+                                        <input [(ngModel)]="member.city" type="text" name="city" class="form-control mx-2">
+                                        <label for="city">Country: </label>
+                                        <input [(ngModel)]="member.country" type="text" name="country" class="form-control mx-2">
+                                    </div> -->
+                                </div>
+                            </mat-tab>
+    
+                            <mat-tab>
+                                <ng-template mat-tab-label>
+                                    Photos
+                                </ng-template>
+                                <div>
+                                    <app-photo-editor [member]="member"></app-photo-editor>
+                                </div>
+                            </mat-tab>
+                        </mat-tab-group>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>

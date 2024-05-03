@@ -1,8 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 @use '@angular/material' as mat;
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');html, body { height: 100%; }
+body { margin: 0; 
+  font-family: "Comfortaa", sans-serif;
+  font-weight: 400;
+  font-style: normal; }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+* {
+  font-family: "Comfortaa", sans-serif !important;
+}
 
 @include mat.core();
 
@@ -14,7 +20,6 @@ $my-theme: mat.define-light-theme((
    primary: $my-primary,
    accent: $my-accent,
  ),
- typography: mat.define-typography-config(),
  density: 0,
 ));
 
@@ -32,4 +37,22 @@ $my-theme: mat.define-light-theme((
   background-color: blanchedalmond;
   border-radius: 10px;
   padding: 15px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 50px 15px;
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-line-ripple::before,
+.mdc-text-field--filled:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-line-ripple::before,
+.mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-line-ripple::after {
+  border-bottom-color: #ffab40 !important;
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-floating-label, .mdc-text-field--filled:not(.mdc-text-field--disabled).mdc-text-field--focused
+.mdc-floating-label--float-above {
+  color: #795548 !important;
+  opacity: 0.9;
 }
