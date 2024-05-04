@@ -1,0 +1,63 @@
+.btn-group {
+    margin-bottom: 34px;
+}
+
+table {
+    width: 100%;
+    text-align: left;
+
+    .center {
+        text-align: center;
+    }
+}
+
+.avatar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    img {
+        border-radius: 50%;
+        max-width: 80px;
+        object-fit: cover;
+        height: 80px;
+    }
+}
+
+table.iksweb {
+    text-decoration: none;
+    border-collapse: collapse;
+    width: 100%;
+    text-align: left;
+    transition: all 1s ease-in-out;
+}
+
+table.iksweb th {
+    font-weight: normal;
+    font-size: 14px;
+    color: #ffffff;
+    background-color: #d9905e;
+}
+
+table.iksweb td {
+    font-size: 13px;
+    color: #354251;
+}
+
+table.iksweb td,
+table.iksweb th {
+    white-space: pre-wrap;
+    padding: 10px 15px;
+    line-height: 13px;
+    vertical-align: middle;
+    border: 1px solid #d9905e;
+}
+
+table.iksweb tr:hover {
+    background-color: rgba($color: #ffe2cf, $alpha: 0.4)
+}
+
+table.iksweb tr:hover td {
+    // color: #354251;
+    cursor: default;
+}
