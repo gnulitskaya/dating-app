@@ -40,6 +40,10 @@ export class MessagesComponent implements OnInit {
     }
   }
 
-  deleteMessage(messageId: number) {}
+  deleteMessage(messageId: number) {
+    this.messageService.deleteMessage(messageId).subscribe(() => {
+      this.messages?.slice(this.messages.findIndex((message) => message.id === messageId), 1);
+    });
+  }
 
 }
