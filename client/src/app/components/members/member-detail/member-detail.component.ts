@@ -3,6 +3,8 @@ import { Member } from '../../../models/member';
 import { MembersService } from '../../../services/members.service';
 import { ActivatedRoute } from '@angular/router';
 import { GalleryItem } from '@daelmaak/ngx-gallery';
+import { Message } from '../../../models/message';
+import { MessageService } from '../../../services/message.service';
 
 @Component({
   selector: 'app-member-detail',
@@ -11,12 +13,28 @@ import { GalleryItem } from '@daelmaak/ngx-gallery';
 })
 export class MemberDetailComponent {
   member!: Member;
-  images: GalleryItem[] = []
+  images: GalleryItem[] = [];
+  selectedTab: number = 0;
+  messages: Message[] = [];
 
-  constructor(private memberService: MembersService, private route: ActivatedRoute) {}
+  constructor(
+    private memberService: MembersService, 
+    private route: ActivatedRoute,
+    private messageService: MessageService) {}
 
   ngOnInit() {
-    this.loadMember();
+    // this.loadMember();
+    this.route.data.subscribe(data => {
+      // console.log(data);
+      this.member = data['member'];
+    })
+
+    this.route.queryParams?.subscribe((params: any) => {
+      console.log(params);
+      params['tab'] ? this.selectTab(params['tab']) : this.selectTab(0);
+    });
+
+    this.images = this.getImages();
   }
 
   getImages(): GalleryItem[] {
@@ -31,16 +49,17 @@ export class MemberDetailComponent {
     return imageUrls;
   }
 
-  loadMember() {  
-    let username = this.route.snapshot.paramMap.get('username');
-    this.memberService.getMember(username ?? '').subscribe(
-      (member: Member) => {
-        this.member = member;
-
-        this.images = this.getImages();
-      }
-    )
+  loadMessages() {
+    this.messageService.getMessageThread(this.member.username).subscribe(messages => {
+      this.messages = messages;
+    });
   }
 
-  selectTab(id: number) {}
+  selectTab(event: any) {
+    console.log(event);
+    this.selectedTab = event;
+    if(this.selectedTab == 3 && this.messages.length === 0) {
+      this.loadMessages();
+    }
+  }
 }

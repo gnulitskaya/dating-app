@@ -50,26 +50,18 @@
                 </td>
                 <td>{{message.messageSent | date: 'dd MMM yyyy'}}</td>
                 <td class="center">
-                    <button (click)="$event.stopPropagation()" (click)="deleteMessage(message.id)" mat-flat-button color="warn">Delete</button>
+                    <button (click)="$event.stopPropagation()" (click)="deleteMessage(message.id)" mat-stroked-button color="warn">Delete</button>
                 </td>
                 </tr>
             </tbody>
             
         </table>
     </div>
-    
-    <!-- <div class="d-flex justify-content-center" *ngIf="pagination && !loading">
-        <pagination 
-            [boundaryLinks]="true" 
-            [totalItems]="pagination.totalItems"
-            [itemsPerPage]="pagination.itemsPerPage"
-            [(ngModel)]="pagination.currentPage"
-            (pageChanged)="pageChanged($event)"
-            [maxSize]="10"
-            previousText="&lsaquo;" 
-            nextText="&rsaquo;" 
-            firstText="&laquo;" 
-            lastText="&raquo;">
-    </pagination>
-    </div> -->
+
+    <div *ngIf="pagination" class="pagination">
+        <mat-paginator [length]="pagination.totalItems" [pageSize]="pagination.itemsPerPage"
+            [pageIndex]="pagination.currentPage - 1" (page)="onPageChange($event)">
+        </mat-paginator>
+    </div>
+
 </div>

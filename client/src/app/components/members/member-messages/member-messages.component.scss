@@ -1,0 +1,33 @@
+img {
+    max-width: 100px;
+}
+.chat {
+    padding: 0;
+}
+.input-group {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    mat-form-field {
+        width: 100%;
+    }
+}
+.chat-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+
+    img {
+        border-radius: 50%;
+        width: 70px;
+        height: 70px;
+        object-fit: cover;
+    }
+}
+
+.text-muted {
+    opacity: 0.3;
+}

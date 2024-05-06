@@ -1,0 +1,55 @@
+<!-- <p *ngFor="let message of messages">
+    {{message?.content}}
+</p>     -->
+
+<div class="card">
+    <div class="card-body" #scrollMe style="overflow: scroll; height: 535px;" [scrollTop]="scrollMe.scrollHeight">
+        <!-- <div *ngIf="(messageService.messageThread$ | async)?.length === 0">
+            No messages yet... say hi by using the message box below
+        </div> -->
+
+        <ul *ngIf="messages.length > 0" class="chat">
+            <li *ngFor="let message of messages">
+                <div class="chat-wrapper">
+                    <span class="chat-img float-end">
+                        <img class="rounded-circle" src="{{message.senderPhotoUrl || './assets/user.png'}}"
+                            alt="{{message.senderUserName}}">
+                        <!-- <span>{{message.senderUserName}}</span> -->
+                    </span>
+                    <div class="chat-body">
+                        <div class="header">
+                            <small class="text-muted">
+                                <span class="fa fa-clock-o">{{message.messageSent | date: 'dd MMM yyyy'}}</span>
+                                <!-- <span class="text-danger" *ngIf="!message.dateRead 
+                                    && message.senderUserName !== username">
+                                    (unread)
+                                </span>
+                                <span class="text-success" *ngIf="message.dateRead 
+                                    && message.senderUserName !== username">
+                                    (read {{message.dateRead | date: 'dd MMM yyyy'}})
+                                </span> -->
+                            </small>
+                        </div>
+                        <p>{{message.content}}</p>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="card-footer">
+        <form [formGroup]="messagesForm" (ngSubmit)="sendMessage()" autocomplete="off">
+            <div class="input-group">
+                <mat-form-field>
+                    <mat-label>Send a private message</mat-label>
+                    <textarea formControlName="messageContent" matInput></textarea>
+                </mat-form-field>
+                <div class="input-group-append">
+                    <button mat-flat-button [disabled]="!messagesForm.valid" color="primary" class="btn btn-primary" type="submit">Send
+                        <i *ngIf="loading" class="fa fa-spinner fa-spin"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

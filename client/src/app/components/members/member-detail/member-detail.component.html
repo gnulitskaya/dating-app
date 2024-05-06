@@ -37,10 +37,10 @@
                     </div>
     
                     <div class="card-tabs">
-                        <mat-tab-group>
+                        <mat-tab-group [selectedIndex]="selectedTab"
+                        (selectedIndexChange)="selectTab($event)">
                             <mat-tab>
                                 <ng-template mat-tab-label>
-                                    <!-- <mat-icon class="example-tab-icon">thumb_up</mat-icon> -->
                                     About {{member.knownAs}}
                                 </ng-template>
                                 <div class="detail">
@@ -53,7 +53,6 @@
     
                             <mat-tab>
                                 <ng-template mat-tab-label>
-                                    <!-- <mat-icon class="example-tab-icon">thumb_up</mat-icon> -->
                                     Interests
                                 </ng-template>
                                 <div class="detail">
@@ -64,7 +63,6 @@
     
                             <mat-tab>
                                 <ng-template mat-tab-label>
-                                    <!-- <mat-icon class="example-tab-icon">thumb_up</mat-icon> -->
                                     Photos
                                 </ng-template>
                                 <div class="detail">
@@ -75,10 +73,9 @@
     
                             <mat-tab>
                                 <ng-template mat-tab-label>
-                                    <!-- <mat-icon class="example-tab-icon">thumb_up</mat-icon> -->
                                     Messages
                                 </ng-template>
-                                <!-- <p>{{member.interests}}</p> -->
+                                <app-member-messages [username]="member.username" [messages]="messages"></app-member-messages>
                             </mat-tab>
                         </mat-tab-group>
                     </div>

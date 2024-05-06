@@ -51,6 +51,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSelectModule} from '@angular/material/select';
 import { ConfettiService } from './services/confetti.service';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { MemberMessagesComponent } from './components/members/member-messages/member-messages.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
     Test2Component,
     TestsComponent,
-    Test3Component
+    Test3Component,
+    MemberMessagesComponent
   ],
   imports: [
     BrowserModule,
