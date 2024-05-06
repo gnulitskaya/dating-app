@@ -26,8 +26,7 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- [hidden]="loading" -->
-                <tr  *ngFor="let message of messages" 
+                <tr [hidden]="loading" *ngFor="let message of messages" 
                 routerLink='{{container === "Outbox" 
                     ? "/members/" + message.recipientUserName 
                     : "/members/" + message.senderUserName}}' [queryParams]='{tab: 3}' >
@@ -58,7 +57,7 @@
         </table>
     </div>
 
-    <div *ngIf="pagination" class="pagination">
+    <div *ngIf="pagination && !loading" class="pagination">
         <mat-paginator [length]="pagination.totalItems" [pageSize]="pagination.itemsPerPage"
             [pageIndex]="pagination.currentPage - 1" (page)="onPageChange($event)">
         </mat-paginator>

@@ -22,7 +22,7 @@ export class MessageService {
     return this.http.get<Message[]>(this.baseUrl + 'messages/thread/' + username);
   }
 
-  sendMessage(userrname: string, content: string) {
-    return this.http.post<Message>(this.baseUrl +'messages', {recipientUsername: userrname, content: content});
+  sendMessage(username: string, content: string) {
+    return this.http.post<Message>(this.baseUrl +'messages', {recipientUserName: username, content: content});
   }
 }
