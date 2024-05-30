@@ -47,18 +47,20 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { DateInputComponent } from './components/forms/date-input/date-input.component';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatSelectModule} from '@angular/material/select';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSelectModule } from '@angular/material/select';
 import { ConfettiService } from './services/confetti.service';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MemberMessagesComponent } from './components/members/member-messages/member-messages.component';
 import { AdminBarComponent } from './admin-bar/admin-bar.component';
 import { HasRoleDirective } from './directives/has-role.directive';
 import { UserManagementComponent } from './admin-bar/user-management/user-management.component';
 import { PhotoManagementComponent } from './admin-bar/photo-management/photo-management.component';
+import { UserRoleDialogComponent } from './admin-bar/user-role-dialog/user-role-dialog.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
     NavComponent,
     LoginFormDialogComponent,
@@ -81,11 +83,12 @@ import { PhotoManagementComponent } from './admin-bar/photo-management/photo-man
     TestsComponent,
     Test3Component,
     MemberMessagesComponent,
-      AdminBarComponent,
-      HasRoleDirective,
-      UserManagementComponent,
-      PhotoManagementComponent
-   ],
+    AdminBarComponent,
+    HasRoleDirective,
+    UserManagementComponent,
+    PhotoManagementComponent,
+    UserRoleDialogComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -109,6 +112,7 @@ import { PhotoManagementComponent } from './admin-bar/photo-management/photo-man
     MatNativeDateModule,
     MatPaginatorModule,
     MatSelectModule,
+    MatCheckboxModule,
     MatButtonToggleModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right'
