@@ -52,9 +52,10 @@ import {MatSelectModule} from '@angular/material/select';
 import { ConfettiService } from './services/confetti.service';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { MemberMessagesComponent } from './components/members/member-messages/member-messages.component';
+import { AdminBarComponent } from './admin-bar/admin-bar.component';
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     NavComponent,
     LoginFormDialogComponent,
@@ -76,8 +77,9 @@ import { MemberMessagesComponent } from './components/members/member-messages/me
     Test2Component,
     TestsComponent,
     Test3Component,
-    MemberMessagesComponent
-  ],
+    MemberMessagesComponent,
+      AdminBarComponent
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
