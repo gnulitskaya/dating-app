@@ -18,6 +18,7 @@
             <div class="nav-item" routerLink="/members" routerLinkActive="active">Matches</div>
             <div class="nav-item" routerLink="/lists" routerLinkActive="active">Lists</div>
             <div class="nav-item" routerLink="/messages" routerLinkActive="active">Messages</div>
+            <div *appHasRole="['Admin', 'Moderator']" class="nav-item" routerLink="/admin" routerLinkActive="active">Admin</div>
         </nav>
 
         <ng-container *ngIf="(isAuth | async) as user; else noAuth">

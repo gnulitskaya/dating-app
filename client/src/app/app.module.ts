@@ -53,6 +53,7 @@ import { ConfettiService } from './services/confetti.service';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { MemberMessagesComponent } from './components/members/member-messages/member-messages.component';
 import { AdminBarComponent } from './admin-bar/admin-bar.component';
+import { HasRoleDirective } from './directives/has-role.directive';
 
 @NgModule({
   declarations: [	
@@ -78,7 +79,8 @@ import { AdminBarComponent } from './admin-bar/admin-bar.component';
     TestsComponent,
     Test3Component,
     MemberMessagesComponent,
-      AdminBarComponent
+      AdminBarComponent,
+      HasRoleDirective
    ],
   imports: [
     BrowserModule,
