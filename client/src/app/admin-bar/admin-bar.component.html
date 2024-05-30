@@ -1,3 +1,14 @@
-<p>
-  admin-bar works!
-</p>
+<div class="container">
+  <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+    <mat-tab label="User management">
+      <div class="container">
+        <app-user-management></app-user-management>
+      </div>
+    </mat-tab>
+    <mat-tab label="Photo management">
+      <div class="container">
+        <app-photo-management></app-photo-management>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

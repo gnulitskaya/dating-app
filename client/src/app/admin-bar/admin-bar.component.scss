@@ -1,0 +1,14 @@
+/* Styles for tab labels */
+::ng-deep {
+    .mdc-tab__text-label {
+        color: #141414 !important;
+    }
+
+    .mat-mdc-tab .mdc-tab-indicator__content--underline {
+        border-color: #d9905e !important;
+    }
+
+    .mat-mdc-tab.mdc-tab--active .mdc-tab__ripple::before, .mat-mdc-tab.mdc-tab--active .mat-ripple-element {
+        background-color: #d9905e !important;
+    }
+}

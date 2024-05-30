@@ -23,7 +23,7 @@
 
         <ng-container *ngIf="(isAuth | async) as user; else noAuth">
 
-            <button class="btn-icon" mat-button [matMenuTriggerFor]="menu">Welcome {{user.knownAs}}
+            <button class="btn-icon" mat-button [matMenuTriggerFor]="menu">Welcome {{user.knownAs || user.username | titlecase}}
                 <img class="avatar" src="{{user.photoUrl || '../../../assets/images/user.png'}}"
                     alt="{{user.username}}">
                 <svg xmlns="http://www.w3.org/2000/svg"

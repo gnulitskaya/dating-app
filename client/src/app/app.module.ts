@@ -54,6 +54,8 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { MemberMessagesComponent } from './components/members/member-messages/member-messages.component';
 import { AdminBarComponent } from './admin-bar/admin-bar.component';
 import { HasRoleDirective } from './directives/has-role.directive';
+import { UserManagementComponent } from './admin-bar/user-management/user-management.component';
+import { PhotoManagementComponent } from './admin-bar/photo-management/photo-management.component';
 
 @NgModule({
   declarations: [	
@@ -80,7 +82,9 @@ import { HasRoleDirective } from './directives/has-role.directive';
     Test3Component,
     MemberMessagesComponent,
       AdminBarComponent,
-      HasRoleDirective
+      HasRoleDirective,
+      UserManagementComponent,
+      PhotoManagementComponent
    ],
   imports: [
     BrowserModule,
