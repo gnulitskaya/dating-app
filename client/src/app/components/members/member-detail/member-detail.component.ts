@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { GalleryItem } from '@daelmaak/ngx-gallery';
 import { Message } from '../../../models/message';
 import { MessageService } from '../../../services/message.service';
+import { PresenceService } from '../../../services/presence.service';
 
 @Component({
   selector: 'app-member-detail',
@@ -18,7 +19,7 @@ export class MemberDetailComponent {
   messages: Message[] = [];
 
   constructor(
-    private memberService: MembersService, 
+    public presence: PresenceService,
     private route: ActivatedRoute,
     private messageService: MessageService) {}
 

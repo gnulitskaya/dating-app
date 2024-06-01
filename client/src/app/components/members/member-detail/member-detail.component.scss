@@ -63,3 +63,28 @@
 ::ng-deep .gallery--column img {
     border-radius: 10px;
 }
+
+@keyframes fa-blink {
+    0% {opacity: 1;}
+    100% {opacity: 0.3;}
+}
+
+.status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 10px 0;
+}
+
+.icon-status {
+    width: 10px;
+    height: 10px;
+    background-color: transparent;
+    border-radius: 50%;
+    transition: all 3s ease-in-out;
+}
+
+.icon-status.is-online {
+    animation: fa-blink 1.5s ease-in-out infinite;
+    background-color: rgb(1, 189, 42);
+}

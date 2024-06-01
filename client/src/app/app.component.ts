@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { catchError, tap } from 'rxjs/operators';
 import { User } from './models/user.model';
 import { AccountService } from './services/account.service';
+import { PresenceService } from './services/presence.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,9 @@ export class AppComponent implements OnInit {
   title = 'App Dating';
   users: any;
 
-  constructor(private http: HttpClient, private accountService: AccountService) {
+  constructor(private http: HttpClient, private accountService: AccountService,
+    private presenceService: PresenceService
+  ) {
 
   }
 
@@ -26,6 +29,7 @@ export class AppComponent implements OnInit {
     if (localStorage.getItem('user')) {
       const user = JSON.parse(localStorage.getItem('user') ?? '');
       this.accountService.setCurrentUser(user);
+      this.presenceService.createHubConnection(user);
     }
   }
 

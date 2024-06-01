@@ -26,6 +26,7 @@
   </div>
   <div class="card-body">
     <h4 class="card-title">
+      <div class="icon-status" [class.is-online]="(presence.onlineUsers$ | async)?.includes(member.username)"></div>
       {{member.knownAs}},
       {{member.age}}
     </h4>

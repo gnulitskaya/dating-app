@@ -6,6 +6,7 @@ import { Observable, ReplaySubject } from 'rxjs';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { environment } from '../../environments/environment';
+import { PresenceService } from './presence.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,9 @@ export class AccountService {
   private currentUserSource = new ReplaySubject<User | null>(1);
   currentUser$ = this.currentUserSource.asObservable();
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router,
+    private presenceService: PresenceService
+  ) { }
 
   login(model: any) {
     return this.http.post(this.baseUrl + 'account/login', model).pipe(
@@ -26,6 +29,7 @@ export class AccountService {
         const user = res as User;
         if(res) {
           this.setCurrentUser(user as User);
+          this.presenceService.createHubConnection(user);
           // this.router.navigateByUrl('/members');
         }
       })
@@ -37,6 +41,7 @@ export class AccountService {
       map(user => {
         if(user) {
           this.setCurrentUser(user as User);
+          this.presenceService.createHubConnection(user as User);
         }
       })
     )
@@ -55,6 +60,7 @@ export class AccountService {
   logout() {
     localStorage.removeItem('user');
     this.currentUserSource.next(null);
+    this.presenceService.stopHubConnection();
     this.router.navigateByUrl('/');
   }
 

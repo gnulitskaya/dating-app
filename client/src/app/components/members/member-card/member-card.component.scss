@@ -29,6 +29,9 @@ img {
 }
 
 .card-title {
+    display: flex;
+    align-items: center;
+    gap: 5px;
     font-weight: bold;
 }
 
@@ -103,10 +106,18 @@ img {
 
 @keyframes fa-blink {
     0% {opacity: 1;}
-    100% {opacity: 0.4;}
+    100% {opacity: 0.3;}
 }
 
-.is-online {
-    animation: fa-blink 1.5s linear infinite;
-    color: rgb(1, 189, 42);
+.icon-status {
+    width: 10px;
+    height: 10px;
+    background-color: transparent;
+    border-radius: 50%;
+    transition: all 3s ease-in-out;
+}
+
+.icon-status.is-online {
+    animation: fa-blink 1.5s ease-in-out infinite;
+    background-color: rgb(1, 189, 42);
 }

@@ -3,6 +3,7 @@ import { Member } from '../../../models/member';
 import { MembersService } from '../../../services/members.service';
 import { SnackbarService } from '../../../services/snackbar.service';
 import { ConfettiService } from '../../../services/confetti.service';
+import { PresenceService } from '../../../services/presence.service';
 
 @Component({
   selector: 'app-member-card',
@@ -14,7 +15,8 @@ export class MemberCardComponent implements OnInit {
   
   constructor(private memberService: MembersService, 
     private snackbarService: SnackbarService,
-    private confettiService: ConfettiService) { }
+    private confettiService: ConfettiService,
+    public presence: PresenceService) { }
 
   ngOnInit() {
   }
