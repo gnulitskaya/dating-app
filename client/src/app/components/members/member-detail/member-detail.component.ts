@@ -1,27 +1,35 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Member } from '../../../models/member';
-import { MembersService } from '../../../services/members.service';
 import { ActivatedRoute } from '@angular/router';
 import { GalleryItem } from '@daelmaak/ngx-gallery';
 import { Message } from '../../../models/message';
 import { MessageService } from '../../../services/message.service';
 import { PresenceService } from '../../../services/presence.service';
+import { AccountService } from '../../../services/account.service';
+import { User } from '../../../models/user.model';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-member-detail',
   templateUrl: './member-detail.component.html',
   styleUrl: './member-detail.component.scss'
 })
-export class MemberDetailComponent {
+export class MemberDetailComponent implements OnDestroy {
   member!: Member;
   images: GalleryItem[] = [];
   selectedTab: number = 0;
   messages: Message[] = [];
+  user!: User;
 
   constructor(
     public presence: PresenceService,
     private route: ActivatedRoute,
-    private messageService: MessageService) {}
+    private messageService: MessageService,
+    private accountService: AccountService) {
+      this.accountService.currentUser$.pipe(take(1)).subscribe(user => {
+        if(user) this.user = user;
+      });
+    }
 
   ngOnInit() {
     // this.loadMember();
@@ -61,6 +69,13 @@ export class MemberDetailComponent {
     this.selectedTab = event;
     if(this.selectedTab == 3 && this.messages.length === 0) {
       this.loadMessages();
+      this.messageService.createHubConnection(this.user, this.member.username);
+    } else {
+      this.messageService.stopHubConnection();
     }
+  }
+
+  ngOnDestroy(): void {
+    this.messageService.stopHubConnection();
   }
 }

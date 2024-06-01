@@ -50,52 +50,53 @@ namespace API.SignalR
             await base.OnDisconnectedAsync(exception);
         }
 
-        // public async Task SendMessage(CreateMessageDto createMessageDto)
-        // {
-        //     var username = Context.User.GetUserName();
+        public async Task SendMessage(CreateMessageDto createMessageDto)
+        {
+            var username = Context.User.GetUserName();
 
-        //     if (username == createMessageDto.RecipientUsername.ToLower())
-        //         throw new HubException("You cannot send messages to yourself");
+            if (username == createMessageDto.RecipientUserName.ToLower())
+                throw new HubException("You cannot send messages to yourself");
 
-        //     var sender = await _userRepository.GetUserByUsernameAsync(username);
-        //     var recipient = await _userRepository.GetUserByUsernameAsync(createMessageDto.RecipientUsername);
+            var sender = await _userRepository.GetUserByUsernameAsync(username);
+            var recipient = await _userRepository.GetUserByUsernameAsync(createMessageDto.RecipientUserName);
 
-        //     if (recipient == null) throw new HubException("Not found user");
+            if (recipient == null) throw new HubException("Not found user");
 
-        //     var message = new Message
-        //     {
-        //         Sender = sender,
-        //         Recipient = recipient,
-        //         SenderUsername = sender.UserName,
-        //         RecipientUsername = recipient.UserName,
-        //         Content = createMessageDto.Content
-        //     };
+            var message = new Message
+            {
+                Sender = sender,
+                Recipient = recipient,
+                SenderUserName = sender.UserName,
+                RecipientUserName = recipient.UserName,
+                Content = createMessageDto.Content
+            };
 
-        //     var groupName = GetGroupName(sender.UserName, recipient.UserName);
+            // var groupName = GetGroupName(sender.UserName, recipient.UserName);
 
-        //     var group = await _messageRepository.GetMessageGroup(groupName);
+            // var group = await _messageRepository.GetMessageGroup(groupName);
 
-        //     if (group.Connections.Any(x => x.Username == recipient.UserName))
-        //     {
-        //         message.DateRead = DateTime.UtcNow;
-        //     }
-        //     else
-        //     {
-        //         var connections = await _tracker.GetConnectionsForUser(recipient.UserName);
-        //         if (connections != null)
-        //         {
-        //             await _presenceHub.Clients.Clients(connections).SendAsync("NewMessageReceived", 
-        //                 new {username = sender.UserName, knownAs = sender.KnownAs});
-        //         }
-        //     }
+            // if (group.Connections.Any(x => x.Username == recipient.UserName))
+            // {
+            //     message.DateRead = DateTime.UtcNow;
+            // }
+            // else
+            // {
+            //     var connections = await _tracker.GetConnectionsForUser(recipient.UserName);
+            //     if (connections != null)
+            //     {
+            //         await _presenceHub.Clients.Clients(connections).SendAsync("NewMessageReceived", 
+            //             new {username = sender.UserName, knownAs = sender.KnownAs});
+            //     }
+            // }
 
-        //     _messageRepository.AddMessage(message);
+            _messageRepository.AddMessage(message);
 
-        //     if (await _messageRepository.SaveAllAsync())
-        //     {
-        //         await Clients.Group(groupName).SendAsync("NewMessage", _mapper.Map<MessageDto>(message));
-        //     }
-        // }
+            if (await _messageRepository.SaveAllAsync())
+            {
+                var group = GetGroupName(sender.UserName, recipient.UserName);
+                await Clients.Group(group).SendAsync("NewMessage", _mapper.Map<MessageDto>(message));
+            }
+        }
 
         // private async Task<Group> AddToGroup(string groupName)
         // {
