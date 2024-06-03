@@ -44,3 +44,19 @@ img {
     display: flex;
     justify-content: space-between;
 }
+
+.read-icon {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    svg {
+        width: 10px;
+        height: 10px;
+    }
+    .text-success {
+        fill: red;
+    }
+    .text-danger svg {
+        opacity: 0.4;
+    }
+}
