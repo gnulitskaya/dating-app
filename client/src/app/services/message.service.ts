@@ -6,6 +6,7 @@ import { Message } from '../models/message';
 import { HubConnection, HubConnectionBuilder } from '@microsoft/signalr';
 import { User } from '../models/user.model';
 import { BehaviorSubject, take } from 'rxjs';
+import { Group } from '../models/group';
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +16,9 @@ export class MessageService {
   hubUrl = environment.hubUrl;
   private hubConnection: HubConnection | null = null;
 
-  private messageThreadSourse = new BehaviorSubject<Message[]>([]);
+  private messageThreadSource = new BehaviorSubject<Message[]>([]);
   // asObservable() позволяет скрыть методы next() и getValue() от внешнего кода,
-  messageThread$ = this.messageThreadSourse.asObservable();
+  messageThread$ = this.messageThreadSource.asObservable();
 
   constructor(private http: HttpClient) { }
 
@@ -31,13 +32,26 @@ export class MessageService {
 
     this.hubConnection.start().catch(error => console.log(error));
     this.hubConnection.on('ReceiveMessageThread', messages => {
-      this.messageThreadSourse.next(messages)
+      this.messageThreadSource.next(messages)
     });
     this.hubConnection.on('NewMessage', message => {
       this.messageThread$.pipe(take(1)).subscribe(messages => {
-        this.messageThreadSourse.next([...messages, message]);
+        this.messageThreadSource.next([...messages, message]);
       });
     });
+
+    this.hubConnection.on('UpdatedGroup', (group: Group) => {
+      if (group.connections.some(x => x.username === otherUserName)) {
+        this.messageThread$.pipe(take(1)).subscribe(messages => {
+          messages.forEach(message => {
+            if (!message.dateRead) {
+              message.dateRead = new Date(Date.now())
+            }
+          })
+          this.messageThreadSource.next([...messages]);
+        })
+      }
+    })
   }
 
   stopHubConnection() {
