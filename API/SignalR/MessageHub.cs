@@ -71,25 +71,7 @@ namespace API.SignalR
                 SenderUserName = sender.UserName,
                 RecipientUserName = recipient.UserName,
                 Content = createMessageDto.Content
-            };
-
-            // var groupName = GetGroupName(sender.UserName, recipient.UserName);
-
-            // var group = await _messageRepository.GetMessageGroup(groupName);
-
-            // if (group.Connections.Any(x => x.Username == recipient.UserName))
-            // {
-            //     message.DateRead = DateTime.UtcNow;
-            // }
-            // else
-            // {
-            //     var connections = await _tracker.GetConnectionsForUser(recipient.UserName);
-            //     if (connections != null)
-            //     {
-            //         await _presenceHub.Clients.Clients(connections).SendAsync("NewMessageReceived", 
-            //             new {username = sender.UserName, knownAs = sender.KnownAs});
-            //     }
-            // }
+            };            
 
             var groupName = GetGroupName(sender.UserName, recipient.UserName);
             var group  = await _messageRepository.GetMessageGroup(groupName);
@@ -97,6 +79,13 @@ namespace API.SignalR
             if (group.Connections.Any(x => x.Username == recipient.UserName))
             {
                 message.DateRead = DateTime.UtcNow;
+            } else {
+                var connections = await _tracker.GetConnectionsForUser(recipient.UserName);
+                if (connections != null)
+                {
+                    await _presenceHub.Clients.Clients(connections).SendAsync("NewMessageReceived", 
+                        new {username = sender.UserName, knownAs = sender.KnownAs});
+                }
             }
 
             _messageRepository.AddMessage(message);
