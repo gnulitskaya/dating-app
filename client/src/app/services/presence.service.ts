@@ -36,19 +36,19 @@ export class PresenceService {
     this.hubConnection.on('UserIsOnline', username => {
       console.log('has joined the chat!');
       
-      this.toastr.info(username +'has joined the chat!');
-      // this.onlineUsers$.pipe(take(1)).subscribe(usernames => {
-      //   this.onlineUsersSource.next([...usernames, username])
-      // })
+      // this.toastr.info(username +'has joined the chat!');
+      this.onlineUsers$.pipe(take(1)).subscribe(usernames => {
+        this.onlineUsersSource.next([...usernames, username])
+      })
     })
 
     this.hubConnection.on('UserIsOffline', username => {
-      this.toastr.info(username  + 'has left the chat!')
+      // this.toastr.info(username  + 'has left the chat!')
       console.log('has left the chat!');
       
-      // this.onlineUsers$.pipe(take(1)).subscribe(usernames => {
-      //   this.onlineUsersSource.next([...usernames.filter(x => x !== username)])
-      // })
+      this.onlineUsers$.pipe(take(1)).subscribe(usernames => {
+        this.onlineUsersSource.next([...usernames.filter(x => x !== username)])
+      })
     })
 
     this.hubConnection.on('GetOnlineUsers', (usernames: string[]) => {
