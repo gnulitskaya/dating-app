@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Member } from '../../../models/member';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { GalleryItem } from '@daelmaak/ngx-gallery';
 import { Message } from '../../../models/message';
 import { MessageService } from '../../../services/message.service';
@@ -25,10 +25,12 @@ export class MemberDetailComponent implements OnDestroy {
     public presence: PresenceService,
     private route: ActivatedRoute,
     private messageService: MessageService,
-    private accountService: AccountService) {
+    private accountService: AccountService,
+    private router: Router) {
       this.accountService.currentUser$.pipe(take(1)).subscribe(user => {
         if(user) this.user = user;
       });
+      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     }
 
   ngOnInit() {
