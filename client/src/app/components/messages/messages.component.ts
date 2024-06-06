@@ -3,6 +3,7 @@ import { Message } from '../../models/message';
 import { Pagination } from '../../models/pagination';
 import { MessageService } from '../../services/message.service';
 import { PageEvent } from '@angular/material/paginator';
+import { DialogService } from '../../services/dialog.service';
 
 @Component({
   selector: 'app-messages',
@@ -17,7 +18,7 @@ export class MessagesComponent implements OnInit {
   pageSize = 5;
   loading = false;
 
-  constructor(private messageService: MessageService) { }
+  constructor(private messageService: MessageService, private dialogService: DialogService) { }
 
   ngOnInit(): void {
     this.loadMessages();
@@ -41,9 +42,15 @@ export class MessagesComponent implements OnInit {
   }
 
   deleteMessage(messageId: number) {
-    this.messageService.deleteMessage(messageId).subscribe(() => {
-      this.messages?.slice(this.messages.findIndex((message) => message.id === messageId), 1);
-    });
+    this.dialogService.openDialog('Are you sure you want to delete this message?')
+      .subscribe(res => {
+        if (res) {
+          this.messageService.deleteMessage(messageId).subscribe(() => {
+            this.messages?.slice(this.messages.findIndex((message) => 
+              message.id === messageId), 1);
+          });
+        }
+      })
   }
 
 }

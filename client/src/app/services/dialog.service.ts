@@ -10,15 +10,13 @@ export class DialogService {
 
   constructor(public dialog: MatDialog) { }
 
-  openDialog(): Observable<boolean> {
+  openDialog(text: string): Observable<boolean> {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      // data: {name: this.name, animal: this.animal},
+      data: {name: text},
     });
 
     return dialogRef.afterClosed().pipe(
       map(result => {
-        console.log('result', result);
-        
         return result;
       })
     )
