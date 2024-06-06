@@ -52,5 +52,4 @@ export class MessagesComponent implements OnInit {
         }
       })
   }
-
 }

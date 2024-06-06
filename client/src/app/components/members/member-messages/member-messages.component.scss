@@ -3,6 +3,8 @@ img {
 }
 .chat {
     padding: 0;
+    overflow: scroll;
+    height: 500px;
 }
 .input-group {
     width: 100%;
