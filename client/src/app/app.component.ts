@@ -33,18 +33,18 @@ export class AppComponent implements OnInit {
     }
   }
 
-  getUsers() {
-    this.http.get('http://localhost:5001/api/users')
-      .pipe(
-        tap(users => {
-          this.users = users;
-          console.log('users', users);
-        }),
-        catchError((err: any) => {
-          console.log('err', err);
-          return err;
-        })
-      )
-      .subscribe()
-  }
+  // getUsers() {
+  //   this.http.get('http://localhost:5001/api/users')
+  //     .pipe(
+  //       tap(users => {
+  //         this.users = users;
+  //         console.log('users', users);
+  //       }),
+  //       catchError((err: any) => {
+  //         console.log('err', err);
+  //         return err;
+  //       })
+  //     )
+  //     .subscribe()
+  // }
 }
