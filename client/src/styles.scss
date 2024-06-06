@@ -56,3 +56,11 @@ $my-theme: mat.define-light-theme((
   color: #795548 !important;
   opacity: 0.9;
 }
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 20px;
+  height: 20px;
+}

@@ -58,6 +58,7 @@ import { UserManagementComponent } from './admin-bar/user-management/user-manage
 import { PhotoManagementComponent } from './admin-bar/photo-management/photo-management.component';
 import { UserRoleDialogComponent } from './admin-bar/user-role-dialog/user-role-dialog.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -87,7 +88,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     HasRoleDirective,
     UserManagementComponent,
     PhotoManagementComponent,
-    UserRoleDialogComponent
+    UserRoleDialogComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
