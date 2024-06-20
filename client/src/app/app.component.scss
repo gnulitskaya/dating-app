@@ -1,0 +1,35 @@
+mat-toolbar {
+    background-color: #d9905e;
+    color: #fff;
+}
+
+.nav-mob {
+    background-color:#d9905e;
+    color: #fff;
+}
+
+.drawer-container {
+    height: 100%;
+}
+
+@media (max-width: 800px) {
+    .toolbar {
+        display: none;
+    }
+    ::ng-deep .nav-desk {
+        app-nav nav {
+            display: none !important;
+        }
+    }
+    ::ng-deep .nav-mob .nav-container {
+        flex-direction: column;
+        padding: 20px 0;
+        nav {
+            flex-direction: column;
+            margin: 30px 0;
+        }
+        .burger {
+            display: none;
+        }
+    }
+}

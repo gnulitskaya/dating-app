@@ -1,1 +1,30 @@
-{}
+{
+    "deploy.reloaded": {
+        "packages": [
+            {
+                "name": "Version 1.0.0",
+                "description": "Package version 1.0.0",
+
+                "files": [
+                    "publish/**"
+                ]
+            }
+        ],
+
+        "targets": [
+            {
+                "type": "sftp",
+                "name": "Linux",
+                "description": "SFTP folder",
+
+                "host": "80.78.242.174", "port": 22,
+                "user": "root", "password": "bWwaU58iJpA2UAy9",
+
+                "dir": "/var/datingapp",
+                "mappings": {
+                    "publish/**": "/"
+                }
+            }
+        ]
+    }
+}

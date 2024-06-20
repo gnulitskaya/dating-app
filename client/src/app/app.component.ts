@@ -4,6 +4,7 @@ import { catchError, tap } from 'rxjs/operators';
 import { User } from './models/user.model';
 import { AccountService } from './services/account.service';
 import { PresenceService } from './services/presence.service';
+import { MatDrawer } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-root',
@@ -30,6 +31,14 @@ export class AppComponent implements OnInit {
       const user = JSON.parse(localStorage.getItem('user') ?? '');
       this.accountService.setCurrentUser(user);
       this.presenceService.createHubConnection(user);
+    }
+  }
+
+  open(event: boolean, drawer: MatDrawer) {
+    if (event) {
+      drawer.open();
+    } else {
+      drawer.close();
     }
   }
 

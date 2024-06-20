@@ -59,6 +59,7 @@ import { PhotoManagementComponent } from './admin-bar/photo-management/photo-man
 import { UserRoleDialogComponent } from './admin-bar/user-role-dialog/user-role-dialog.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
@@ -116,6 +117,7 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
     MatSelectModule,
     MatCheckboxModule,
     MatButtonToggleModule,
+    MatSidenavModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right'
     })

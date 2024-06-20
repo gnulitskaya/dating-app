@@ -5,9 +5,8 @@
     width: 100%;
 }
 
-mat-toolbar {
-    background-color: #d9905e;
-    color: #fff;
+:host {
+    width: 100%;
 }
 
 ::ng-deep .btn-icon .mdc-button__label {
@@ -63,4 +62,19 @@ nav {
 
 button svg {
     fill: #fff;
+}
+
+.burger {
+    display: none;
+}
+
+.burger svg {
+    width: 20px;
+    height: 20px;
+}
+
+@media (max-width: 800px) {
+    .burger {
+        display: flex;
+    }
 }

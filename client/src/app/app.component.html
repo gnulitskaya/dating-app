@@ -1,13 +1,22 @@
-<app-nav></app-nav>
+<mat-drawer-container class="drawer-container" autosize>
+  <mat-drawer #drawer class="nav-mob" mode="over">
+    <ng-container *ngTemplateOutlet="nav"></ng-container>
+  </mat-drawer>
 
-<main class="main">
-  <!-- <ul>
-    <li *ngFor="let user of users">
-      {{user.userName}}
-    </li>
-  </ul> -->
-  <!-- <app-home></app-home> -->
-  <router-outlet></router-outlet>
-</main>
+  <div>
+    <mat-toolbar class="nav-desk">
+      <ng-container *ngTemplateOutlet="nav"></ng-container>
+    </mat-toolbar>
+
+    <main class="main">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+
+</mat-drawer-container>
+
+<ng-template #nav>
+  <app-nav (isOpen)="open($event, drawer)"></app-nav>
+</ng-template>
 
 <ngx-spinner></ngx-spinner>

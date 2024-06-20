@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginFormDialogComponent } from '../login-form-dialog/login-form-dialog.component';
 import { AccountService } from '../../services/account.service';
@@ -9,6 +9,7 @@ import { AccountService } from '../../services/account.service';
   styleUrl: './nav.component.scss'
 })
 export class NavComponent {
+  @Output() isOpen = new EventEmitter<boolean>();
   constructor(public dialog: MatDialog, private _accountService: AccountService,) { }
 
   openDialog() {
@@ -27,5 +28,9 @@ export class NavComponent {
 
   logout() {
     this._accountService.logout();
+  }
+
+  openMenu(event: boolean): void  {
+    this.isOpen.emit(event);
   }
 }
