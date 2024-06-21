@@ -20,6 +20,9 @@ mat-toolbar {
         app-nav nav {
             display: none !important;
         }
+        .btn-icon {
+            display: none;
+        }
     }
     ::ng-deep .nav-mob .nav-container {
         flex-direction: column;

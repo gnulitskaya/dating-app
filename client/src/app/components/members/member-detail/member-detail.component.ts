@@ -8,6 +8,7 @@ import { PresenceService } from '../../../services/presence.service';
 import { AccountService } from '../../../services/account.service';
 import { User } from '../../../models/user.model';
 import { take } from 'rxjs/operators';
+import { MembersService } from '../../../services/members.service';
 
 @Component({
   selector: 'app-member-detail',
@@ -26,19 +27,20 @@ export class MemberDetailComponent implements OnDestroy {
     private route: ActivatedRoute,
     private messageService: MessageService,
     private accountService: AccountService,
+    private membersService: MembersService,
     private router: Router) {
       this.accountService.currentUser$.pipe(take(1)).subscribe(user => {
         if(user) this.user = user;
       });
-      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+      // this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     }
 
   ngOnInit() {
-    // this.loadMember();
-    this.route.data.subscribe(data => {
-      // console.log(data);
-      this.member = data['member'];
-    })
+    this.loadMember();
+    // this.route.data.subscribe(data => {
+    //   // console.log(data);
+    //   this.member = data['member'];
+    // })
 
     this.route.queryParams?.subscribe((params: any) => {
       console.log(params);
@@ -75,6 +77,15 @@ export class MemberDetailComponent implements OnDestroy {
     } else {
       this.messageService.stopHubConnection();
     }
+  }
+
+  loadMember() {  
+    let username = this.route.snapshot.paramMap.get('username');
+    this.membersService.getMember(username ?? '').subscribe(
+      (member: Member) => {
+        this.member = member;
+      }
+    )
   }
 
   ngOnDestroy(): void {

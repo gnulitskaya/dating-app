@@ -6,6 +6,11 @@
     border: 4px solid #d9905e;
     border-radius: 20px;
     padding: 10px;
+
+    @media (max-width: 800px) {
+        height: 200px;
+        width: -webkit-fill-available;
+    }
 }
 .card-body {
     padding: 15px 0;
@@ -27,8 +32,12 @@
     grid-template-columns: 400px auto;
     gap: 60px;
 
+    @media (max-width: 1200px) {
+        grid-template-columns: 200px auto;
+    }
+
     @media (max-width: 800px) {
-        grid-template-columns: 1fr;
+        display: block;
     }
 }
 
@@ -87,4 +96,9 @@
 .icon-status.is-online {
     animation: fa-blink 1.5s ease-in-out infinite;
     background-color: rgb(1, 189, 42);
+}
+
+.card-tabs {
+    display: math;
+    width: 100%;
 }

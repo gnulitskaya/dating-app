@@ -12,8 +12,18 @@ img {
     align-items: center;
     gap: 10px;
 
+    @media (max-width: 800px) {
+        flex-direction: column;
+    }
+
     mat-form-field {
         width: 100%;
+    }
+
+    &-append, button {
+        @media (max-width: 800px) {
+            width: 100%;
+        }
     }
 }
 .chat-wrapper {
