@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Member } from '../models/member';
-import { Observable, map, of, take } from 'rxjs';
+import { Observable, map, of, take, tap } from 'rxjs';
 import { PaginatedResult } from '../models/pagination';
 import { UserParams } from '../models/userParams';
 import { AccountService } from './account.service';
 import { User } from '../models/user.model';
 import { getPaginatedResult, getPaginationHeaders } from './paginationHelper';
+import { SnackbarService } from './snackbar.service';
+import { ConfettiService } from './confetti.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +22,8 @@ export class MembersService {
   userParams!: UserParams;
 
   constructor(
+    private snackbarService: SnackbarService,
+    private confettiService: ConfettiService,
     private http: HttpClient,
     private accountService: AccountService) {
     this.accountService.currentUser$.pipe(take(1)).subscribe(user => {
@@ -126,8 +130,13 @@ export class MembersService {
     return this.http.put(this.baseUrl + 'users/set-main-photo/' + photoId, {});
   }
 
-  addLike(uername: string) {
-    return this.http.post(this.baseUrl + 'likes/' + uername, {});
+  addLike(username: string) {
+    return this.http.post(this.baseUrl + 'likes/' + username, {}).pipe(
+      tap(() => {
+        this.confettiService.canon();
+        this.snackbarService.openSnackBar('You liked this member', '');
+      })
+    );
   }
 
   getLikes(predicate: string, pageNumber: number, pageSize: number) {

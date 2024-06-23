@@ -1,13 +1,20 @@
 .home {
     text-align: center;
-    height: 93vh;
+    padding: 10px;
+    height: 80vh;
     display: flex;
     align-items: center;
     flex-direction: column;
     // justify-content: center;
     background-image: url('../../assets/images/corgi-main1.jpg');
     background-size: cover;
+    background-color: #ebebeb;
     background-position: bottom center;
+
+    @media (max-width: 600px) {
+        background-position-y: bottom;
+        background-position-x: -200px;
+    }
 
 
     &__title {

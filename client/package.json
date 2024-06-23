@@ -23,6 +23,8 @@
     "@daelmaak/ngx-gallery": "^3.0.4",
     "@iplab/ngx-file-upload": "^17.1.0",
     "@microsoft/signalr": "^7.0.14",
+    "@ngx-translate/core": "^15.0.0",
+    "@ngx-translate/http-loader": "^8.0.0",
     "canvas-confetti": "^1.9.3",
     "ngx-spinner": "^16.0.2",
     "ngx-toastr": "^18.0.0",

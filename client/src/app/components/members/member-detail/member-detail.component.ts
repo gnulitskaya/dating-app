@@ -32,15 +32,15 @@ export class MemberDetailComponent implements OnDestroy {
       this.accountService.currentUser$.pipe(take(1)).subscribe(user => {
         if(user) this.user = user;
       });
-      // this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     }
 
   ngOnInit() {
     this.loadMember();
-    // this.route.data.subscribe(data => {
-    //   // console.log(data);
-    //   this.member = data['member'];
-    // })
+    this.route.data.subscribe(data => {
+      console.log(data);
+      this.member = data['member'];
+    })
 
     this.route.queryParams?.subscribe((params: any) => {
       console.log(params);
@@ -86,6 +86,10 @@ export class MemberDetailComponent implements OnDestroy {
         this.member = member;
       }
     )
+  }
+
+  addLike(member: Member) {
+    this.membersService.addLike(member.username).subscribe();
   }
 
   ngOnDestroy(): void {

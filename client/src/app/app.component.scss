@@ -6,6 +6,7 @@ mat-toolbar {
 .nav-mob {
     background-color:#d9905e;
     color: #fff;
+    width: 300px;
 }
 
 .drawer-container {
@@ -26,6 +27,7 @@ mat-toolbar {
     }
     ::ng-deep .nav-mob .nav-container {
         flex-direction: column;
+        gap: 20px;
         padding: 20px 0;
         nav {
             flex-direction: column;

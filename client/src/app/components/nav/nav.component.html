@@ -17,7 +17,7 @@
 
     <nav *ngIf="isAuth | async">
         <div class="nav-item" routerLink="/members" routerLinkActive="active" (click)="openMenu(false)">Matches</div>
-        <div class="nav-item" routerLink="/lists" routerLinkActive="active" (click)="openMenu(false)">Lists</div>
+        <div class="nav-item" routerLink="/likes" routerLinkActive="active" (click)="openMenu(false)">Likes</div>
         <div class="nav-item" routerLink="/messages" routerLinkActive="active" (click)="openMenu(false)">Messages</div>
         <div *appHasRole="['Admin', 'Moderator']" class="nav-item" routerLink="/admin" routerLinkActive="active" (click)="openMenu(false)">
             Admin</div>

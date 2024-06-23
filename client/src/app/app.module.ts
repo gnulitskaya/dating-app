@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { NavComponent } from './components/nav/nav.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -60,6 +60,12 @@ import { UserRoleDialogComponent } from './admin-bar/user-role-dialog/user-role-
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, '../assets/locale/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -120,6 +126,13 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatSidenavModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right'
+    }),
+    TranslateModule.forRoot({
+      loader: {
+          provide: TranslateLoader,
+          useFactory: HttpLoaderFactory,
+          deps: [HttpClient]
+      }
     })
   ],
   providers: [

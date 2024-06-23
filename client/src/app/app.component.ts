@@ -5,6 +5,7 @@ import { User } from './models/user.model';
 import { AccountService } from './services/account.service';
 import { PresenceService } from './services/presence.service';
 import { MatDrawer } from '@angular/material/sidenav';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -16,9 +17,16 @@ export class AppComponent implements OnInit {
   users: any;
 
   constructor(private http: HttpClient, private accountService: AccountService,
-    private presenceService: PresenceService
+    private presenceService: PresenceService,
+    private translate: TranslateService
   ) {
+    this.translate.addLangs(['en', 'ru']);
+    this.translate.setDefaultLang('en');
+  }
 
+  switchLanguage(lang: string) {
+    console.log(lang);
+    this.translate.use(lang);
   }
 
   ngOnInit(): void {
