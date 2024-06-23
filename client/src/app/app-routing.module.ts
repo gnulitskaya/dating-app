@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: 'server-error', component: ServerErrorComponent },
   {
     path: '',
-    canActivate: [],
+    canActivate: [authGuard],
     children: [
       { path: 'members', component: MemberListComponent },
       { path: 'members/:username', component: MemberDetailComponent, resolve: {member: MemberDetailResolver} },

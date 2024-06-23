@@ -53,7 +53,7 @@ export class RegisterFormDialogComponent implements OnInit {
       city: ['', Validators.required],
       country: ['', Validators.required],
       password: ['', [Validators.required,
-      Validators.minLength(4), Validators.maxLength(8)]],
+      Validators.minLength(6), Validators.maxLength(8), lowercaseValidator, uppercaseValidator]],
       confirmPassword: ['', [Validators.required, this.matchValues('password')]]
     })
   }
@@ -68,4 +68,20 @@ export class RegisterFormDialogComponent implements OnInit {
   getControl(name: string) {
     return this.registerForm.get(name) as FormControl<any>;
   }
+}
+
+export function lowercaseValidator(control: AbstractControl): { [key: string]: boolean } | null {
+  const value: string = control.value;
+  if (!/[a-z]/.test(value)) {
+    return { lowercase: true };
+  }
+  return null;
+}
+
+export function uppercaseValidator(control: AbstractControl): { [key: string]: boolean } | null {
+  const value: string = control.value;
+  if (!/[A-Z]/.test(value)) {
+    return { uppercase: true };
+  }
+  return null;
 }

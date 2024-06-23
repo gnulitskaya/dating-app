@@ -62,6 +62,7 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/locale/', '.json');
@@ -124,6 +125,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatCheckboxModule,
     MatButtonToggleModule,
     MatSidenavModule,
+    MatSlideToggleModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right'
     }),

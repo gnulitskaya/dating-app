@@ -1,16 +1,19 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginFormDialogComponent } from '../login-form-dialog/login-form-dialog.component';
 import { AccountService } from '../../services/account.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
-  styleUrl: './nav.component.scss'
+  styleUrl: './nav.component.scss',
 })
 export class NavComponent {
   @Output() isOpen = new EventEmitter<boolean>();
-  constructor(public dialog: MatDialog, private _accountService: AccountService,) { }
+  constructor(
+    public translate: TranslateService,
+    public dialog: MatDialog, private _accountService: AccountService,) { }
 
   openDialog() {
     this.dialog.open(LoginFormDialogComponent, {
@@ -32,5 +35,10 @@ export class NavComponent {
 
   openMenu(event: boolean): void  {
     this.isOpen.emit(event);
+  }
+
+  switchLanguage(lang: any) {
+    // console.log(lang.target.value);
+    this.translate.use(lang.target.value);
   }
 }

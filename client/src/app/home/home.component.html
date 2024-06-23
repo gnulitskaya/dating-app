@@ -4,10 +4,10 @@
     </h1>
     <!-- <img class="img" src="../../assets/images/corgi.png" alt=""> -->
     <p class="home__text"> 
-        Attention all corgi owners! Your dog's social life is about to get a major upgrade on <b>PawMatch</b> - the app that connects you and your pup with other corgi enthusiasts! 🐾❤️
+        {{ 'HOME.DESCRIPTION' | translate }}    
     </p>
     <div class="home__btns">
-        <button mat-flat-button color="primary" (click)="openDialog()">Register</button>
-        <button mat-stroked-button color="primary">Learn more</button>
+        <button mat-flat-button color="primary" (click)="openDialog()">{{ 'HOME.REGISTER' | translate }}</button>
+        <button mat-stroked-button color="primary">{{ 'HOME.LEARN_MORE' | translate }}</button>
     </div>
 </div>
