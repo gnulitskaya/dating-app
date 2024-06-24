@@ -74,3 +74,7 @@ $my-theme: mat.define-light-theme((color: (primary: $my-primary,
   width: 20px;
   height: 20px;
 }
+
+mat-paginator {
+  background-color: transparent !important;
+}

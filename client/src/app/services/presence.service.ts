@@ -5,6 +5,7 @@ import { User } from '../models/user.model';
 import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject, take } from 'rxjs';
 import { Router } from '@angular/router';
+import { SnackbarService } from './snackbar.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,9 @@ export class PresenceService {
   private onlineUsersSource  = new BehaviorSubject<string[]>([]);
   public onlineUsers$  = this.onlineUsersSource.asObservable();
 
-  constructor(private toastr: ToastrService, private router: Router) { }
+  constructor(private toastr: ToastrService, private router: Router,
+    private snackbar: SnackbarService
+  ) { }
 
   createHubConnection(user: User) {
     this.hubConnection = new HubConnectionBuilder()
@@ -56,8 +59,8 @@ export class PresenceService {
     })
 
     this.hubConnection.on('NewMessageReceived', ({username, knownAs}) => {
+      // this.snackbar.openSnackBar(username, 'has sent you a new message!');
       console.log('message received!');
-      
       this.toastr.info(knownAs + ' has sent you a new message!')
         .onTap
         .pipe(take(1))

@@ -1,0 +1,11 @@
+::ng-deep {
+    .mat-mdc-form-field-hint-wrapper, 
+    .mat-mdc-form-field-error-wrapper {
+        position: relative !important;
+        padding: 10px 0 0 0 !important;
+    }
+    mat-error::before,
+    .mat-mdc-form-field-bottom-align::before {
+        display: none !important;
+    }
+}

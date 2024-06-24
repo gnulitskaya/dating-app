@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AccountService } from '../../services/account.service';
 import { ToastrService } from 'ngx-toastr';
@@ -29,7 +29,7 @@ export class LoginFormDialogComponent {
   message: string = '';
 
   constructor(
-    private _snackBar: MatSnackBar,
+    private _router: Router,
     private _accountService: AccountService,
     private _toastr: ToastrService
   ) { }
@@ -54,6 +54,7 @@ export class LoginFormDialogComponent {
         res);
       this._toastr.success('Вы вошли!');
       this.submitted = false;
+      this._router.navigateByUrl('/members');
     }, (err) => {
       this.submitted = false;
       // this._toastr.error('Неверные данные!', err.error);

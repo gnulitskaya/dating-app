@@ -30,9 +30,6 @@ export class RegisterFormDialogComponent implements OnInit {
   register() {
     if (this.registerForm && this.registerForm.invalid) { return }
 
-    // this.submitted = true;
-    console.log(this.registerForm.value, '888');
-
     this.accountService.register(this.registerForm.value).subscribe(res => {
       this._toastr.success('Вы зарегистрированы!');
       this._router.navigateByUrl('/members');

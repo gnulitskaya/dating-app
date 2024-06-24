@@ -6,23 +6,23 @@
                 d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
         </svg>
     </div>
-    <h2>Sign up</h2>
+    <h2>{{ 'SIGNUP.TITLE' | translate }}</h2>
 
     <div class="form-controls">
         <mat-radio-group formControlName='gender' aria-label="I am a:">
-            <mat-radio-button value="male">Male</mat-radio-button>
-            <mat-radio-button value="female">Female</mat-radio-button>
+            <mat-radio-button value="male">{{ 'SIGNUP.MALE' | translate }}</mat-radio-button>
+            <mat-radio-button value="female">{{ 'SIGNUP.FEMALE' | translate }}</mat-radio-button>
         </mat-radio-group>
-        <app-text-input [formControl]="getControl('username')" [label]='"Username"'></app-text-input>
+        <app-text-input [formControl]="getControl('username')" [label]="'SIGNUP.USERNAME' | translate"></app-text-input>
 
-        <app-text-input [formControl]="getControl('knownAs')" [label]='"Known As"'></app-text-input>
-        <app-date-input [formControl]="getControl('dateOfBirth')" [label]='"Date Of Birth"'></app-date-input>
+        <app-text-input [formControl]="getControl('knownAs')" [label]="'SIGNUP.KNOWN_AS' | translate"></app-text-input>
+        <app-date-input [formControl]="getControl('dateOfBirth')" [label]="'SIGNUP.DATE_OF_BIRTH' | translate"></app-date-input>
         
-        <app-text-input [formControl]="getControl('city')" [label]='"City"'></app-text-input>
-        <app-text-input [formControl]="getControl('country')" [label]='"Country"'></app-text-input>
-        <app-text-input [formControl]="getControl('password')" [label]='"Password"' [type]='"password"'>
+        <app-text-input [formControl]="getControl('city')" [label]="'SIGNUP.CITY' | translate"></app-text-input>
+        <app-text-input [formControl]="getControl('country')" [label]="'SIGNUP.COUNTRY' | translate"></app-text-input>
+        <app-text-input [formControl]="getControl('password')" [label]="'SIGNUP.PASSWORD' | translate" [type]='"password"'>
         </app-text-input>
-        <app-text-input [formControl]="getControl('confirmPassword')" [label]='"Confirm Password"'
+        <app-text-input [formControl]="getControl('confirmPassword')" [label]="'SIGNUP.CONFIRM_PASSWORD' | translate"
             [type]='"password"'></app-text-input>
 
         <div class="row" *ngIf="validationErrors.length > 0">
@@ -36,8 +36,8 @@
 
     <div class="form-btns">
         <button [mat-dialog-close] type="submit" mat-raised-button color="primary" [disabled]="registerForm.invalid"
-            (click)="register()">Login</button>
-        <button [mat-dialog-close] mat-stroked-button color="primary">Cancel</button>
+            (click)="register()">{{ 'SIGNUP.REGISTER' | translate }}</button>
+        <button [mat-dialog-close] mat-stroked-button color="primary">{{ 'SIGNUP.CANCEL' | translate }}</button>
     </div>
 
 </form>

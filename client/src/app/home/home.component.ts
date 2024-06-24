@@ -18,8 +18,8 @@ export class HomeComponent {
 
   openDialog() {
     this.dialog.open(RegisterFormDialogComponent, {
-      width: '350px',
-      height: '700px',
+      width: '500px',
+      height: '750px',
       // data: {
       //   animal: 'panda',
       // },

@@ -4,6 +4,20 @@
       "DESCRIPTION": "Attention all corgi owners! Your dog's social life is about to get a major upgrade on PawMatch - the app that connects you and your pup with other corgi enthusiasts! 🐾❤️",
       "REGISTER": "Register",
       "LEARN_MORE": "Learn more"
+    },
+    "SIGNUP": {
+      "TITLE": "Sign up",
+      "MALE": "Male",
+      "FEMALE": "Female",
+      "USERNAME": "username",
+      "KNOWN_AS": "Known As",
+      "DATE_OF_BIRTH": "Date Of Birth",
+      "CITY": "City",
+      "COUNTRY": "Country",
+      "PASSWORD": "Password",
+      "CONFIRM_PASSWORD": "Confirm Password",
+      "REGISTER": "Register",
+      "CANCEL": "Cancel"
     }
   }
   

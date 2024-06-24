@@ -6,6 +6,10 @@
 
     <mat-error *ngIf="ngControl.control?.errors?.['required']" class="invalid-feedback">Please enter a
       {{label}}</mat-error>
+    <mat-error *ngIf="ngControl.control?.errors?.['lowercase']" class="invalid-feedback">{{label}} must have at least one
+      lowercase ('a'-'z')</mat-error>
+    <mat-error *ngIf="ngControl.control?.errors?.['uppercase']" class="invalid-feedback">{{label}} must have at least one
+      uppercase ('A'-'z')</mat-error>
     <mat-error *ngIf="ngControl.control?.errors?.['minlength']" class="invalid-feedback">
       {{label}} must be at least {{ngControl.control?.errors!['minlength']['requiredLength']}}
     </mat-error>
