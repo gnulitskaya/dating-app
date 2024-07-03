@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
     private presenceService: PresenceService,
     private translate: TranslateService
   ) {
-    this.translate.addLangs(['en', 'ru']);
+    this.translate.addLangs(['ru', 'en']);
     this.translate.setDefaultLang('ru');
   }
 

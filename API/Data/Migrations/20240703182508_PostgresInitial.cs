@@ -246,7 +246,9 @@ namespace API.Data.Migrations
                     Url = table.Column<string>(type: "text", nullable: true),
                     IsMain = table.Column<bool>(type: "boolean", nullable: false),
                     PublicId = table.Column<string>(type: "text", nullable: true),
-                    AppUserId = table.Column<int>(type: "integer", nullable: false)
+                    AppUserId = table.Column<int>(type: "integer", nullable: false),
+                    ImageData = table.Column<byte[]>(type: "bytea", nullable: true),
+                    ImageMimeType = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {

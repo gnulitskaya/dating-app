@@ -22,23 +22,28 @@ namespace API.Controllers
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         private readonly IPhotoService _photoService;
+        private readonly IWebHostEnvironment _hostingEnvironment;
 
-        public UsersController(IUnitOfWork unitOfWork, IMapper mapper, IPhotoService photoService)
+
+        public UsersController(IUnitOfWork unitOfWork,
+        IMapper mapper, IPhotoService photoService, IWebHostEnvironment hostingEnvironment)
         {
             _photoService = photoService;
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _hostingEnvironment = hostingEnvironment;
+
         }
 
         [HttpGet]
         // [AllowAnonymous]
-        public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers([FromQuery]UserParams userParams)
+        public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers([FromQuery] UserParams userParams)
         {
             var gender = await _unitOfWork.UserRepository.GetUserGender(User.GetUserName());
             userParams.CurrentUsername = User.GetUserName();
 
-            if(string.IsNullOrEmpty(userParams.CurrentUsername)) 
-            userParams.Gender = gender == "male" ? "female" : "male";
+            if (string.IsNullOrEmpty(userParams.CurrentUsername))
+                userParams.Gender = gender == "male" ? "female" : "male";
 
             var users = await _unitOfWork.UserRepository.GetMembersAsync(userParams);
 
@@ -71,6 +76,37 @@ namespace API.Controllers
         [HttpPost("add-photo")]
         public async Task<ActionResult<PhotoDto>> AddPhoto(IFormFile file)
         {
+            // var user = await _unitOfWork.UserRepository.GetUserByUsernameAsync(User.GetUserName());
+
+            // // Преобразование IFormFile в массив байтов
+            // byte[] photoBytes;
+            // using (var memoryStream = new MemoryStream())
+            // {
+            //     await file.CopyToAsync(memoryStream);
+            //     photoBytes = memoryStream.ToArray();
+            // }
+
+            // var photo = new Photo
+            // {
+            //     ImageData = photoBytes,
+            //     ImageMimeType = file.ContentType
+            // };
+
+            // if (user.Photos.Count == 0)
+            // {
+            //     photo.IsMain = true;
+            // }
+
+            // user.Photos.Add(photo);
+
+            // if (await _unitOfWork.Complete())
+            // {
+            //     return CreatedAtRoute("GetUser",
+            //         new { username = user.UserName }, _mapper.Map<PhotoDto>(photo));
+            // }
+
+            // return BadRequest("Failed to add photo!");
+
             var user = await _unitOfWork.UserRepository.GetUserByUsernameAsync(User.GetUserName());
 
             var result = await _photoService.AddPhotoAsync(file);
@@ -79,7 +115,7 @@ namespace API.Controllers
 
             var photo = new Photo
             {
-                Url = result.SecureUrl.AbsoluteUri,
+                Url = Path.GetFileName(result.SecureUrl.AbsoluteUri),
                 PublicId = result.PublicId
             };
 
@@ -98,6 +134,7 @@ namespace API.Controllers
             }
 
             return BadRequest("Failed to add photo!");
+
         }
 
         [HttpPut("set-main-photo/{photoId}")]
@@ -134,7 +171,7 @@ namespace API.Controllers
 
             if (photo.IsMain) return BadRequest("You cannot delete your main photo!");
 
-            if (photo.PublicId != null) 
+            if (photo.PublicId != null)
             {
                 var result = await _photoService.DeletePhotoAsync(photo.PublicId);
                 if (result.Error != null) return BadRequest(result.Error.Message);

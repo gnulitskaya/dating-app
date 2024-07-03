@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240618141412_PostgresInitial")]
+    [Migration("20240703182508_PostgresInitial")]
     partial class PostgresInitial
     {
         /// <inheritdoc />
@@ -248,6 +248,12 @@ namespace API.Data.Migrations
 
                     b.Property<int>("AppUserId")
                         .HasColumnType("integer");
+
+                    b.Property<byte[]>("ImageData")
+                        .HasColumnType("bytea");
+
+                    b.Property<string>("ImageMimeType")
+                        .HasColumnType("text");
 
                     b.Property<bool>("IsMain")
                         .HasColumnType("boolean");
