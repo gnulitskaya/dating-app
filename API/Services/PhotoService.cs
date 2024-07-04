@@ -31,9 +31,9 @@ namespace API.Services
             if (file.Length > 0)
             {
                 var fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
-                var filePath = Path.Combine("wwwroot", "media", fileName);
+                // var filePath = Path.Combine("wwwroot", "assets", fileName);
 
-                var absolutePath = Path.Combine(Directory.GetCurrentDirectory(), filePath);
+                var absolutePath = Path.Combine(Directory.GetCurrentDirectory(), "Media", fileName);
 
                 using (var stream = new FileStream(absolutePath, FileMode.Create))
                 {

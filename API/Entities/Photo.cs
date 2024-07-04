@@ -10,8 +10,8 @@ namespace API.Entities
         public bool IsMain { get; set; }
         public string PublicId { get; set; }
         public AppUser AppUser { get; set; }
-        // public int AppUserId { get; set; }
-        // public byte[] ImageData { get; set; }
+        public int AppUserId { get; set; }
+        public string ImageData { get; set; }
         // public string ImageMimeType { get; set; }
     }
 }

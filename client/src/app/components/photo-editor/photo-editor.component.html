@@ -1,6 +1,6 @@
 <div class="photos">
   <div class="photos-item" *ngFor="let photo of member.photos">
-    <img src="../../../media/{{photo.url}}" alt="{{photo.url}}" class="img-thumbnail p-1">
+    <img [src]="'data:image/png;base64,' + photo.imageData" [alt]="photo.url" class="img-thumbnail p-1">
     <div class="photos-nav">
       <!-- [ngClass]='photo.isMain ? "btn-success active" : "btn-outline-success"' -->
       <button [disabled]="photo.isMain" (click)="setMainPhoto(photo)" mat-flat-button color="primary">Main</button>

@@ -73,10 +73,20 @@ namespace API.Controllers
             return BadRequest("Failed to update user!");
         }
 
+        [HttpGet]
+        [Route("images/{imageName}")]
+        public IActionResult GetImage(string imageName)
+        {
+            string imagePath = $"/Users/gnulitskaya/Projects/dating-app/API/{imageName}";
+            byte[] imageBytes = System.IO.File.ReadAllBytes(imagePath);
+            return File(imageBytes, "image/jpeg");
+        }
+
         [HttpPost("add-photo")]
         public async Task<ActionResult<PhotoDto>> AddPhoto(IFormFile file)
         {
-            // var user = await _unitOfWork.UserRepository.GetUserByUsernameAsync(User.GetUserName());
+            // var user = await _unitOfWork.UserRepository
+            // .GetUserByUsernameAsync(User.GetUserName());
 
             // // Преобразование IFormFile в массив байтов
             // byte[] photoBytes;
@@ -102,21 +112,32 @@ namespace API.Controllers
             // if (await _unitOfWork.Complete())
             // {
             //     return CreatedAtRoute("GetUser",
-            //         new { username = user.UserName }, _mapper.Map<PhotoDto>(photo));
+            //         new { username = user.UserName }, 
+            //             _mapper.Map<PhotoDto>(photo));
             // }
 
             // return BadRequest("Failed to add photo!");
 
-            var user = await _unitOfWork.UserRepository.GetUserByUsernameAsync(User.GetUserName());
+            var user = await _unitOfWork.UserRepository
+            .GetUserByUsernameAsync(User.GetUserName());
 
             var result = await _photoService.AddPhotoAsync(file);
+            var absoluteUri = result.SecureUrl.AbsoluteUri;
 
             if (result.Error != null) return BadRequest(result.Error.Message);
 
+            // string imagePath = $"/Users/gnulitskaya/Projects/dating-app/API/{Path.GetFileName(absoluteUri)}";
+            string imagePath = $"/{Directory.GetCurrentDirectory()}/Media/{Path.GetFileName(absoluteUri)}";
+            byte[] imageBytes = System.IO.File.ReadAllBytes(imagePath);
+
+            string base64String = Convert.ToBase64String(imageBytes);
+
             var photo = new Photo
             {
-                Url = Path.GetFileName(result.SecureUrl.AbsoluteUri),
-                PublicId = result.PublicId
+                Url = Path.GetFileName(absoluteUri),
+                // Url = result.SecureUrl.AbsoluteUri,
+                PublicId = result.PublicId,
+                ImageData = base64String,
             };
 
             if (user.Photos.Count == 0)
@@ -130,11 +151,11 @@ namespace API.Controllers
             {
                 // return _mapper.Map<PhotoDto>(photo);
                 return CreatedAtRoute("GetUser",
-                new { username = user.UserName }, _mapper.Map<PhotoDto>(photo));
+                new { username = user.UserName }, 
+                _mapper.Map<PhotoDto>(photo));
             }
 
             return BadRequest("Failed to add photo!");
-
         }
 
         [HttpPut("set-main-photo/{photoId}")]

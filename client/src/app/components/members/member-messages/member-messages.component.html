@@ -15,8 +15,14 @@
             <li *ngFor="let message of (messageService.messageThread$ | async)">
                 <div class="chat-wrapper">
                     <span class="chat-img float-end">
-                        <img class="rounded-circle" src="{{message.senderPhotoUrl || './assets/user.png'}}"
-                            alt="{{message.senderUserName}}">
+                        <!-- <img class="rounded-circle" 
+                        src="{{message.senderPhotoUrl || './assets/user.png'}}"
+                        alt="{{message.senderUserName}}"> -->
+
+                        <img class="rounded-circle" 
+                        [src]="message.senderPhotoUrl ? 'data:image/png;base64,' 
+                        + message.senderPhotoUrl : './assets/images/user.png'"
+                        alt="{{message.senderUserName}}">
                     </span>
                     <div class="chat-body">
                         <div class="header">

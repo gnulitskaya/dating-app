@@ -246,10 +246,7 @@ namespace API.Data.Migrations
                     b.Property<int>("AppUserId")
                         .HasColumnType("integer");
 
-                    b.Property<byte[]>("ImageData")
-                        .HasColumnType("bytea");
-
-                    b.Property<string>("ImageMimeType")
+                    b.Property<string>("ImageData")
                         .HasColumnType("text");
 
                     b.Property<bool>("IsMain")

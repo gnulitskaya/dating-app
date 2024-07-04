@@ -146,4 +146,8 @@ export class MembersService {
     // return this.http.get(this.baseUrl + 'likes?predicate=' + predicate);
   }
 
+  getImage(name: string) {
+    return this.http.get(this.baseUrl + 'users/images/' + name, { responseType: 'blob' });
+  }
+
 }

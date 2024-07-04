@@ -35,14 +35,16 @@
                     <div class="avatar" *ngIf="container === 'Outbox'">
                         <img 
                             class="img-circle rounded-circle me-2"
-                            src="{{message.recipientPhotoUrl || './assets/user.png'}}" 
+                            [src]="message.recipientPhotoUrl ? 'data:image/png;base64,' 
+                            + message.recipientPhotoUrl : './assets/images/user.png'"
                             alt="{{message.recipientUserName}}">
                         <strong>{{message.recipientUserName | titlecase}}</strong>
                     </div> 
                     <div class="avatar" *ngIf="container !== 'Outbox'">
                         <img 
                             class="img-circle rounded-circle me-2"
-                            src="{{message.senderPhotoUrl || './assets/user.png'}}" 
+                            [src]="message.senderPhotoUrl ? 'data:image/png;base64,' 
+                            + message.senderPhotoUrl : './assets/images/user.png'"
                             alt="{{message.senderUserName}}">
                         <strong>{{message.senderUserName | titlecase}}</strong>
                     </div> 

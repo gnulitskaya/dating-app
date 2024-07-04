@@ -42,6 +42,7 @@ nav {
 .avatar {
     height: 40px;
     width: 40px;
+    object-fit: cover;
     border: 2px solid white;
     border-radius: 50%;
 }

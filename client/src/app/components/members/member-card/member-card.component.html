@@ -1,6 +1,6 @@
 <div class="card">
   <div class="card-img">
-    <img src="{{member.photoUrl || '../../../../assets/images/user.png'}}" alt="{{member.knownAs}}">
+    <img [src]="member.imageData ? 'data:image/png;base64,' + member.imageData : '../../../../assets/images/user.png'" alt="{{member.knownAs}}">
 
     <ul class="list-inline member-icons animate text-center">
       <li class="list-inline-item">
