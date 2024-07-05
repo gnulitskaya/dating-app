@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { RegisterFormDialogComponent } from '../components/register-form-dialog/register-form-dialog.component';
+import { RegisterFormDialogComponent } from '../../components/register-form-dialog/register-form-dialog.component';
 
 @Component({
   selector: 'app-home',

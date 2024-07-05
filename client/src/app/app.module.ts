@@ -15,7 +15,6 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginFormDialogComponent } from './components/login-form-dialog/login-form-dialog.component';
 import { MatMenuModule } from '@angular/material/menu';
-import { HomeComponent } from './home/home.component';
 import { RegisterFormDialogComponent } from './components/register-form-dialog/register-form-dialog.component';
 import { ListsComponent } from './components/lists/lists.component';
 import { MessagesComponent } from './components/messages/messages.component';
@@ -63,6 +62,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { HomeComponent } from './pages/home/home.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/locale/', '.json');
@@ -97,7 +98,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     UserManagementComponent,
     PhotoManagementComponent,
     UserRoleDialogComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

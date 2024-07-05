@@ -1,7 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 @use '@angular/material' as mat;
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
-
+:root {
+  --main-color: #D9905E;
+  --secondary-color: #6D463D;
+  --dark-color: #402E32;
+  --text-color: #fff;
+}
 html,
 body {
   height: 100%;
@@ -46,7 +51,7 @@ $my-theme: mat.define-light-theme((color: (primary: $my-primary,
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 50px 15px;
 
@@ -77,4 +82,22 @@ $my-theme: mat.define-light-theme((color: (primary: $my-primary,
 
 mat-paginator {
   background-color: transparent !important;
+}
+
+.logo {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  gap: 10px;
+
+  .opacity {
+      opacity: 0.5;
+      margin-left: 2px;
+  }
+
+  svg {
+      width: 25px;
+      fill: #fff;
+  }
 }

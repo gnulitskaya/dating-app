@@ -26,12 +26,33 @@ namespace API.Services
         public async Task<ImageUploadResult> AddPhotoAsync(IFormFile file)
         {
 
+            // var uploadResult = new ImageUploadResult();
+
+            // if (file.Length > 0)
+            // {
+            //     using (var ms = new MemoryStream())
+            //     {
+            //         await file.CopyToAsync(ms);
+            //         var imageBytes = ms.ToArray();
+            //         var base64String = Convert.ToBase64String(imageBytes);
+
+            //         // var photo = new Photo
+            //         // {
+            //         //     ImageData = base64String
+            //         // };
+
+            //         // Save the photo to the database or any other necessary operations
+
+            //         uploadResult.SecureUrl = new Uri("data:image/jpeg;base64," + base64String);
+            //     }
+            // }
+
+            // return uploadResult;
             var uploadResult = new ImageUploadResult();
 
             if (file.Length > 0)
             {
                 var fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
-                // var filePath = Path.Combine("wwwroot", "assets", fileName);
 
                 var absolutePath = Path.Combine(Directory.GetCurrentDirectory(), "Media", fileName);
 
@@ -40,26 +61,10 @@ namespace API.Services
                     await file.CopyToAsync(stream);
                 }
                 
-                // uploadResult.Type = fileName;
                 uploadResult.SecureUrl = new Uri(absolutePath);
             }
 
             return uploadResult;
-
-
-            // var uploadResult = new ImageUploadResult();
-
-            // if(file.Length > 0) {
-            //     using var stream = file.OpenReadStream();
-            //     var uploadParams = new ImageUploadParams {
-            //         File = new FileDescription(file.FileName, stream),
-            //         Transformation = new Transformation().Width(500).Height(500).Crop("fill").Gravity("face")
-            //     };
-
-            //     uploadResult = await _cloudinary.UploadAsync(uploadParams);
-            // }
-
-            // return uploadResult;
         }
 
         public async Task<DeletionResult> DeletePhotoAsync(string publicId)

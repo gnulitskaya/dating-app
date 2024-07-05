@@ -85,39 +85,6 @@ namespace API.Controllers
         [HttpPost("add-photo")]
         public async Task<ActionResult<PhotoDto>> AddPhoto(IFormFile file)
         {
-            // var user = await _unitOfWork.UserRepository
-            // .GetUserByUsernameAsync(User.GetUserName());
-
-            // // Преобразование IFormFile в массив байтов
-            // byte[] photoBytes;
-            // using (var memoryStream = new MemoryStream())
-            // {
-            //     await file.CopyToAsync(memoryStream);
-            //     photoBytes = memoryStream.ToArray();
-            // }
-
-            // var photo = new Photo
-            // {
-            //     ImageData = photoBytes,
-            //     ImageMimeType = file.ContentType
-            // };
-
-            // if (user.Photos.Count == 0)
-            // {
-            //     photo.IsMain = true;
-            // }
-
-            // user.Photos.Add(photo);
-
-            // if (await _unitOfWork.Complete())
-            // {
-            //     return CreatedAtRoute("GetUser",
-            //         new { username = user.UserName }, 
-            //             _mapper.Map<PhotoDto>(photo));
-            // }
-
-            // return BadRequest("Failed to add photo!");
-
             var user = await _unitOfWork.UserRepository
             .GetUserByUsernameAsync(User.GetUserName());
 
@@ -126,7 +93,6 @@ namespace API.Controllers
 
             if (result.Error != null) return BadRequest(result.Error.Message);
 
-            // string imagePath = $"/Users/gnulitskaya/Projects/dating-app/API/{Path.GetFileName(absoluteUri)}";
             string imagePath = $"/{Directory.GetCurrentDirectory()}/Media/{Path.GetFileName(absoluteUri)}";
             byte[] imageBytes = System.IO.File.ReadAllBytes(imagePath);
 
@@ -149,7 +115,6 @@ namespace API.Controllers
 
             if (await _unitOfWork.Complete())
             {
-                // return _mapper.Map<PhotoDto>(photo);
                 return CreatedAtRoute("GetUser",
                 new { username = user.UserName }, 
                 _mapper.Map<PhotoDto>(photo));

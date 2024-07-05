@@ -1,0 +1,138 @@
+.home {
+    // text-align: center;
+    padding: 20px;
+    // height: 80vh;
+    // display: flex;
+    // align-items: center;
+    // flex-direction: column;
+    // justify-content: center;
+    // background-image: url('../../assets/images/corgi-main1.jpg');
+    // background-size: cover;
+    // background-color: #ebebeb;
+    // background-position: bottom center;
+
+    // @media (max-width: 600px) {
+    //     background-position-y: bottom;
+    //     background-position-x: -200px;
+    // }
+
+    .main {
+        position: relative;
+        &__inner {
+            position: relative;
+            background-color: var(--main-color);
+            border-radius: 40px;
+            min-height: 400px;
+            color: var(--text-color);
+            padding: 40px;
+            height: 100%;
+            display: grid;
+            overflow: hidden;
+            grid-template-columns: 1fr 1fr;
+
+            &::before {
+                content: '';
+                position: absolute;
+                bottom: -20px;
+                right: 30%;
+                width: 350px;
+                height: 350px;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3C!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--%3E%3Cpath d='M226.5 92.9c14.3 42.9-.3 86.2-32.6 96.8s-70.1-15.6-84.4-58.5s.3-86.2 32.6-96.8s70.1 15.6 84.4 58.5zM100.4 198.6c18.9 32.4 14.3 70.1-10.2 84.1s-59.7-.9-78.5-33.3S-2.7 179.3 21.8 165.3s59.7 .9 78.5 33.3zM69.2 401.2C121.6 259.9 214.7 224 256 224s134.4 35.9 186.8 177.2c3.6 9.7 5.2 20.1 5.2 30.5v1.6c0 25.8-20.9 46.7-46.7 46.7c-11.5 0-22.9-1.4-34-4.2l-88-22c-15.3-3.8-31.3-3.8-46.6 0l-88 22c-11.1 2.8-22.5 4.2-34 4.2C84.9 480 64 459.1 64 433.3v-1.6c0-10.4 1.6-20.8 5.2-30.5zM421.8 282.7c-24.5-14-29.1-51.7-10.2-84.1s54-47.3 78.5-33.3s29.1 51.7 10.2 84.1s-54 47.3-78.5 33.3zM310.1 189.7c-32.3-10.6-46.9-53.9-32.6-96.8s52.1-69.1 84.4-58.5s46.9 53.9 32.6 96.8s-52.1 69.1-84.4 58.5z'/%3E%3C/svg%3E");
+                background-blend-mode: soft-light;
+                transform: rotate(20deg);
+                opacity: 0.1;
+            }
+        }
+        // background-image: url('../../../assets/images/paw.png');
+        
+        &__btns {
+            display: flex;
+            align-items: center;
+            margin-top: 40px;
+            gap: 20px;
+        }
+
+        &__title {
+            font-size: 40px;
+            line-height: 66px;
+            font-weight: bold;
+
+            span {
+                color: var(--dark-color);
+            }
+        }
+
+        &__img {
+            position: absolute;
+            right: 0;
+            top: -54px;
+            height: 100%;
+
+            img {
+                // height: 100%; 
+            }
+        }
+    }
+
+
+    // &__title {
+    //     padding-top: 100px;
+    // }
+
+    // &__text {
+    //     margin-bottom: 24px;
+    //     max-width: 560px;
+    // }
+
+    // &__btns {
+    //     display: flex;
+    //     align-items: center;
+    //     justify-content: center;
+    //     gap: 20px;
+    // }
+}
+
+.img {
+    max-width: 400px;
+}
+
+.why {
+    margin-top: 60px;
+    text-align: center;
+
+    &__title {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+
+    .why-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        &__item {
+            width: 300px;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+
+            .item-number {
+                font-size: 1.5rem;
+                font-weight: bold;
+                color: #333;
+            }
+
+            .item-title {
+                font-size: 1.2rem;
+                margin: 10px 0;
+                color: #555;
+            }
+
+            .item-text {
+                font-size: 1rem;
+                color: #777;
+            }
+        }
+    }
+}

@@ -28,12 +28,14 @@
 nav {
     font-size: 14px;
     font-weight: normal;
-    display: flex; 
+    display: flex;
     gap: 20px;
+
     .nav-item {
         opacity: 0.5;
         cursor: pointer;
     }
+
     .nav-item.active {
         opacity: 1;
     }
@@ -45,22 +47,6 @@ nav {
     object-fit: cover;
     border: 2px solid white;
     border-radius: 50%;
-}
-
-.logo {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    flex-direction: row-reverse;
-    gap: 10px;
-    .opacity {
-        opacity: 0.5;
-        margin-left: 2px;
-    }
-    svg {
-        width: 25px;
-        fill: #fff;
-    }
 }
 
 .mat-mdc-button:not(:disabled) {
@@ -94,33 +80,41 @@ button svg {
     float: left;
     max-width: 100%;
     border-radius: 2px;
+
     select {
-      font-family: "helvetica neue", helvetica;
-      font-size: 1rem;
-      font-weight: 200;
-      max-width: 100%;
-      padding: 8px 24px 8px 10px;
-      border: none;
-      background-color: transparent;
-      -webkit-appearance: none;
-         -moz-appearance: none;
-              appearance: none;
-      &:active,
-      &:focus {
-        outline: none;
-        box-shadow: none;
-      }
+        font-family: "helvetica neue", helvetica;
+        font-size: 1rem;
+        font-weight: 200;
+        max-width: 100%;
+        padding: 8px 24px 8px 10px;
+        border: none;
+        background-color: transparent;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+
+        &:active,
+        &:focus {
+            outline: none;
+            box-shadow: none;
+        }
     }
+
     &:after {
-      content: " ";
-      position: absolute;
-      top: 50%;
-      margin-top: -2px;
-      right: 8px;
-      width: 0; 
-      height: 0; 
-      border-left: 5px solid transparent;
-      border-right: 5px solid transparent;
-      border-top: 5px solid #aaa;
+        content: " ";
+        position: absolute;
+        top: 50%;
+        margin-top: -2px;
+        right: 8px;
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 5px solid #aaa;
     }
-  }
+}
+
+.name-bold {
+    color: var(--dark-color);
+    font-weight: bold;
+}
