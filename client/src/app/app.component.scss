@@ -1,6 +1,8 @@
 mat-toolbar {
-    background-color: #d9905e;
-    color: #fff;
+    // background-color: #d9905e;
+    background-color: transparent;
+    color: var(--dark-color);
+    border: none;
 }
 
 .nav-mob {

@@ -1,23 +1,73 @@
 {
-    "HOME": {
-      "TITLE": "🎉 It's time for your dog to find their 'paw' match!",
-      "DESCRIPTION": "Attention all corgi owners! Your dog's social life is about to get a major upgrade on PawMatch - the app that connects you and your pup with other corgi enthusiasts! 🐾❤️",
-      "REGISTER": "Register",
-      "LEARN_MORE": "Learn more"
-    },
-    "SIGNUP": {
-      "TITLE": "Sign up",
-      "MALE": "Male",
-      "FEMALE": "Female",
-      "USERNAME": "username",
-      "KNOWN_AS": "Known As",
-      "DATE_OF_BIRTH": "Date Of Birth",
-      "CITY": "City",
-      "COUNTRY": "Country",
-      "PASSWORD": "Password",
-      "CONFIRM_PASSWORD": "Confirm Password",
-      "REGISTER": "Register",
-      "CANCEL": "Cancel"
-    }
+  "HOME": {
+    "TITLE": "Find Your Perfect PawMatch",
+    "SUB_TITLE": "The Top Dating App for Dogs",
+    "DESCRIPTION": "Looking for a furry friend or potential mate for your pup? Connect with other dog owners and their pups in your area, and find the perfect match for your four-legged companion.",
+    "REGISTER": "Register",
+    "LEARN_MORE": "Learn more"
+  },
+  "SIGNUP": {
+    "TITLE": "Sign up",
+    "MALE": "Male",
+    "FEMALE": "Female",
+    "USERNAME": "username",
+    "KNOWN_AS": "Known As",
+    "DATE_OF_BIRTH": "Date Of Birth",
+    "CITY": "City",
+    "COUNTRY": "Country",
+    "PASSWORD": "Password",
+    "CONFIRM_PASSWORD": "Confirm Password",
+    "REGISTER": "Register",
+    "CANCEL": "Cancel"
+  },
+  "NAVIGATION": {
+    "MATCHES": "Matches",
+    "LIKES": "Likes",
+    "MESSAGES": "Messages",
+    "PHOTOS": "Photos",
+    "ABOUT": "Detailed information",
+    "DESCRIPTION": "Description",
+    "LOOKING_FOR": "Looking for",
+    "INTERESTS": "Interests",
+    "LOCATION_DETAILS": "Location details",
+    "CITY": "City",
+    "COUNTRY": "Country",
+    "LIKE": "Like",
+    "SAVE_CHANGES": "Save changes",
+    "EDIT_PROFILE": "Edit profile",
+    "LOGOUT": "Logout",
+    "LOGIN": "Login",
+    "HI": "Hi"
+  },
+  "LIKES": {
+    "MEMBERS_I_LIKE": "Members I like",
+    "MEMBERS_WHO_LIKE_ME": "Members who like me"
+  },
+  "MESSAGES": {
+    "UNREAD": "Unread",
+    "INBOX": "Inbox",
+    "OUTBOX": "Outbox",
+    "FROM_TO": "From / To",
+    "SENT_RECEIVED": "Sent / Received",
+    "DELETE": "Delete",
+    "MESSAGE": "Message"
+  },
+  "ABOUT": {
+    "LOCATION": "Location",
+    "AGE": "Age",
+    "COLOR": "Color",
+    "ADD_PHOTOS": "Add Photos",
+    "SEND_PHOTO": "Send photo",
+    "PHOTO_UPLOAD_DRAG": "Drag and drop files or click here",
+    "PHOTO_UPLOAD_CLICK": "Click here to select a file"
+  },
+  "FILTER": {
+    "AGE_FROM": "Age from",
+    "AGE_TO": "Age to",
+    "SHOW": "Show",
+    "MALE": "Male",
+    "FEMALE": "Female",
+    "APPLY_FILTERS": "Apply filters",
+    "RESET_FILTERS": "Reset filters"
   }
-  
+}

@@ -13,51 +13,137 @@ table {
 
 .avatar {
     display: flex;
+    // justify-content: center;
     align-items: center;
     gap: 10px;
 
     img {
         border-radius: 50%;
-        width: 80px;
+        width: 50px;
         object-fit: cover;
-        height: 80px;
+        height: 50px;
     }
 }
 
-table.iksweb {
-    text-decoration: none;
+// table.iksweb {
+//     text-decoration: none;
+//     border-collapse: collapse;
+//     width: 100%;
+//     text-align: left;
+//     transition: all 1s ease-in-out;
+// }
+
+// table.iksweb th {
+//     font-weight: normal;
+//     font-size: 14px;
+//     color: #ffffff;
+//     background-color: #d9905e;
+// }
+
+// table.iksweb td {
+//     font-size: 13px;
+//     color: #354251;
+// }
+
+// table.iksweb td,
+// table.iksweb th {
+//     white-space: pre-wrap;
+//     padding: 10px 15px;
+//     line-height: 13px;
+//     vertical-align: middle;
+//     border: 1px solid #d9905e;
+// }
+
+// table.iksweb tr:hover {
+//     // background-color: rgba($color: #ffe2cf, $alpha: 0.4)
+// }
+
+// table.iksweb tr:hover td {
+//     // color: #354251;
+//     cursor: default;
+// }
+
+table {
+    border: 1px solid #ccc;
     border-collapse: collapse;
+    margin: 0;
+    padding: 0;
     width: 100%;
-    text-align: left;
-    transition: all 1s ease-in-out;
+    table-layout: fixed;
 }
 
-table.iksweb th {
-    font-weight: normal;
-    font-size: 14px;
-    color: #ffffff;
-    background-color: #d9905e;
+table caption {
+    font-size: 1.5em;
+    margin: .5em 0 .75em;
 }
 
-table.iksweb td {
-    font-size: 13px;
-    color: #354251;
+table tr {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    padding: .35em;
 }
 
-table.iksweb td,
-table.iksweb th {
-    white-space: pre-wrap;
-    padding: 10px 15px;
-    line-height: 13px;
-    vertical-align: middle;
-    border: 1px solid #d9905e;
+tbody tr {
+    cursor: pointer;
 }
 
-table.iksweb tr:hover {
-    // background-color: rgba($color: #ffe2cf, $alpha: 0.4)
+table th,
+table td {
+    padding: .625em;
+    text-align: center;
 }
 
-table.iksweb tr:hover td {
-    // color: #354251;
-    cursor: default;
+table th {
+    font-size: .85em;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+}
+
+@media screen and (max-width: 600px) {
+    table {
+        border: 0;
+    }
+
+    table caption {
+        font-size: 1.3em;
+    }
+
+    table thead {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+    table tr {
+        border-bottom: 3px solid #ddd;
+        display: block;
+        margin-bottom: .625em;
+    }
+
+    table td {
+        border-bottom: 1px solid #ddd;
+        display: block;
+        font-size: .8em;
+        text-align: right;
+    }
+
+    table td::before {
+        /*
+      * aria-label has no advantage, it won't be read inside a table
+      content: attr(aria-label);
+      */
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    table td:last-child {
+        border-bottom: 0;
+    }
 }

@@ -1,14 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
 @use '@angular/material' as mat;
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
+
 :root {
   --main-color: #D9905E;
   --secondary-color: #6D463D;
   --dark-color: #402E32;
   --text-color: #fff;
+  --male-color: #59c1d9;
+  --female-color: #e698a3;
+  --box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
+
 html,
 body {
+  height: 100%;
+}
+
+main {
   height: 100%;
 }
 
@@ -53,6 +62,7 @@ $my-theme: mat.define-light-theme((color: (primary: $my-primary,
 .container {
   max-width: 1400px;
   margin: 0 auto;
+  overflow: hidden;
   padding: 50px 15px;
 
   @media (max-width: 800px) {
@@ -92,12 +102,77 @@ mat-paginator {
   gap: 10px;
 
   .opacity {
-      opacity: 0.5;
-      margin-left: 2px;
+    opacity: 0.5;
+    color: var(--secondary-color);
+    margin-left: 2px;
   }
 
   svg {
-      width: 25px;
-      fill: #fff;
+    width: 25px;
+    fill: var(--main-color);
+  }
+}
+
+.mat-drawer-content {
+  height: 100% !important;
+  display: flex !important;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+
+.card-sex {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  z-index: 9;
+  background-color: var(--female-color);
+  padding: 8px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.male {
+    background-color: var(--male-color);
+  }
+
+  svg {
+    fill: var(--text-color)
+  }
+}
+
+.grey-back {
+  // background-color: #ecedf2;
+  // height: 100%;
+}
+
+.btn {
+  &.mdc-button,
+  &.mdc-flat-button,
+  &.mdc-stroked-button {
+    border-radius: 20px !important;
+    min-height: 45px;
+    min-width: 150px !important;
+  }
+}
+
+
+.btn-icon {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  svg {
+    width: 25px;
+    height: 25px;
+    fill: var(--text-color);
+  }
+}
+@media (max-width: 600px) {
+  mat-button-toggle-group {
+    display: flex !important;
+    flex-direction: column !important;
   }
 }

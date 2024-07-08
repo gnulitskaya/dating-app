@@ -15,29 +15,57 @@
                 <div class="card">
     
                     <div class="card-body">
-                        <img [src]="member.imageData ? 'data:image/png;base64,' + member.imageData : '../../../../assets/images/user.png'" alt="{{member.knownAs}}"
-                        class="card-img-top img-thumbnail">
+                        <div class="card-body__header">
+                            <img [src]="member.imageData ? 'data:image/png;base64,' + member.imageData : '../../../../assets/images/user.png'"
+                            alt="{{member.knownAs}}" class="card-img-top img-thumbnail">
+                            <h2 class="member-name">
+                                <span [gender]="member.gender" genderColor>{{member.username}}</span>
     
-                        <div>
-                            <strong>Location:</strong>
-                            <p>{{member.city}}, {{member.country}}</p>
+                                <div class="card-sex" [ngClass]="{'male': member.gender === 'male'}">
+                                    <!-- {{member.gender}} -->
+                                    <ng-container *ngIf="member.gender === 'male'; else female">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                            <path
+                                                d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z" />
+                                        </svg>
+                                    </ng-container>
+                                    <ng-template #female>
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                            <path
+                                                d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1V384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h32v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448h32c17.7 0 32-14.3 32-32s-14.3-32-32-32H224V349.1z" />
+                                        </svg>
+                                    </ng-template>
+                                </div>
+                            </h2>
                         </div>
-                        <div>
-                            <strong>Age:</strong>
-                            <p>{{member.age}}</p>
-                        </div>
-                        <div>
-                            <strong>Last Active:</strong>
-                            <!-- <p>{{member.lastActive | timeago}}</p> -->
-                            <p>{{member.lastActive | date: 'dd MMM yyyy'}}</p>
-                        </div>
-                        <div>
-                            <strong>Member since:</strong>
-                            <p>{{member.created | date: 'dd MMM yyyy'}}</p>
+    
+                        <div class="card-body__inner">
+                            <div class="card-body__item">
+                                <strong>{{ 'ABOUT.LOCATION' | translate }}</strong>
+                                <p>{{member.city}}</p>
+                            </div>
+                            <div class="card-body__item">
+                                <strong>{{ 'ABOUT.AGE' | translate }}</strong>
+                                <p>{{member.age}}</p>
+                            </div>
+                            <div class="card-body__item">
+                                <strong>{{ 'ABOUT.COLOR' | translate }}</strong>
+                                <p>белый</p>
+                            </div>
+                            <!-- <div class="card-body__item">
+                                <strong>Last Active</strong>
+                                <p>{{member.lastActive | date: 'dd MMM yyyy'}}</p>
+                            </div>
+                            <div class="card-body__item">
+                                <strong>Member since:</strong>
+                                <p>{{member.created | date: 'dd MMM yyyy'}}</p>
+                            </div> -->
                         </div>
     
                         <div class="btn-group">
-                            <button [disabled]="!form.dirty" (click)="updateMember()" mat-raised-button color="primary">Save changes</button>
+                            <button class="btn" [disabled]="!form.dirty" (click)="updateMember()" mat-raised-button color="primary">{{ 'NAVIGATION.SAVE_CHANGES' | translate }}</button>
                         </div>
                     </div>
     
@@ -45,32 +73,32 @@
                         <mat-tab-group>
                             <mat-tab>
                                 <ng-template mat-tab-label>
-                                    About {{member.knownAs}}
+                                    {{ 'NAVIGATION.ABOUT' | translate }}
                                 </ng-template>
                                 <div class="edit-form" [formGroup]="form">
-                                    <h4>Description</h4>
+                                    <h4>{{ 'NAVIGATION.DESCRIPTION' | translate }}</h4>
                                     <mat-form-field appearance="outline">
-                                        <mat-label>Description</mat-label>
+                                        <mat-label>{{ 'NAVIGATION.DESCRIPTION' | translate }}</mat-label>
                                         <textarea [(ngModel)]="member.introduction" matInput formControlName="description" placeholder="Placeholder"></textarea>
                                     </mat-form-field>
                                     <!-- <textarea class="form-control" [(ngModel)]="member.introduction" name="introduction" rows="6"></textarea> -->
-                                    <h4 class="mt-2">Looking for</h4>
+                                    <h4 class="mt-2">{{ 'NAVIGATION.LOOKING_FOR' | translate }}</h4>
                                     <mat-form-field appearance="outline">
-                                        <mat-label>Looking for</mat-label>
+                                        <mat-label>{{ 'NAVIGATION.LOOKING_FOR' | translate }}</mat-label>
                                         <textarea [(ngModel)]="member.lookingFor" matInput formControlName="lookingFor" placeholder="Placeholder"></textarea>
                                     </mat-form-field>
-                                    <h4 class="mt-2">Interests</h4>
+                                    <h4 class="mt-2">{{ 'NAVIGATION.INTERESTS' | translate }}</h4>
                                     <mat-form-field appearance="outline">
-                                        <mat-label>Interests</mat-label>
+                                        <mat-label>{{ 'NAVIGATION.INTERESTS' | translate }}</mat-label>
                                         <textarea [(ngModel)]="member.interests" matInput formControlName="interests" placeholder="Placeholder"></textarea>
                                     </mat-form-field>
-                                    <h4 class="mt-2">Location Details: </h4>
+                                    <h4 class="mt-2">{{ 'NAVIGATION.LOCATION_DETAILS' | translate }}</h4>
                                     <mat-form-field appearance="outline">
-                                        <mat-label>City</mat-label>
+                                        <mat-label>{{ 'NAVIGATION.CITY' | translate }}</mat-label>
                                         <input [(ngModel)]="member.city" matInput formControlName="city" placeholder="Placeholder">
                                     </mat-form-field>
                                     <mat-form-field appearance="outline">
-                                        <mat-label>Country</mat-label>
+                                        <mat-label>{{ 'NAVIGATION.COUNTRY' | translate }}</mat-label>
                                         <input [(ngModel)]="member.country" matInput formControlName="country" placeholder="Placeholder">
                                     </mat-form-field>
                                     <!-- <textarea class="form-control" [(ngModel)]="member.lookingFor" name="lookingFor" rows="6"></textarea>
@@ -88,7 +116,7 @@
     
                             <mat-tab>
                                 <ng-template mat-tab-label>
-                                    Photos
+                                    {{ 'NAVIGATION.PHOTOS' | translate }}
                                 </ng-template>
                                 <div>
                                     <app-photo-editor [member]="member"></app-photo-editor>

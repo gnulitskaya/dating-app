@@ -7,6 +7,7 @@ import { HubConnection, HubConnectionBuilder } from '@microsoft/signalr';
 import { User } from '../models/user.model';
 import { BehaviorSubject, take } from 'rxjs';
 import { Group } from '../models/group';
+import { SnackbarService } from './snackbar.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,7 @@ export class MessageService {
   // asObservable() позволяет скрыть методы next() и getValue() от внешнего кода,
   messageThread$ = this.messageThreadSource.asObservable();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private snackbarService: SnackbarService) { }
 
   createHubConnection(user: User, otherUserName: string) {
     this.hubConnection = new HubConnectionBuilder()
@@ -72,7 +73,11 @@ export class MessageService {
 
   async sendMessage(username: string, content: string) {
     return this.hubConnection?.invoke('SendMessage', { recipientUserName: username, content: content })
-    .catch(error  => console.log(error));
+    .catch(error  => {
+      console.log(error);
+      this.snackbarService.openSnackBar('Ошибка при отправки сообщения', 'Пожалуйста, попробуйте обновить страницу');
+    }
+    );
     // return this.http.post<Message>(this.baseUrl + 'messages', { recipientUserName: username, content: content });
   }
 

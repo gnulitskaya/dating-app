@@ -5,58 +5,57 @@
 
     <div class="btn-group">
         <mat-button-toggle-group (click)="loadMessages()" [(ngModel)]="container" #group="matButtonToggleGroup">
-            <mat-button-toggle value="Unread">Unread</mat-button-toggle>
-            <mat-button-toggle value="Inbox">Inbox</mat-button-toggle>
-            <mat-button-toggle value="Outbox">Outbox</mat-button-toggle>
+            <mat-button-toggle value="Unread">{{ 'MESSAGES.UNREAD' | translate }}</mat-button-toggle>
+            <mat-button-toggle value="Inbox">{{ 'MESSAGES.INBOX' | translate }}</mat-button-toggle>
+            <mat-button-toggle value="Outbox">{{ 'MESSAGES.OUTBOX' | translate }}</mat-button-toggle>
         </mat-button-toggle-group>
     </div>
-    
+
     <div class="row" *ngIf="messages!.length === 0">
         <h3>No messages</h3>
     </div>
-    
+
     <div class="row" *ngIf="messages!.length > 0">
-        <table class="iksweb table table-hover" style="cursor: pointer">
+        <table>
             <thead>
                 <tr>
-                    <th style="width: 40%">Message</th>
-                    <th style="width: 20%">From / To</th>
-                    <th style="width: 20%">Sent / Received</th>
-                    <th style="width: 20%"></th>
+                    <th scope="col">{{ 'MESSAGES.MESSAGE' | translate }}</th>
+                    <th scope="col">{{ 'MESSAGES.FROM_TO' | translate }}</th>
+                    <th scope="col">{{ 'MESSAGES.SENT_RECEIVED' | translate }}</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
-                <tr [hidden]="loading" *ngFor="let message of messages" 
-                routerLink='{{container === "Outbox" 
+                <!-- <tr>
+                <td data-label="Account">Visa - 3412</td>
+                <td data-label="Due Date">04/01/2016</td>
+                <td data-label="Amount">$1,190</td>
+                <td data-label="Period">03/01/2016 - 03/31/2016</td>
+              </tr> -->
+                <tr [hidden]="loading" *ngFor="let message of messages" routerLink='{{container === "Outbox" 
                     ? "/members/" + message.recipientUserName 
-                    : "/members/" + message.senderUserName}}' [queryParams]='{tab: 3}' >
-                <td>{{message.content}}</td>    
-                <td>
-                    <div class="avatar" *ngIf="container === 'Outbox'">
-                        <img 
-                            class="img-circle rounded-circle me-2"
-                            [src]="message.recipientPhotoUrl ? 'data:image/png;base64,' 
+                    : "/members/" + message.senderUserName}}' [queryParams]='{tab: 3}'>
+                    <td>{{message.content}}</td>
+                    <td>
+                        <div class="avatar" *ngIf="container === 'Outbox'">
+                            <img class="img-circle rounded-circle me-2" [src]="message.recipientPhotoUrl ? 'data:image/png;base64,' 
                             + message.recipientPhotoUrl : './assets/images/user.png'"
-                            alt="{{message.recipientUserName}}">
-                        <strong>{{message.recipientUserName | titlecase}}</strong>
-                    </div> 
-                    <div class="avatar" *ngIf="container !== 'Outbox'">
-                        <img 
-                            class="img-circle rounded-circle me-2"
-                            [src]="message.senderPhotoUrl ? 'data:image/png;base64,' 
-                            + message.senderPhotoUrl : './assets/images/user.png'"
-                            alt="{{message.senderUserName}}">
-                        <strong>{{message.senderUserName | titlecase}}</strong>
-                    </div> 
-                </td>
-                <td>{{message.messageSent | date: 'dd MMM yyyy'}}</td>
-                <td class="center">
-                    <button (click)="$event.stopPropagation()" 
-                    (click)="deleteMessage(message.id)" mat-stroked-button color="warn">Delete</button>
-                </td>
+                                alt="{{message.recipientUserName}}">
+                            <strong>{{message.recipientUserName | titlecase}}</strong>
+                        </div>
+                        <div class="avatar" *ngIf="container !== 'Outbox'">
+                            <img class="img-circle rounded-circle me-2" [src]="message.senderPhotoUrl ? 'data:image/png;base64,' 
+                            + message.senderPhotoUrl : './assets/images/user.png'" alt="{{message.senderUserName}}">
+                            <strong>{{message.senderUserName | titlecase}}</strong>
+                        </div>
+                    </td>
+                    <td>{{message.messageSent | date: 'dd MMM yyyy'}}</td>
+                    <td class="center">
+                        <button class="btn" (click)="$event.stopPropagation()" (click)="deleteMessage(message.id)"
+                            mat-stroked-button color="warn">{{ 'MESSAGES.DELETE' | translate }}</button>
+                    </td>
                 </tr>
             </tbody>
-            
         </table>
     </div>
 

@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Member } from '../../../models/member';
 import { MembersService } from '../../../services/members.service';
-import { Observable, of } from 'rxjs';
 import { Pagination } from '../../../models/pagination';
 import { PageEvent } from '@angular/material/paginator';
 import { UserParams } from '../../../models/userParams';
-import { AccountService } from '../../../services/account.service';
 import { User } from '../../../models/user.model';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-member-list',
@@ -18,15 +17,18 @@ export class MemberListComponent implements OnInit {
   pagination!: Pagination;
   userParams!: UserParams;
   user!: User | null;
-  genderList = [{value:'male', display: 'Male'}, {value: 'female', display: 'Female'}];
+  genderList: any[] = [];
   // members$: Observable<Member[]> = of([]);
 
-  constructor(private memberService: MembersService) {
+  constructor(private memberService: MembersService,
+    private translateService: TranslateService
+  ) {
     this.userParams = this.memberService.getUserParams();
   }
 
   ngOnInit(): void {
     this.loadMembers();
+    this.initAndTranslateGender();
     // this.members$ = this.memberService.getMembers();
   }
 
@@ -48,5 +50,21 @@ export class MemberListComponent implements OnInit {
   resetFilters() {
     this.userParams = this.memberService.resetUserParams();
     this.loadMembers();
+  }
+
+  initAndTranslateGender(): void {
+    this.translateService.get('FILTER.MALE').subscribe((res: string) => {
+      console.log(res);
+      this.genderList.push(
+        {value:'male', display: res},
+      );
+    });
+
+    this.translateService.get('FILTER.FEMALE').subscribe((res: string) => {
+      console.log(res);
+      this.genderList.push(
+        {value:'female', display: res},
+      );
+    });
   }
 }

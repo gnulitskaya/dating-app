@@ -45,16 +45,16 @@ nav {
     height: 40px;
     width: 40px;
     object-fit: cover;
-    border: 2px solid white;
+    border: 2px solid var(--dark-color);
     border-radius: 50%;
 }
 
 .mat-mdc-button:not(:disabled) {
-    color: #fff;
+    // color: #fff;
 }
 
 button svg {
-    fill: #fff;
+    fill: var(--main-color);
 }
 
 .burger {
@@ -62,6 +62,7 @@ button svg {
 }
 
 .burger svg {
+    fill: var(--dark-color);
     width: 20px;
     height: 20px;
 }
@@ -115,6 +116,6 @@ button svg {
 }
 
 .name-bold {
-    color: var(--dark-color);
+    color: var(--main-color);
     font-weight: bold;
 }

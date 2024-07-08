@@ -37,8 +37,10 @@ export class NavComponent {
     this.isOpen.emit(event);
   }
 
-  switchLanguage(lang: any) {
+  switchLanguage(lang: Event | any) {
+    lang.preventDefault();
     // console.log(lang.target.value);
-    this.translate.use(lang.target.value);
+    if(lang.target !== null) 
+      this.translate.use(lang.target.value);
   }
 }

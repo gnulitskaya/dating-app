@@ -64,6 +64,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { HomeComponent } from './pages/home/home.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { GenderColorDirective } from './directives/gender-color.directive';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/locale/', '.json');
@@ -99,7 +100,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     PhotoManagementComponent,
     UserRoleDialogComponent,
     ConfirmDialogComponent,
-    FooterComponent
+    FooterComponent,
+    GenderColorDirective
   ],
   imports: [
     BrowserModule,

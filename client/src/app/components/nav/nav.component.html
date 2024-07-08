@@ -1,9 +1,9 @@
 <div class="nav-container">
-    <div class="nav-top" routerLink="/">
+    <div class="nav-top">
         <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
                 <mat-icon>menu</mat-icon>
             </button> -->
-        <div class="logo">
+        <div class="logo" routerLink="/">
             <span>Paw<span class="opacity">Match</span></span>
             <svg xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
@@ -12,17 +12,22 @@
             </svg>
         </div>
         <div class="lang-switch select-dropdown">
-            <select (change)="switchLanguage($event)"
+            <select (change)="switchLanguage($event)"ы
                 class="js_language_selector">
-                <option *ngFor="let lang of translate.getLangs()" [value]="lang">{{lang}}</option>
+                <option *ngFor="let lang of translate.getLangs()" [value]="lang">{{lang == 'ru' ? 'Русский' : 'Английский'}}</option>
             </select>
+            <!-- <select (change)="switchLanguage($event)">
+                <option value="select">Select Language</option>
+                <option value="en">English</option>
+                <option value="ru">French</option>
+              </select> -->
         </div>
     </div>
 
     <nav *ngIf="isAuth | async">
-        <div class="nav-item" routerLink="/members" routerLinkActive="active" (click)="openMenu(false)">Matches</div>
-        <div class="nav-item" routerLink="/likes" routerLinkActive="active" (click)="openMenu(false)">Likes</div>
-        <div class="nav-item" routerLink="/messages" routerLinkActive="active" (click)="openMenu(false)">Messages</div>
+        <div class="nav-item" routerLink="/members" routerLinkActive="active" (click)="openMenu(false)">{{ 'NAVIGATION.MATCHES' | translate }}</div>
+        <div class="nav-item" routerLink="/likes" routerLinkActive="active" (click)="openMenu(false)">{{ 'NAVIGATION.LIKES' | translate }}</div>
+        <div class="nav-item" routerLink="/messages" routerLinkActive="active" (click)="openMenu(false)">{{ 'NAVIGATION.MESSAGES' | translate }}</div>
         <div *appHasRole="['Admin', 'Moderator']" class="nav-item" routerLink="/admin" routerLinkActive="active"
             (click)="openMenu(false)">
             Admin</div>
@@ -30,7 +35,7 @@
 
     <ng-container *ngIf="(isAuth | async) as user; else noAuth">
         <button class="btn-icon" mat-button [matMenuTriggerFor]="menu">
-            Привет, <span class="name-bold">{{user.knownAs || user.username | titlecase}}</span>!
+            {{ 'NAVIGATION.HI' | translate }}, <span class="name-bold">{{user.knownAs || user.username | titlecase}}!</span>
             <img class="avatar" 
             [src]="user.imageData ? 'data:image/png;base64,' + user.imageData : '../../../assets/images/user.png'" alt="{{user.username}}">
             <svg xmlns="http://www.w3.org/2000/svg"
@@ -40,15 +45,15 @@
             </svg>
         </button>
         <mat-menu #menu="matMenu">
-            <button mat-menu-item routerLink="member/edit">Edit profile</button>
-            <button mat-menu-item (click)="logout()">
-                Logout
+            <button mat-menu-item routerLink="member/edit">{{ 'NAVIGATION.EDIT_PROFILE' | translate }}</button>
+            <button class="btn" mat-menu-item (click)="logout()">
+                {{ 'NAVIGATION.LOGOUT' | translate }}
             </button>
         </mat-menu>
     </ng-container>
 
     <ng-template #noAuth>
-        <button mat-raised-button (click)="openDialog()">LOGIN</button>
+        <button mat-raised-button (click)="openDialog()">{{ 'NAVIGATION.LOGIN' | translate }}</button>
     </ng-template>
 
     <div class="burger" (click)="openMenu(true)">

@@ -29,7 +29,7 @@ app.UseRouting();
 app.UseCors(x => x.AllowAnyHeader()
     .AllowAnyMethod()
     .AllowCredentials()
-    .WithOrigins("https://pawmatch.ru"));
+    .WithOrigins("https://localhost:4200"));
 // https://pawmatch.ru
 // https://localhost:4200
 app.UseAuthentication();

@@ -35,9 +35,9 @@
     </div>
 
     <div class="form-btns">
-        <button [mat-dialog-close] type="submit" mat-raised-button color="primary" [disabled]="registerForm.invalid"
+        <button class="btn" [mat-dialog-close] type="submit" mat-raised-button color="primary" [disabled]="registerForm.invalid"
             (click)="register()">{{ 'SIGNUP.REGISTER' | translate }}</button>
-        <button [mat-dialog-close] mat-stroked-button color="primary">{{ 'SIGNUP.CANCEL' | translate }}</button>
+        <button class="btn" [mat-dialog-close] mat-stroked-button color="primary">{{ 'SIGNUP.CANCEL' | translate }}</button>
     </div>
 
 </form>

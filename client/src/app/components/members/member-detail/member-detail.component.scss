@@ -3,37 +3,112 @@
     height: 300px;
     object-fit: cover;
 
-    border: 4px solid #d9905e;
+    // border: 4px solid #d9905e;
+    box-shadow: var(--box-shadow);
     border-radius: 20px;
-    padding: 10px;
+    // padding: 10px;
 
     @media (max-width: 800px) {
         height: 200px;
         width: -webkit-fill-available;
     }
 }
+
 .card-body {
     padding: 15px 0;
 
+    &__header {
+        position: relative;
+        justify-content: center;
+        display: flex;
+        margin-bottom: 40px;
+
+        .card-sex {
+            position: unset;
+        }
+
+        .member-name {
+            position: absolute;
+            // border: 1px solid #DFE0DF;
+            box-shadow: var(--box-shadow);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            bottom: -20px;
+            width: 80%;
+            background-color: var(--text-color);
+            border-radius: 20px;
+            padding: 10px;
+            margin: 0;
+        }
+    }
+
     &__inner {
-        margin: 20px 0 20px 0;
+        margin: 20px 0 40px 0;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    &__item {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        background-color: var(--text-color);
+        // border: 1px solid #DFE0DF;
+        box-shadow: var(--box-shadow);
+        border-radius: 20px;
+        min-width: 100px;
+        padding: 10px;
+
+        &:nth-child(1) p {
+            background-color: #9c90bb;
+        }
+
+        &:nth-child(2) p {
+            background-color: #feb202;
+        }
+
+        &:nth-child(3) p {
+            background-color: #55aba3;
+        }
+
+        &:nth-child(4) p {
+            background-color: #d688ce;
+        }
+
+        p {
+            margin: 0;
+            color: var(--text-color);
+            border-radius: 20px;
+            padding: 5px 10px;
+        }
     }
 }
 
 .btn-group {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
-    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 .card {
     display: grid;
-    grid-template-columns: 400px auto;
+    grid-template-columns: 500px auto;
     gap: 60px;
 
-    @media (max-width: 1200px) {
-        grid-template-columns: 200px auto;
+    @media (max-width: 1100px) {
+        grid-template-columns: 400px auto;
+        gap: 20px;
+    }
+
+    @media (max-width: 900px) {
+        grid-template-columns: 350px auto;
     }
 
     @media (max-width: 800px) {

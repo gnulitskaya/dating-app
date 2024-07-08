@@ -15,7 +15,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class PhotoEditorComponent implements OnInit {
   @Input() member: any;
   user: User | null = null;
-  public fileUploadControl = new FileUploadControl(undefined, FileUploadValidators.filesLimit(1));
+  public fileUploadControl = new FileUploadControl(undefined, 
+    FileUploadValidators.filesLimit(1));
 
   constructor(private membersService: MembersService,
     private sanitizer: DomSanitizer,

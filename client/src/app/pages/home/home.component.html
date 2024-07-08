@@ -7,17 +7,14 @@
             <!-- <h1>{{ 'HOME.TITLE' | translate }}</h1> -->
             <div class="main__inner">
                 <div>
-                    <h1 class="main__title">Find Your Perfect PawMatch <br> <span>The Top Dating App for Dogs</span></h1>
+                    <h1 class="main__title">{{ 'HOME.TITLE' | translate }} <br> <span>{{ 'HOME.SUB_TITLE' | translate }}</span></h1>
                     <h4 class="main__text">
-                        Looking for a furry friend or potential mate for your pup? Look no further than PawMatch, the
-                        ultimate
-                        dating app for dogs. Connect with other dog owners and their pups in your area, and find the perfect
-                        match for your four-legged companion.
+                        {{ 'HOME.DESCRIPTION' | translate }}
                     </h4>
     
                     <div class="main__btns">
-                        <button mat-flat-button color="primary" (click)="openDialog()">{{ 'HOME.REGISTER' | translate }}</button>
-                        <button mat-stroked-button color="primary">{{ 'HOME.LEARN_MORE' | translate }}</button>
+                        <button class="btn" mat-flat-button color="primary" (click)="openDialog()">{{ 'HOME.REGISTER' | translate }}</button>
+                        <button class="btn" mat-stroked-button color="primary">{{ 'HOME.LEARN_MORE' | translate }}</button>
                     </div>
                 </div>
                 <div></div>

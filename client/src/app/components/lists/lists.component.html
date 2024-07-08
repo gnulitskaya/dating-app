@@ -5,8 +5,8 @@
 <div class="container">
     <div class="btn-group">
         <mat-button-toggle-group (click)="loadLikes()" [(ngModel)]="predicate" #group="matButtonToggleGroup">
-            <mat-button-toggle value="liked">Members I like</mat-button-toggle>
-            <mat-button-toggle value="likedBy">Members who like me</mat-button-toggle>
+            <mat-button-toggle value="liked">{{ 'LIKES.MEMBERS_I_LIKE' | translate }}</mat-button-toggle>
+            <mat-button-toggle value="likedBy">{{ 'LIKES.MEMBERS_WHO_LIKE_ME' | translate }}</mat-button-toggle>
         </mat-button-toggle-group>
     </div>
 

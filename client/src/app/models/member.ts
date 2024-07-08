@@ -1,3 +1,4 @@
+import { GenderColorType } from "./gender";
 import { Photo } from "./photo"
 
 export interface Member {
@@ -9,7 +10,7 @@ export interface Member {
     knownAs: string;
     created: Date;
     lastActive: Date;
-    gender: string;
+    gender: GenderColorType;
     introduction: string;
     lookingFor: string;
     interests: string;
