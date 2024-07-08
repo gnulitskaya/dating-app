@@ -2,12 +2,23 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using API.DTOs;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Helpers
 {
     public class PagedList<T> : List<T>
     {
+        private List<MemberDto> filteredUsers;
+        private int pageNumber;
+
+        public PagedList(List<MemberDto> filteredUsers, int pageNumber, int pageSize)
+        {
+            this.filteredUsers = filteredUsers;
+            this.pageNumber = pageNumber;
+            PageSize = pageSize;
+        }
+
         public PagedList(IEnumerable<T> items, int count, int pageNumber, int pageSize)
         {
             CurrentPage = pageNumber;

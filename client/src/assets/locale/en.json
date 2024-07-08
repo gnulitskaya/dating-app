@@ -21,6 +21,8 @@
     "CANCEL": "Cancel"
   },
   "NAVIGATION": {
+    "HOME": "Home",
+    "CONTACT": "Contact",
     "MATCHES": "Matches",
     "LIKES": "Likes",
     "MESSAGES": "Messages",
@@ -50,9 +52,11 @@
     "FROM_TO": "From / To",
     "SENT_RECEIVED": "Sent / Received",
     "DELETE": "Delete",
-    "MESSAGE": "Message"
+    "MESSAGE": "Message",
+    "NO_MESSAGES": "No messages"
   },
   "ABOUT": {
+    "TITLE": "Your profile",
     "LOCATION": "Location",
     "AGE": "Age",
     "COLOR": "Color",
@@ -69,5 +73,22 @@
     "FEMALE": "Female",
     "APPLY_FILTERS": "Apply filters",
     "RESET_FILTERS": "Reset filters"
+  },
+  "WHY_US": {
+    "TITLE": "Why Us?",
+    "ITEM1_TITLE": "Personalized Matching",
+    "ITEM1_TEXT": "Our advanced algorithm matches dogs based on their breed, size, activity level, and personality to ensure the perfect pairing.",
+    "ITEM2_TITLE": "Verified Profiles",
+    "ITEM2_TEXT": "All of our dog profiles are verified to ensure authenticity, giving you peace of mind when choosing a companion for your beloved pup.",
+    "ITEM3_TITLE": "Detailed Profiles",
+    "ITEM3_TEXT": "Get to know the potential playmate for your dog with our detailed profiles, including photos, personality traits, and more.",
+    "ITEM4_TITLE": "Messaging System",
+    "ITEM4_TEXT": "Connect with other dog owners in your area and arrange play dates for your pups through our convenient messaging system.",
+    "ITEM5_TITLE": "Success Stories",
+    "ITEM5_TEXT": "Join the growing community of satisfied PawMatch users who have found the perfect friend for their dog. Read their heartwarming"
+  },
+  "WARNINGS": {
+    "TITLE": "Information:",
+    "UNSAVED_CHANGES": "You have made changes.  Any unsaved changes will be lost"
   }
 }

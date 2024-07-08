@@ -35,3 +35,18 @@
 ::ng-deep .mdc-button__label {
     display: flex;
 }
+
+::ng-deep {
+    file-upload-drop-zone {
+        display: flex !important;
+        align-items: center;
+    }
+
+    .dragover[_nghost-ng-c1881936980]:not(.disabled) .upload-input[_ngcontent-ng-c1881936980], [_nghost-ng-c1881936980]:not(.disabled) .upload-input[_ngcontent-ng-c1881936980]:hover, [_nghost-ng-c1881936980]:not(.disabled) .upload-input[_ngcontent-ng-c1881936980]:focus {
+        color: var(--main-color) !important;
+    }
+}
+
+.img-thumbnail {
+    border-radius: 10px;
+}

@@ -26,6 +26,9 @@ mat-toolbar {
         .btn-icon {
             display: none;
         }
+        .lang-switch {
+            display: none;
+        }
     }
     ::ng-deep .nav-mob .nav-container {
         flex-direction: column;
@@ -34,9 +37,19 @@ mat-toolbar {
         nav {
             flex-direction: column;
             margin: 30px 0;
+            text-align: center;
         }
         .burger {
             display: none;
+        }
+        .logo svg {
+            fill: var(--dark-color);
+        } 
+        .name-bold {
+            color: var(--text-color);
+        }
+        .avatar {
+            border-color: var(--text-color);
         }
     }
 }

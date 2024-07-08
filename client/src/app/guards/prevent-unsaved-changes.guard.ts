@@ -13,7 +13,7 @@ export class PreventUnsavedChangesGuard implements CanDeactivate<unknown> {
 
   canDeactivate(component: MemberEditComponent): Observable<boolean> | boolean {
     if (component.form.dirty) {
-      return this.dialogService.openDialog('You have unsaved changes, are you sure you want to leave?')
+      return this.dialogService.openDialog('У вас есть несохраненные изменения, вы уверены, что хотите уйти?')
       // return confirm('You have unsaved changes, are you sure you want to leave?');
     }
     return true;

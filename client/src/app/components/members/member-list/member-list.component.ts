@@ -18,6 +18,10 @@ export class MemberListComponent implements OnInit {
   userParams!: UserParams;
   user!: User | null;
   genderList: any[] = [];
+  cityList: any[] = [
+    {value:'Москва', display: 'Москва'},
+    {value:'Санкт-Петербург', display: 'Санкт-Петербург'},
+  ];
   // members$: Observable<Member[]> = of([]);
 
   constructor(private memberService: MembersService,
@@ -33,7 +37,8 @@ export class MemberListComponent implements OnInit {
   }
 
   loadMembers() {
-    // console.log(this.userParams);
+    console.log(this.userParams);
+    
     this.memberService.setUserParams(this.userParams);
     this.memberService.getMembers(this.userParams).subscribe(response => {
       this.members = response.result;

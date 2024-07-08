@@ -18,9 +18,8 @@ export class ListsComponent implements OnInit {
   pageNumber = 1;
   pageSize = 5;
   
-  constructor(private memberService: MembersService) {
+  constructor(private memberService: MembersService) {}
 
-  }
   ngOnInit(): void {
     this.loadLikes();
   }

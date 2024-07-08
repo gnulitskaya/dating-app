@@ -126,7 +126,10 @@
         border-color: #d9905e !important;
     }
 
-    .mat-mdc-tab.mdc-tab--active .mdc-tab__ripple::before, .mat-mdc-tab.mdc-tab--active .mat-ripple-element {
+    .mat-mdc-tab.cdk-program-focused .mdc-tab__ripple::before, 
+    .mat-mdc-tab.mdc-tab--active .mdc-tab__ripple::before, 
+    .mat-mdc-tab.mdc-tab--active .mat-ripple-element,
+    .mat-mdc-tab .mdc-tab__ripple::before {
         background-color: #d9905e !important;
     }
 }

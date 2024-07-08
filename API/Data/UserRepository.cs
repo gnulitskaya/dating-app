@@ -65,7 +65,8 @@ namespace API.Data
             var query = _context.Users.AsQueryable();
 
             query = query.Where(x => x.UserName != userParams.CurrentUsername);
-            query = query.Where(x => x.Gender != userParams.Gender);
+            query = query.Where(x => x.Gender == userParams.Gender);
+            query = query.Where(x => x.City == userParams.City);
 
             var minDob = DateTime.Today.AddYears(-userParams.MaxAge - 1);
             var maxDob = DateTime.Today.AddYears(-userParams.MinAge);
@@ -88,6 +89,13 @@ namespace API.Data
             return await _context.Users
             .Where(x => x.UserName == username)
             .Select(x => x.Gender).FirstOrDefaultAsync();
+        }
+
+        public async Task<string> GetUserCity(string username)
+        {
+            return await _context.Users
+            .Where(x => x.UserName == username)
+            .Select(x => x.City).FirstOrDefaultAsync();
         }
     }
 }

@@ -30,8 +30,17 @@ footer {
     margin-right: 20px;
 }
 
-.contact-info p {
-    margin: 5px 0;
+.contact-info {
+    p {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    svg {
+        fill: var(--text-color);
+        width: 20px;
+        height: 20px;
+    }
 }
 
 .social-icons a {
@@ -47,4 +56,8 @@ footer {
 
 a {
     color: var(--text-color);
+}
+
+.logo .opacity {
+    color: #fff;
 }

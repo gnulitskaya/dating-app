@@ -40,16 +40,17 @@ namespace API.Controllers
         public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers([FromQuery] UserParams userParams)
         {
             var gender = await _unitOfWork.UserRepository.GetUserGender(User.GetUserName());
+            var city = await _unitOfWork.UserRepository.GetUserCity(User.GetUserName());
             userParams.CurrentUsername = User.GetUserName();
 
-            if (string.IsNullOrEmpty(userParams.CurrentUsername))
-                userParams.Gender = gender == "male" ? "female" : "male";
+            if (string.IsNullOrEmpty(userParams.CurrentUsername)) {
+                userParams.Gender = gender;
+                userParams.City = city;
+            }
 
             var users = await _unitOfWork.UserRepository.GetMembersAsync(userParams);
 
-            // var usersToReturn = _mapper.Map<IEnumerable<MemberDto>>(users);
             Response.AddPaginationHeader(users.CurrentPage, users.PageSize, users.TotalCount, users.TotalPages);
-
             return Ok(users);
         }
 

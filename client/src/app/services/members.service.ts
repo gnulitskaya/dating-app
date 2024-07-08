@@ -57,6 +57,7 @@ export class MembersService {
     params = params.append('minAge', userParams.minAge);
     params = params.append('maxAge', userParams.maxAge);
     params = params.append('gender', userParams.gender);
+    params = params.append('city', userParams.city);
 
     return getPaginatedResult<Member[]>(this.baseUrl + 'users', params, this.http)
       .pipe(

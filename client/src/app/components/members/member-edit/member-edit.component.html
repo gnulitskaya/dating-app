@@ -2,11 +2,11 @@
     <ng-container *ngIf="member">
         <div class="row card">
             <div class="col-6">
-                <h2>Your profile</h2>
+                <h2>{{ 'ABOUT.TITLE' | translate }}</h2>
             </div>
             <div class="col-6">
                 <div class="alert alert-info" *ngIf="form.dirty">
-                    <strong>Information: </strong> You have made changes.  Any unsaved changes will be lost
+                    <strong>{{ 'WARNINGS.TITLE' | translate }} </strong> {{ 'WARNINGS.UNSAVED_CHANGES' | translate }}
                 </div>
             </div>
         </div>

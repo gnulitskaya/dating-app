@@ -17,6 +17,19 @@
                 <input matInput name="ageTo" [(ngModel)]="userParams.maxAge" maxlength="3" placeholder="Age to">
             </mat-form-field>
 
+            <!-- <mat-form-field>
+                <mat-label>City</mat-label>
+                <input matInput name="city" [(ngModel)]="userParams.city" maxlength="80" placeholder="City">
+            </mat-form-field> -->
+            <mat-form-field>
+                <mat-label>{{ 'NAVIGATION.CITY' | translate }}</mat-label>
+                <mat-select [(value)]="userParams.city">
+                    @for (city of cityList; track city) {
+                    <mat-option [value]="city.value">{{ city.display }}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+
             <div class="form-group px-2">
                 <mat-form-field>
                     <mat-label>{{ 'FILTER.SHOW' | translate }}</mat-label>

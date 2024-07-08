@@ -4,6 +4,7 @@ import { Pagination } from '../../models/pagination';
 import { MessageService } from '../../services/message.service';
 import { PageEvent } from '@angular/material/paginator';
 import { DialogService } from '../../services/dialog.service';
+import { map, switchMap, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-messages',
@@ -43,13 +44,14 @@ export class MessagesComponent implements OnInit {
 
   deleteMessage(messageId: number) {
     this.dialogService.openDialog('Are you sure you want to delete this message?')
-      .subscribe(res => {
-        if (res) {
-          this.messageService.deleteMessage(messageId).subscribe(() => {
-            this.messages?.slice(this.messages.findIndex((message) => 
-              message.id === messageId), 1);
-          });
-        }
-      })
+      .pipe(
+        switchMap(() => this.messageService.deleteMessage(messageId)),
+        map((messageId: number) => {
+          this.messages?.slice(this.messages
+            .findIndex((message) => message.id === messageId), 1);
+        }),
+        tap(() => this.loadMessages())
+      )
+      .subscribe();
   }
 }

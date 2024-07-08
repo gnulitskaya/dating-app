@@ -5,7 +5,7 @@ import { getPaginatedResult, getPaginationHeaders } from './paginationHelper';
 import { Message } from '../models/message';
 import { HubConnection, HubConnectionBuilder } from '@microsoft/signalr';
 import { User } from '../models/user.model';
-import { BehaviorSubject, take } from 'rxjs';
+import { BehaviorSubject, Observable, take } from 'rxjs';
 import { Group } from '../models/group';
 import { SnackbarService } from './snackbar.service';
 
@@ -81,7 +81,7 @@ export class MessageService {
     // return this.http.post<Message>(this.baseUrl + 'messages', { recipientUserName: username, content: content });
   }
 
-  deleteMessage(messageId: number) {
+  deleteMessage(messageId: number): Observable<any> {
     return this.http.delete(this.baseUrl + 'messages/' + messageId);
   }
 }

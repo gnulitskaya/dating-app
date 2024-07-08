@@ -70,7 +70,7 @@ export class MemberEditComponent implements OnInit {
     this.memberService.updateMember(this.member).subscribe(
       (member: Member) => {
         console.log(member);
-        this.snackbarService.openSnackBar('Profile updated successfully', '');
+        this.snackbarService.openSnackBar('Данные успешно обновлены!', '');
       }
     )
   }
