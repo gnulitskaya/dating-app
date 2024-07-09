@@ -5,6 +5,8 @@ using API.Middleware;
 using API.SignalR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Twilio;
+using Twilio.Rest.Api.V2010.Account;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -62,3 +64,4 @@ catch (Exception ex)
 }
 
 await app.RunAsync();
+

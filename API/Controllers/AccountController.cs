@@ -9,6 +9,7 @@ using API.Data;
 using API.DTOs;
 using API.Entities;
 using API.Interfaces;
+using API.Services;
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -23,9 +24,14 @@ namespace API.Controllers
         private readonly IMapper _mapper;
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
+        private readonly EmailService _emailService;
+        // private readonly ISmsService _smsService;
 
-        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, ITokenService tokenService, IMapper mapper)
+        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, 
+        ITokenService tokenService, IMapper mapper, EmailService emailService)
         {
+            _emailService = emailService;
+            // _smsService = smsService;
             _signInManager = signInManager;
             _userManager = userManager;
             _mapper = mapper;
@@ -68,6 +74,10 @@ namespace API.Controllers
             var result = await _signInManager
                 .CheckPasswordSignInAsync(user, loginDto.Password, false);
             if(!result.Succeeded) return Unauthorized("Invalid password!");
+
+            // _smsService.SendSms("79779861110", "678854");
+            _emailService.SendCode("gnulitskaya@mail.ru", 
+            "webgnule@mail.ru", "Письмо от PawMath", "Ваш код подтверждения: 989879");
 
             return new UserDto
             {

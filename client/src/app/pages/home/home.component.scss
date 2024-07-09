@@ -1,23 +1,11 @@
+@import '../../../styles/mixins';
+
 .home {
     // text-align: center;
     padding: 0 20px;
     @media (max-width: 700px) {
         padding: 0 10px;
     }
-    // height: 80vh;
-    // display: flex;
-    // align-items: center;
-    // flex-direction: column;
-    // justify-content: center;
-    // background-image: url('../../assets/images/corgi-main1.jpg');
-    // background-size: cover;
-    // background-color: #ebebeb;
-    // background-position: bottom center;
-
-    // @media (max-width: 600px) {
-    //     background-position-y: bottom;
-    //     background-position-x: -200px;
-    // }
 
     .main {
         position: relative;
@@ -65,13 +53,20 @@
         }
 
         &__title {
-            font-size: 30px;
-            line-height: 46px;
+            // font-size: 30px;
+            @include adaptiv-value('font-size', 30, 18, 1);
+            @include adaptiv-value('line-height', 46, 25, 1);
+            // line-height: 46px;
             font-weight: bold;
 
             span {
                 color: var(--dark-color);
             }
+        }
+
+        &__text {
+            @include adaptiv-value('font-size', 16, 14, 1);
+            @include adaptiv-value('line-height', 25, 24, 1);
         }
 
         &__img {
@@ -108,11 +103,6 @@
 
     // &__title {
     //     padding-top: 100px;
-    // }
-
-    // &__text {
-    //     margin-bottom: 24px;
-    //     max-width: 560px;
     // }
 
     // &__btns {

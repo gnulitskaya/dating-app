@@ -19,7 +19,7 @@
                             <img [src]="member.imageData ? 'data:image/png;base64,' + member.imageData : '../../../../assets/images/user.png'"
                             alt="{{member.knownAs}}" class="card-img-top img-thumbnail">
                             <h2 class="member-name">
-                                <span [gender]="member.gender" genderColor>{{member.username}}</span>
+                                <span [gender]="member.gender" genderColor>{{member.knownAs}}</span>
     
                                 <div class="card-sex" [ngClass]="{'male': member.gender === 'male'}">
                                     <!-- {{member.gender}} -->

@@ -19,10 +19,12 @@ namespace API.Extensions
             services.Configure<CloudinarySettings>(_config.GetSection("CloudinarySettings"));
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IPhotoService, PhotoService>();
+            // services.AddScoped<ISmsService, SmsService>();
             services.AddScoped<IUnitOfWork, UnitOfWork>(); // all the repositories are registered here
             // services.AddScoped<ILikesRepository, LikesRepository>();
             // services.AddScoped<IMessageRepository, MessageRepository>();
             services.AddScoped<LogUserActivity>();
+            services.AddScoped<EmailService>();
             // services.AddScoped<IUserRepository, UserRepository>();
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
             services.AddDbContext<DataContext>(options =>

@@ -20,10 +20,11 @@
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.2" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.4.0" />
+    <PackageReference Include="Twilio" Version="7.2.2" />
   </ItemGroup>
 
    <ItemGroup>
-    <Content Include="Media\**" CopyToPublishDirectory="PreserveNewest"/>
+    <Content Include="Media\**" CopyToPublishDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>
