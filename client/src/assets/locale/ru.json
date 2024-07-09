@@ -18,6 +18,8 @@
     "PASSWORD": "Пароль",
     "CONFIRM_PASSWORD": "Подтвердите пароль",
     "REGISTER": "Зарегистрироваться",
+    "EMAIL": "Почта",
+    "CODE": "Код",
     "CANCEL": "Отмена"
   },
   "NAVIGATION": {

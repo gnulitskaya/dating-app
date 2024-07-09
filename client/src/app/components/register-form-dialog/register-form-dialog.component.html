@@ -1,4 +1,4 @@
-<form class="mt-5 login-form" [formGroup]="registerForm">
+<form class="mt-5 login-form" [formGroup]="sendCodeForm">
     <!-- (ngSubmit)="registerForm.valid && register()" -->
     <div class="close" [mat-dialog-close]="false">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
@@ -9,7 +9,12 @@
     <h2>{{ 'SIGNUP.TITLE' | translate }}</h2>
 
     <div class="form-controls">
-        <mat-radio-group formControlName='gender' aria-label="I am a:">
+        <app-text-input [formControl]="getControl('email')" [label]="'SIGNUP.EMAIL' | translate"></app-text-input>
+        <ng-container *ngIf="showCode">
+            <app-text-input [formControl]="getControl('code')" [label]="'SIGNUP.CODE' | translate"></app-text-input>
+        </ng-container>
+
+        <!-- <mat-radio-group formControlName='gender' aria-label="I am a:">
             <mat-radio-button value="male">{{ 'SIGNUP.MALE' | translate }}</mat-radio-button>
             <mat-radio-button value="female">{{ 'SIGNUP.FEMALE' | translate }}</mat-radio-button>
         </mat-radio-group>
@@ -31,12 +36,14 @@
                     {{error}}
                 </li>
             </ul>
-        </div>
+        </div> -->
     </div>
 
     <div class="form-btns">
-        <button class="btn" [mat-dialog-close] type="submit" mat-raised-button color="primary" [disabled]="registerForm.invalid"
-            (click)="register()">{{ 'SIGNUP.REGISTER' | translate }}</button>
+        <!-- [disabled]="registerForm.invalid" -->
+        <button class="btn" type="submit" mat-raised-button color="primary"
+            (click)="showCode ? checkCode(sendCodeForm.value.code) : 
+            sendCode(sendCodeForm.value.email)">{{ showCode ? 'Отправить код' : ('SIGNUP.REGISTER' | translate)  }}</button>
         <button class="btn" [mat-dialog-close] mat-stroked-button color="primary">{{ 'SIGNUP.CANCEL' | translate }}</button>
     </div>
 

@@ -13,7 +13,7 @@ namespace API.Services
         private string companyName = "PawMatch";
         private string senderEmail = "gnulitskaya@mail.ru";
         private string password = "aw6DfjDvK3AGy6a1QPff"; 
-        public void SendCode(string from, string to, string subject, string body)
+        public bool SendCode(string from, string to, string subject, string body)
         {
             try
             {
@@ -29,11 +29,14 @@ namespace API.Services
                 client.Credentials = new NetworkCredential(senderEmail, password);
                 client.EnableSsl = true;
                 client.Send(message);
+
                 Console.WriteLine("Код успешно отправлен на указанный email.");
+                return true;
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Ошибка при отправке кода: " + ex.Message);
+                return false;
             }
         }
     }

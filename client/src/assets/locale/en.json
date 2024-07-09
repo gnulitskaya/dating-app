@@ -18,6 +18,8 @@
     "PASSWORD": "Password",
     "CONFIRM_PASSWORD": "Confirm Password",
     "REGISTER": "Register",
+    "EMAIL": "Email",
+    "CODE": "Code",
     "CANCEL": "Cancel"
   },
   "NAVIGATION": {
