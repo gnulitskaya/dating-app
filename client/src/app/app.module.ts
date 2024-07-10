@@ -65,6 +65,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { HomeComponent } from './pages/home/home.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { GenderColorDirective } from './directives/gender-color.directive';
+import { QuizProfileComponent } from './pages/quiz-profile/quiz-profile.component';
+import { FormButtonToggleComponent } from './pages/quiz-profile/form-button-toggle/form-button-toggle.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/locale/', '.json');
@@ -101,7 +103,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     UserRoleDialogComponent,
     ConfirmDialogComponent,
     FooterComponent,
-    GenderColorDirective
+    GenderColorDirective,
+    QuizProfileComponent,
+    FormButtonToggleComponent
   ],
   imports: [
     BrowserModule,

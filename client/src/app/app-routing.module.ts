@@ -14,12 +14,14 @@ import { MemberDetailResolver } from './resolvers/member-detail.resolver';
 import { AdminBarComponent } from './admin-bar/admin-bar.component';
 import { AdminGuard } from './guards/admin.guard';
 import { HomeComponent } from './pages/home/home.component';
+import { QuizProfileComponent } from './pages/quiz-profile/quiz-profile.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'errors', component: TestErrorsComponent },
   { path: 'not-found', component: NotFoundComponent },
   { path: 'server-error', component: ServerErrorComponent },
+  { path: 'quiz', component: QuizProfileComponent },
   {
     path: '',
     canActivate: [authGuard],

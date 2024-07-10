@@ -1,0 +1,25 @@
+.questionnaire {
+}
+.container {
+}
+.questionnaire {
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 20px;
+        margin: 40px 0;
+    }
+    &__title {
+        margin-top: 20px;
+    }
+    &__navigations {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        margin-top: 60px;
+    }
+}
+.questionnaire__list-item {
+    
+}

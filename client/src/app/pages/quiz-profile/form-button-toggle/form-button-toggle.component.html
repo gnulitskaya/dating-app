@@ -1,0 +1,12 @@
+<div class="select-type-btn-cnt">
+  <ng-container *ngFor="let control of formControlData">
+    <button 
+      class="select-type-btn"
+      [disabled]="disabled" 
+      (click)="selectFormControl(control.value)" 
+      [class.selected]="!disabled && selected === control.value"
+      [style.color]="control.color" [style.background-color]="control.background">
+      <p class="select-type-btn__text">{{ control?.text }}</p>
+    </button>
+  </ng-container>
+</div>

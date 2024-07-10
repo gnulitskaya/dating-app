@@ -1,0 +1,51 @@
+:host {
+    .select-type-btn-cnt {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+
+        // @include mobile {
+        //     flex-direction: column;
+        // }
+
+        .select-type-btn {
+            background-color: var(--text-color);
+            box-shadow: var(--box-shadow);
+            border: none;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 100px;
+            min-width: 200px;
+            border-radius: 20px;
+
+            transition: all 0.2s;
+
+            // @include mobile {
+            //     text-align: center;
+            //     justify-content: center;
+            // }
+
+            &.selected {
+                border: 3px var(--main-color) solid;
+                // color: #326CFD;
+
+                &:hover {
+                    cursor: default;
+                }
+            }
+
+            p {
+                padding: 0;
+                margin: 0;
+            }
+
+            &:hover {
+                cursor: pointer;
+                scale: 103%;
+            }
+        }
+    }
+}

@@ -1,0 +1,48 @@
+<div class="questionnaire container">
+  <h1>Заполните небольшую анкету</h1>
+  <h4>Чтобы найти идеального друга для вашего питомца</h4>
+
+  <div class="questionnaire__form" [formGroup]="questionnaireForm">
+    <h2 class="questionnaire__title">{{questionnaireData[step$.value].question}}</h2>
+    <ng-container *ngIf="step$.value == 0">
+      <div class="questionnaire__list">
+        <app-form-button-toggle [formControlName]="questionnaireData[0].controlName"
+          [formControlData]="questionnaireData[0].answers"></app-form-button-toggle>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="step$.value == 1">
+      <div class="questionnaire__list">
+        <app-form-button-toggle [formControlName]="questionnaireData[1].controlName"
+          [formControlData]="questionnaireData[1].answers"></app-form-button-toggle>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="step$.value == 2">
+      <app-form-button-toggle [formControlName]="questionnaireData[2].controlName"
+        [formControlData]="questionnaireData[2].answers"></app-form-button-toggle>
+    </ng-container>
+    <ng-container *ngIf="step$.value == 3">
+      <app-form-button-toggle [formControlName]="questionnaireData[3].controlName"
+        [formControlData]="questionnaireData[3].answers"></app-form-button-toggle>
+    </ng-container>
+    <ng-container *ngIf="step$.value == 4">
+      <app-form-button-toggle [formControlName]="questionnaireData[4].controlName"
+        [formControlData]="questionnaireData[4].answers"></app-form-button-toggle>
+    </ng-container>
+    <ng-container *ngIf="step$.value == 5">
+      <app-form-button-toggle [formControlName]="questionnaireData[5].controlName"
+        [formControlData]="questionnaireData[5].answers"></app-form-button-toggle>
+    </ng-container>
+  </div>
+
+  <!-- <div class="questionnaire__form">
+    <app-text-input [formControl]="getControl('knownAs')" label="Кличка"></app-text-input>
+    <app-text-input [formControl]="getControl('knownAs')" label="Порода"></app-text-input>
+    <app-text-input [formControl]="getControl('knownAs')" label="Вес"></app-text-input>
+  </div> -->
+
+  <div class="questionnaire__navigations">
+    <button [disabled]="step$.value==0" class="btn" mat-stroked-button color="primary"
+      (click)="switchStepBack()">Назад</button>
+    <button [disabled]="step$.value==5" class="btn" mat-flat-button color="primary" (click)="switchStepNext()">Далее</button>
+  </div>
+</div>
