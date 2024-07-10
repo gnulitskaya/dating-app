@@ -40,10 +40,10 @@ namespace API.Data
             var likedUsers = users.Select(user => new LikeDto {
                 Username = user.UserName,
                 Id = user.Id,
-                KnownAs = user.KnownAs,
-                Age = user.DateOfBirth.CalculateAge(),
+                // KnownAs = user.KnownAs,
+                // Age = user.DateOfBirth.CalculateAge(),
                 PhotoUrl = user.Photos.FirstOrDefault(p => p.IsMain).Url,
-                City = user.City
+                // City = user.City
             });
 
             return await PagedList<LikeDto>

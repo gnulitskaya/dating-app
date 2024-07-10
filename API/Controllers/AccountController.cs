@@ -38,55 +38,73 @@ namespace API.Controllers
             _tokenService = tokenService;
         }
 
+        [HttpGet("emailexists")]
+        public async Task<ActionResult<bool>> CheckEmailExistsAsync([FromQuery] string email)
+        {
+            return await _userManager.FindByEmailAsync(email) != null;
+        }
+
         [HttpPost("register")]
         public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto) {
-            if(await UserExists(registerDto.Username)) return BadRequest("Username is taken!");
-            
+            // if(await UserExists(registerDto.Username)) return BadRequest("Username is taken!");
+            if (CheckEmailExistsAsync(registerDto.Email).Result.Value)
+            {
+                return BadRequest("Email address is in use!");
+                // return new BadRequestObjectResult(new ApiValidationErrorResponse{Errors = new []{"Email address is in use"}});
+            }
+
+            // var user = new AppUser
+            // {
+            //     Username = registerDto.Username,
+            //     Email = registerDto.Email,
+            //     UserName = registerDto.Email
+            // };
+
             var user = _mapper.Map<AppUser>(registerDto);
 
             using var hmac = new HMACSHA512();
 
-            user.UserName = registerDto.Username.ToLower();
+            int index = user.Email.IndexOf('@');
+            string username = user.Email.Substring(0, index);
+            user.UserName = username.ToLower();
 
             var result = await _userManager.CreateAsync(user, registerDto.Password);
             if(!result.Succeeded) return BadRequest(result.Errors);
 
             var rolesResult = await _userManager.AddToRoleAsync(user, "Member");
             if(!rolesResult.Succeeded) return BadRequest(rolesResult.Errors);
-
+        
             return new UserDto
             {
                 Username = user.UserName,
                 Token = await _tokenService.CreateToken(user),
-                KnownAs = user.KnownAs,
-                Gender = user.Gender,
             };
         }
 
         [HttpPost("login")]
         public async Task<ActionResult<UserDto>> Login(LoginDto loginDto) {
-            var user = await _userManager.Users
-            .Include(x => x.Photos)
-            .SingleOrDefaultAsync(x => x.UserName == loginDto.Username.ToLower());
+            // var user = await _userManager.Users
+            // .Include(x => x.Photos)
+            // .SingleOrDefaultAsync(x => x.UserName == loginDto.Username.ToLower());
 
-            if(user == null) return Unauthorized("Invalid username!");
+            var user = await _userManager.FindByEmailAsync(loginDto.Email);
+
+            if (user == null) return Unauthorized("Email address is in use!");
+
+            // if(user == null) return Unauthorized("Invalid username!");
 
             var result = await _signInManager
                 .CheckPasswordSignInAsync(user, loginDto.Password, false);
             if(!result.Succeeded) return Unauthorized("Invalid password!");
-
-            // _smsService.SendSms("79779861110", "678854");
-            _emailService.SendCode("gnulitskaya@mail.ru", 
-            "webgnule@mail.ru", "Письмо от PawMath", "Ваш код подтверждения: 989879");
-
+            
             return new UserDto
             {
                 Username = user.UserName,
                 Token = await _tokenService.CreateToken(user),
-                PhotoUrl = user.Photos.FirstOrDefault(x => x.IsMain)?.Url,
-                ImageData = user.Photos.FirstOrDefault(x => x.IsMain)?.ImageData,
-                KnownAs = user.KnownAs,
-                Gender = user.Gender,
+                // PhotoUrl = user.Photos.FirstOrDefault(x => x.IsMain)?.Url,
+                // ImageData = user.Photos.FirstOrDefault(x => x.IsMain)?.ImageData,
+                // KnownAs = user.KnownAs,
+                // Gender = user.Gender,
             };
         }
 

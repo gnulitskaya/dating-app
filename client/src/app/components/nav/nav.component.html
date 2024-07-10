@@ -37,7 +37,7 @@
         <button class="btn-icon" mat-button [matMenuTriggerFor]="menu">
             {{ 'NAVIGATION.HI' | translate }}, <span class="name-bold">{{user.knownAs || user.username | titlecase}}!</span>
             <img class="avatar" 
-            [src]="user.imageData ? 'data:image/png;base64,' + user.imageData : '../../../assets/images/user.png'" alt="{{user.username}}">
+            [src]="user.imageData ? ('data:image/png;base64,' + user.imageData) : '../../../assets/images/user.png'" alt="{{user.username}}">
             <svg xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
                 <path

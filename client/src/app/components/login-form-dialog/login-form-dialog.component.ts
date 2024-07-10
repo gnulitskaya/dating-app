@@ -6,7 +6,7 @@ import { AccountService } from '../../services/account.service';
 import { ToastrService } from 'ngx-toastr';
 
 export interface User {
-  username: string
+  email: string
   password: string
 }
 
@@ -17,7 +17,7 @@ export interface User {
 })
 export class LoginFormDialogComponent {
   form: FormGroup = new FormGroup({
-    userName: new FormControl(null, [
+    email: new FormControl(null, [
       Validators.required,
     ]),
     password: new FormControl(null, [
@@ -44,7 +44,7 @@ export class LoginFormDialogComponent {
     this.submitted = true
 
     const user: User = {
-      username: this.form.value.userName,
+      email: this.form.value.email,
       password: this.form.value.password
     }
 
