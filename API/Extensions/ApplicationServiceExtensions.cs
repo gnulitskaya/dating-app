@@ -1,13 +1,15 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using API.Data;
+using API.Errors;
 using API.Helpers;
 using API.Interfaces;
 using API.Services;
 using API.SignalR;
+using Core.Interfaces;
+using Infrastructure.Data;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace API.Extensions
 {
@@ -24,6 +26,9 @@ namespace API.Extensions
             // services.AddScoped<ILikesRepository, LikesRepository>();
             // services.AddScoped<IMessageRepository, MessageRepository>();
             services.AddScoped<LogUserActivity>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped(typeof(IGenericRepository<>), (typeof(GenericRepository<>)));
+            
             services.AddScoped<EmailService>();
             // services.AddScoped<IUserRepository, UserRepository>();
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);

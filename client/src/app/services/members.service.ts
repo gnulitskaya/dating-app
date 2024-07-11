@@ -104,6 +104,19 @@ export class MembersService {
     return this.http.get<Member>(this.baseUrl + 'users/' + username);
   }
 
+  getBreeds() {
+    // if (this.types.length > 0) {
+    //   return of(this.types);
+    // }
+    return this.http.get<any[]>(this.baseUrl + 'products/types').pipe(
+      map(response => {
+        // this.types = response;
+        console.log(response)
+        return response;
+      })
+    );
+  }
+
   updateMember(member: Member): Observable<Member> {
     return this.http.put(this.baseUrl + 'users', member).pipe(
       map(() => {

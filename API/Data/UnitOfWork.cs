@@ -1,6 +1,10 @@
+using System.Collections;
 using System.Threading.Tasks;
 using API.Interfaces;
 using AutoMapper;
+using Core.Entities;
+using Core.Interfaces;
+using Infrastructure.Data;
 
 namespace API.Data
 {
@@ -8,6 +12,7 @@ namespace API.Data
     {
         private readonly IMapper _mapper;
         private readonly DataContext _context;
+        private Hashtable _repositories;
         public UnitOfWork(DataContext context, IMapper mapper)
         {
             _context = context;
@@ -28,6 +33,23 @@ namespace API.Data
         public bool HasChanges()
         {
             return _context.ChangeTracker.HasChanges();
+        }
+
+        public IGenericRepository<TEntity> Repository<TEntity>() where TEntity : BaseEntity
+        {
+            if (_repositories == null) _repositories = new Hashtable();
+
+            var type = typeof(TEntity).Name;
+
+            if (!_repositories.ContainsKey(type))
+            {
+                var repositoryType = typeof(GenericRepository<>);
+                var repositoryInstance = Activator.CreateInstance(repositoryType.MakeGenericType(typeof(TEntity)), _context);
+
+                _repositories.Add(type, repositoryInstance);
+            }
+
+            return (IGenericRepository<TEntity>)_repositories[type];
         }
     }
 }

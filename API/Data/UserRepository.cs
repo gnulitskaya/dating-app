@@ -97,5 +97,12 @@ namespace API.Data
             .Where(x => x.UserName == username)
             .Select(x => x.City).FirstOrDefaultAsync();
         }
+
+        public async Task<IReadOnlyList<Breeds>> GetBreedsAsync()
+        {
+            Console.WriteLine("CCCOOODEEE " + _context.Breeds.ToListAsync());
+
+            return await _context.Breeds.ToListAsync();
+        }
     }
 }

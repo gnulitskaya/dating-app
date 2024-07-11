@@ -56,6 +56,7 @@ export class MemberEditComponent implements OnInit {
 
   loadMember() {
     console.log(this.user.username);
+    this.memberService.getBreeds().subscribe()
 
     this.memberService.getMember(this.user.username).subscribe(
       (member: Member) => {
