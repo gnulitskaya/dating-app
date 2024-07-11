@@ -6,7 +6,9 @@
       (click)="selectFormControl(control.value)" 
       [class.selected]="!disabled && selected === control.value"
       [style.color]="control.color" [style.background-color]="control.background">
-      <p class="select-type-btn__text">{{ control?.text }}</p>
+      <h4 class="select-type-btn__title">{{ control?.text }}</h4>
+      <h6 *ngIf="control?.subtitle" class="select-type-btn__text"
+      [style.color]="control.color">{{ control?.subtitle }}</h6>
     </button>
   </ng-container>
 </div>

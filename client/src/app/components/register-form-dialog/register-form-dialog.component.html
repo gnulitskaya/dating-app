@@ -10,7 +10,7 @@
 
     <div class="form-controls">
         <!-- <app-text-input [formControl]="getControl('username')" [label]="'SIGNUP.USERNAME' | translate"></app-text-input> -->
-        <app-text-input [formControl]="getControl('email')" [label]="'SIGNUP.EMAIL' | translate"></app-text-input>
+        <app-text-input [type]="'email'" [formControl]="getControl('email')" [label]="'SIGNUP.EMAIL' | translate"></app-text-input>
         <app-text-input [formControl]="getControl('password')" [label]="'SIGNUP.PASSWORD' | translate" [type]='"password"'>
         </app-text-input>
         <app-text-input [formControl]="getControl('confirmPassword')" [label]="'SIGNUP.CONFIRM_PASSWORD' | translate"

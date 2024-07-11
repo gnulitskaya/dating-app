@@ -28,6 +28,15 @@
             //     justify-content: center;
             // }
 
+            &__title {
+                margin-bottom: 0;
+            }
+
+            &__text {
+                opacity: 0.5;
+                margin-bottom: 0;
+            }
+
             &.selected {
                 border: 3px var(--main-color) solid;
                 // color: #326CFD;

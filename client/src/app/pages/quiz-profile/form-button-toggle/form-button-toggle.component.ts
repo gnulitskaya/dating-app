@@ -15,8 +15,8 @@ const FORM_CONTROL_VALUE_ACCESSOR: Provider = {
 })
 export class FormButtonToggleComponent implements ControlValueAccessor {
   @Input() formControlData = [
-    { value: "male", text: "Мальчик", background: 'var(--male-color)', color: 'var(--text-color)' },
-    { value: "female", text: "Девочка", background: 'var(--female-color)', color: 'var(--text-color)' },
+    { value: "male", text: "Мальчик", background: 'var(--male-color)', color: 'var(--text-color)', subtitle: '' },
+    { value: "female", text: "Девочка", background: 'var(--female-color)', color: 'var(--text-color)', subtitle: '' },
   ];
   selected!: string;
   disabled = false;

@@ -61,12 +61,16 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { HomeComponent } from './pages/home/home.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { GenderColorDirective } from './directives/gender-color.directive';
 import { QuizProfileComponent } from './pages/quiz-profile/quiz-profile.component';
 import { FormButtonToggleComponent } from './pages/quiz-profile/form-button-toggle/form-button-toggle.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { DictionaryService } from './services/dictionary.service';
+import {MatSliderModule} from '@angular/material/slider';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/locale/', '.json');
@@ -105,7 +109,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     FooterComponent,
     GenderColorDirective,
     QuizProfileComponent,
-    FormButtonToggleComponent
+    FormButtonToggleComponent,
   ],
   imports: [
     BrowserModule,
@@ -134,14 +138,17 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatButtonToggleModule,
     MatSidenavModule,
     MatSlideToggleModule,
+    MatAutocompleteModule,
+    MatSliderModule,
+    MatProgressBarModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right'
     }),
     TranslateModule.forRoot({
       loader: {
-          provide: TranslateLoader,
-          useFactory: HttpLoaderFactory,
-          deps: [HttpClient]
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
       }
     })
   ],
@@ -150,6 +157,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     BusyService,
     PostsService,
     ConfettiService,
+    DictionaryService,
     provideAnimationsAsync(),
     {
       provide: HTTP_INTERCEPTORS,

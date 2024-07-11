@@ -55,7 +55,7 @@ namespace API.Data
                 if (!context.Breeds.Any())
                 {
                     var productsData =
-                        File.ReadAllText(path + @"/Data/products.json");
+                        File.ReadAllText(path + @"/Data/breed.json");
 
                     var products = JsonSerializer.Deserialize<List<Breeds>>(productsData);
 

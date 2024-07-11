@@ -1,8 +1,9 @@
 .questionnaire {
 }
-.container {
-}
 .questionnaire {
+    &__title {
+        margin-bottom: 10px;
+    }
     &__list {
         display: flex;
         flex-wrap: wrap;
@@ -11,13 +12,20 @@
         margin: 40px 0;
     }
     &__title {
-        margin-top: 20px;
+        margin-top: 40px;
     }
     &__navigations {
         display: flex;
         align-items: center;
         gap: 20px;
         margin-top: 60px;
+    }
+    .form-field {
+        min-width: 50%;
+    }
+    .slider {
+        margin-top: 20px;
+        min-width: 50%;
     }
 }
 .questionnaire__list-item {

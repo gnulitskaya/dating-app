@@ -1,9 +1,10 @@
 <div class="questionnaire container">
-  <h1>Заполните небольшую анкету</h1>
-  <h4>Чтобы найти идеального друга для вашего питомца</h4>
+  <h1 class="questionnaire__title">Заполните небольшую анкету</h1>
+  <h4 class="muted">Чтобы найти идеального друга для вашего питомца</h4>
+  <mat-progress-bar [bufferValue]="bufferValue" color="accent" mode="determinate" [value]="progress"></mat-progress-bar>
 
   <div class="questionnaire__form" [formGroup]="questionnaireForm">
-    <h2 class="questionnaire__title">{{questionnaireData[step$.value].question}}</h2>
+    <h2 class="questionnaire__title">{{questionnaireData[step$.value]?.question}}</h2>
     <ng-container *ngIf="step$.value == 0">
       <div class="questionnaire__list">
         <app-form-button-toggle (click)="switchStepNext()" [formControlName]="questionnaireData[0].controlName"
@@ -25,12 +26,46 @@
         [formControlData]="questionnaireData[3].answers"></app-form-button-toggle>
     </ng-container>
     <ng-container *ngIf="step$.value == 4">
+      <!-- <div class="example-label-container">
+        <label id="example-name-label" class="example-name-label">Возраст </label>
+        <label class="example-value-label">{{ slider.value}}</label>
+      </div> -->
+      <!-- <mat-slider color="accent" class="slider" 
+      min="0" max="30" step="1" showTickMarks discrete>
+        <input matSliderThumb #slider>
+      </mat-slider> -->
       <app-form-button-toggle (click)="switchStepNext()" [formControlName]="questionnaireData[4].controlName"
         [formControlData]="questionnaireData[4].answers"></app-form-button-toggle>
     </ng-container>
-    <ng-container *ngIf="step$.value == 5">
+    <!-- <ng-container *ngIf="step$.value == 5">
       <app-form-button-toggle (click)="switchStepNext()" [formControlName]="questionnaireData[5].controlName"
         [formControlData]="questionnaireData[5].answers"></app-form-button-toggle>
+    </ng-container> -->
+    <ng-container *ngIf="step$.value == 5">
+      <mat-form-field class="form-field">
+        <mat-label>Порода</mat-label>
+        <input type="text" matInput [formControlName]="questionnaireData[5].controlName" [matAutocomplete]="auto">
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+          @for (option of filteredBreeds$ | async; track option) {
+          <mat-option [value]="option.name">{{option.name}}</mat-option>
+          }
+        </mat-autocomplete>
+      </mat-form-field>
+    </ng-container>
+    <!-- <ng-container *ngIf="step$.value == 6">
+      <mat-form-field>
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </ng-container> -->
+    <ng-container *ngIf="step$.value == 6">
+      <mat-form-field class="form-field">
+        <mat-label>Кличка</mat-label>
+        <input [formControlName]="questionnaireData[6].controlName" matInput>
+      </mat-form-field>
     </ng-container>
   </div>
 
@@ -43,6 +78,7 @@
   <div class="questionnaire__navigations">
     <button [disabled]="step$.value==0" class="btn" mat-stroked-button color="primary"
       (click)="switchStepBack()">Назад</button>
-    <button [disabled]="step$.value==5" class="btn" mat-flat-button color="primary" (click)="switchStepNext()">Далее</button>
+    <button [disabled]="step$.value==6" class="btn" mat-flat-button color="primary"
+      (click)="switchStepNext()">Далее</button>
   </div>
 </div>

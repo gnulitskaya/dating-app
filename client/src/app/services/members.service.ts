@@ -10,6 +10,7 @@ import { User } from '../models/user.model';
 import { getPaginatedResult, getPaginationHeaders } from './paginationHelper';
 import { SnackbarService } from './snackbar.service';
 import { ConfettiService } from './confetti.service';
+import { Breed } from '../models/breeds';
 
 @Injectable({
   providedIn: 'root'
@@ -102,19 +103,6 @@ export class MembersService {
 
     if (member) return of(member);
     return this.http.get<Member>(this.baseUrl + 'users/' + username);
-  }
-
-  getBreeds() {
-    // if (this.types.length > 0) {
-    //   return of(this.types);
-    // }
-    return this.http.get<any[]>(this.baseUrl + 'products/types').pipe(
-      map(response => {
-        // this.types = response;
-        console.log(response)
-        return response;
-      })
-    );
   }
 
   updateMember(member: Member): Observable<Member> {
