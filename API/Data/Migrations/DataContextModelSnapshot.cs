@@ -62,7 +62,19 @@ namespace API.Data.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("integer");
 
+                    b.Property<string>("Age")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Breed")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Character")
+                        .HasColumnType("text");
+
                     b.Property<string>("City")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Color")
                         .HasColumnType("text");
 
                     b.Property<string>("ConcurrencyStamp")
@@ -88,12 +100,6 @@ namespace API.Data.Migrations
                     b.Property<string>("Gender")
                         .HasColumnType("text");
 
-                    b.Property<string>("Interests")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Introduction")
-                        .HasColumnType("text");
-
                     b.Property<string>("KnownAs")
                         .HasColumnType("text");
 
@@ -105,9 +111,6 @@ namespace API.Data.Migrations
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("LookingFor")
-                        .HasColumnType("text");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -127,6 +130,9 @@ namespace API.Data.Migrations
                         .HasColumnType("boolean");
 
                     b.Property<string>("SecurityStamp")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Size")
                         .HasColumnType("text");
 
                     b.Property<bool>("TwoFactorEnabled")

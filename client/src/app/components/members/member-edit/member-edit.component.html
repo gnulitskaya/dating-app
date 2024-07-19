@@ -19,8 +19,11 @@
                             <img [src]="member.imageData ? 'data:image/png;base64,' + member.imageData : '../../../../assets/images/user.png'"
                             alt="{{member.knownAs}}" class="card-img-top img-thumbnail">
                             <h2 class="member-name">
-                                <span [gender]="member.gender" genderColor>{{member.knownAs}}</span>
-    
+                                <div>
+                                    <div [gender]="member.gender" genderColor>{{member.knownAs}}</div>
+                                    <div class="member-breed">{{member.breed}}</div>
+                                </div>
+                                
                                 <div class="card-sex" [ngClass]="{'male': member.gender === 'male'}">
                                     <!-- {{member.gender}} -->
                                     <ng-container *ngIf="member.gender === 'male'; else female">
@@ -41,19 +44,8 @@
                             </h2>
                         </div>
     
-                        <div class="card-body__inner">
-                            <div class="card-body__item">
-                                <strong>{{ 'ABOUT.LOCATION' | translate }}</strong>
-                                <p>{{member.city}}</p>
-                            </div>
-                            <div class="card-body__item">
-                                <strong>{{ 'ABOUT.AGE' | translate }}</strong>
-                                <p>{{member.age}}</p>
-                            </div>
-                            <div class="card-body__item">
-                                <strong>{{ 'ABOUT.COLOR' | translate }}</strong>
-                                <p>белый</p>
-                            </div>
+                        <div>
+                            <app-member-info [member]="member"></app-member-info>
                             <!-- <div class="card-body__item">
                                 <strong>Last Active</strong>
                                 <p>{{member.lastActive | date: 'dd MMM yyyy'}}</p>
@@ -76,23 +68,23 @@
                                     {{ 'NAVIGATION.ABOUT' | translate }}
                                 </ng-template>
                                 <div class="edit-form" [formGroup]="form">
-                                    <h4>{{ 'NAVIGATION.DESCRIPTION' | translate }}</h4>
-                                    <mat-form-field appearance="outline">
+                                    <!-- <h4>{{ 'NAVIGATION.DESCRIPTION' | translate }}</h4> -->
+                                    <!-- <mat-form-field appearance="outline">
                                         <mat-label>{{ 'NAVIGATION.DESCRIPTION' | translate }}</mat-label>
                                         <textarea [(ngModel)]="member.introduction" matInput formControlName="description" placeholder="Placeholder"></textarea>
-                                    </mat-form-field>
+                                    </mat-form-field> -->
                                     <!-- <textarea class="form-control" [(ngModel)]="member.introduction" name="introduction" rows="6"></textarea> -->
-                                    <h4 class="mt-2">{{ 'NAVIGATION.LOOKING_FOR' | translate }}</h4>
-                                    <mat-form-field appearance="outline">
+                                    <!-- <h4 class="mt-2">{{ 'NAVIGATION.LOOKING_FOR' | translate }}</h4> -->
+                                    <!-- <mat-form-field appearance="outline">
                                         <mat-label>{{ 'NAVIGATION.LOOKING_FOR' | translate }}</mat-label>
                                         <textarea [(ngModel)]="member.lookingFor" matInput formControlName="lookingFor" placeholder="Placeholder"></textarea>
-                                    </mat-form-field>
-                                    <h4 class="mt-2">{{ 'NAVIGATION.INTERESTS' | translate }}</h4>
-                                    <mat-form-field appearance="outline">
+                                    </mat-form-field> -->
+                                    <!-- <h4 class="mt-2">{{ 'NAVIGATION.INTERESTS' | translate }}</h4> -->
+                                    <!-- <mat-form-field appearance="outline">
                                         <mat-label>{{ 'NAVIGATION.INTERESTS' | translate }}</mat-label>
                                         <textarea [(ngModel)]="member.interests" matInput formControlName="interests" placeholder="Placeholder"></textarea>
-                                    </mat-form-field>
-                                    <h4 class="mt-2">{{ 'NAVIGATION.LOCATION_DETAILS' | translate }}</h4>
+                                    </mat-form-field> -->
+                                    <!-- <h4 class="mt-2">{{ 'NAVIGATION.LOCATION_DETAILS' | translate }}</h4> -->
                                     <mat-form-field appearance="outline">
                                         <mat-label>{{ 'NAVIGATION.CITY' | translate }}</mat-label>
                                         <input [(ngModel)]="member.city" matInput formControlName="city" placeholder="Placeholder">

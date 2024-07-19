@@ -1,0 +1,22 @@
+<div class="card-body__inner">
+  <ng-container *ngIf="member?.city">
+    <div class="card-body__item">
+      <strong>{{ 'ABOUT.LOCATION' | translate }}</strong>
+      <p>{{member.city}}</p>
+    </div>
+  </ng-container>
+  <!-- [style.background]="member.age | getColorByName:dic.ages" -->
+  <ng-container *ngIf="member?.age">
+    <div class="card-body__item">
+      <strong>{{ 'ABOUT.AGE' | translate }}</strong>
+      <p>{{member.age | getValueByName:dic.ages}}</p>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="member?.color">
+    <div class="card-body__item">
+      <strong>{{ 'ABOUT.COLOR' | translate }}</strong>
+      <p [style.background-color]="member.color | getColorByName:dic.colors">{{member.color |
+        getValueByName:dic.colors}}</p>
+    </div>
+  </ng-container>
+</div>

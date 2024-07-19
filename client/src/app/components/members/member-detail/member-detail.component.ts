@@ -9,6 +9,7 @@ import { AccountService } from '../../../services/account.service';
 import { User } from '../../../models/user.model';
 import { take } from 'rxjs/operators';
 import { MembersService } from '../../../services/members.service';
+import { DictionaryService } from '../../../services/dictionary.service';
 
 @Component({
   selector: 'app-member-detail',
@@ -28,6 +29,7 @@ export class MemberDetailComponent implements OnDestroy {
     private messageService: MessageService,
     private accountService: AccountService,
     private membersService: MembersService,
+    public dic: DictionaryService,
     private router: Router) {
       this.accountService.currentUser$.pipe(take(1)).subscribe(user => {
         if(user) this.user = user;

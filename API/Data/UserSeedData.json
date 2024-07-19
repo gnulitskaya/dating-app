@@ -1,199 +1,21 @@
 [
     {
         "UserName": "layka",
-        "Email": "layka@mail.ru",
+        "Email": "layka1@mail.ru",
         "Gender": "female",
         "DateOfBirth": "2018-05-20",
         "KnownAs": "Лайка",
+        "Breed": "Американский кокер-спаниель",
+        "Character": "calm",
+        "Color": "brown",
+        "Size": "medium",
         "Created": "2021-08-10",
         "LastActive": "2021-09-25",
-        "Introduction": "Привет! Я Лайка, ищу верного друга для прогулок и игр.",
-        "LookingFor": "Ищу партнера для активного времяпровождения и веселых поездок на природу.",
-        "Interests": "Люблю бегать, играть с мячом и обожаю купаться.",
         "City": "Москва",
         "Country": "Россия",
         "Photos": [
             {
                 "Url": "https://sun9-68.userapi.com/impg/B9HnLnHiALzNUSmYsOrL5iMx2h_ku-6Fjo9ewg/klgK0O2hA7c.jpg?size=1142x1384&quality=95&sign=adec6153d0a8f65de86e2308b8a92fe2&type=album",
-                "IsMain": true
-            }
-        ]
-    },
-    {
-        "UserName": "barsik",
-        "Gender": "male",
-        "DateOfBirth": "2019-02-15",
-        "KnownAs": "Барсик",
-        "Created": "2021-08-12",
-        "LastActive": "2021-09-30",
-        "Introduction": "Привет! Я Барсик, ищу компанию для игр и приключений.",
-        "LookingFor": "Ищу друга для совместных прогулок и веселых забав.",
-        "Interests": "Люблю ловить мышей, играть с клубком ниток и спать на солнышке.",
-        "City": "Санкт-Петербург",
-        "Country": "Россия",
-        "Photos": [
-            {
-                "Url": "https://sun9-52.userapi.com/impg/WGBPzf7DvzLqCyCErCc64S49NMwU6EBwtNf8cQ/EUY6o8Ef2N0.jpg?size=1464x1380&quality=95&sign=6d7a5a285e1c01be9686843bdab5b3b4&type=album",
-                "IsMain": true
-            }
-        ]
-    },
-    {
-        "UserName": "bublik",
-        "Email": "layka@mail.ru",
-        "Gender": "male",
-        "DateOfBirth": "2019-05-12",
-        "KnownAs": "Бублик",
-        "Created": "2021-09-20",
-        "LastActive": "2021-10-05",
-        "Introduction": "Привет! Я Бублик, корги с хвостиком в форме бублика!",
-        "LookingFor": "Ищу друга для игр в мяч и забавных прогулок по парку.",
-        "Interests": "Обожаю прыгать и ловить палочки, а еще люблю купаться в пруду.",
-        "City": "Санкт-Петербург",
-        "Country": "Россия",
-        "Photos": [
-            {
-                "Url": "https://sun9-35.userapi.com/impg/cvQd5BvkOXKI8ad2KBEztQHuNPr4yE3ntz1_LA/HrrABZ4ReL4.jpg?size=1316x1572&quality=95&sign=310033fe755362fd6abca5c7191286f0&type=album",
-                "IsMain": true
-            }
-        ]
-    },
-    {
-        "UserName": "sharik",
-        "Email": "layka@mail.ru",
-        "Gender": "male",
-        "DateOfBirth": "2020-02-15",
-        "KnownAs": "Шарик",
-        "Created": "2021-10-10",
-        "LastActive": "2021-10-15",
-        "Introduction": "Привет! Я Шарик, корги с ушками в форме мячика!",
-        "LookingFor": "Ищу компанию для прогулок по лесу и игры в прятки.",
-        "Interests": "Обожаю бегать за птицами и копать ямы в поисках клада.",
-        "City": "Москва",
-        "Country": "Россия",
-        "Photos": [
-            {
-                "Url": "https://sun9-52.userapi.com/impg/0GOUWbLoLfScnLun1SxXsfUa5h9_c3pZizKKeQ/b6vJsluuir4.jpg?size=1566x1520&quality=95&sign=c7e70c558a97dea8e9151df9343cd9b5&type=album",
-                "IsMain": true
-            }
-        ]
-    },
-    {
-        "UserName": "markiza",
-        "Email": "layka@mail.ru",
-        "Gender": "female",
-        "DateOfBirth": "2020-04-15",
-        "KnownAs": "Маркиза",
-        "Created": "2021-10-20",
-        "LastActive": "2021-10-25",
-        "Introduction": "Привет! Я Маркиза, корги с изысканным вкусом!",
-        "LookingFor": "Ищу подружек для чаепитий и модных прогулок по парку.",
-        "Interests": "Обожаю носить бантики и устраивать модные показы перед зеркалом.",
-        "City": "Москва",
-        "Country": "Россия",
-        "Photos": [
-            {
-                "Url": "https://sun9-79.userapi.com/impg/SLeO1L0mqOMZaZY6YiGMl8_WiECNpl0oUkJHRA/HbQGGDbpb-I.jpg?size=1718x1472&quality=95&sign=12e8ad4ae4f527243873da3e8f8c1cb3&type=album",
-                "IsMain": true
-            }
-        ]
-    },
-    {
-        "UserName": "lola",
-        "Email": "layka@mail.ru",
-        "Gender": "female",
-        "DateOfBirth": "2019-08-12",
-        "KnownAs": "Лола",
-        "Created": "2021-10-25",
-        "LastActive": "2021-10-26",
-        "Introduction": "Привет! Я Лола, корги с ласковым характером!",
-        "LookingFor": "Ищу компанию для игр и прогулок по лесу.",
-        "Interests": "Обожаю купаться в речке и грызть кости.",
-        "City": "Санкт-Петербург",
-        "Country": "Россия",
-        "Photos": [
-            {
-                "Url": "https://sun9-11.userapi.com/impg/O8As11o3kRhKjgv33wrly03QROvfxQ3o1enWCQ/wGsd4Eq0gtI.jpg?size=1312x1588&quality=95&sign=6b3f6bf715b45bec30a618f9ec626ba2&type=album",
-                "IsMain": true
-            }
-        ]
-    },
-    {
-        "UserName": "barni",
-        "Email": "layka@mail.ru",
-        "Gender": "male",
-        "DateOfBirth": "2020-03-15",
-        "KnownAs": "Барни-Корги-Джентльмен",
-        "Created": "2021-10-26",
-        "LastActive": "2021-10-27",
-        "Introduction": "Привет! Я Барни, корги с веселым нравом!",
-        "LookingFor": "Ищу друзей для активных игр и тренировок.",
-        "Interests": "Обожаю прыгать через препятствия и бегать за мячом.",
-        "City": "Москва",
-        "Country": "Россия",
-        "Photos": [
-            {
-                "Url": "https://sun9-54.userapi.com/impg/amqcOWgp2-wZK38YSOWE66gO-BQ-WYCB_BufDQ/oDaSKSxGBdE.jpg?size=936x946&quality=95&sign=9aebab97ead4a44a27cbbd49de15a7de&type=album",
-                "IsMain": true
-            }
-        ]
-    },
-    {
-        "UserName": "redi",
-        "Email": "layka@mail.ru",
-        "Gender": "male",
-        "DateOfBirth": "2019-08-22",
-        "KnownAs": "Рэдди-Повелитель пирожков",
-        "Created": "2021-10-28",
-        "LastActive": "2021-10-29",
-        "Introduction": "Привет! Я Рэдди, корги с необычным увлечением - пирожками!",
-        "LookingFor": "Ищу компанию для походов на кулинарные мероприятия и веселых прогулок.",
-        "Interests": "Обожаю нюхать ароматы еды и лаять на микроволновку.",
-        "City": "Санкт-Петербург",
-        "Country": "Россия",
-        "Photos": [
-            {
-                "Url": "https://sun9-56.userapi.com/impg/6OTKju2k_sWtejg-S2Bj3yJJExadaNNT0OkVNA/QTwowQtFL1A.jpg?size=2008x1564&quality=95&sign=8f5c25d6629ddf6f1187a2c82b41175d&type=album",
-                "IsMain": true
-            }
-        ]
-    },
-    {
-        "UserName": "musa",
-        "Email": "layka@mail.ru",
-        "Gender": "female",
-        "DateOfBirth": "2019-08-20",
-        "KnownAs": "Муся-Принцесса корги",
-        "Created": "2021-10-30",
-        "LastActive": "2021-10-31",
-        "Introduction": "Привет! Я Муся, корги-принцесса, обожаю играть и получать ласку.",
-        "LookingFor": "Ищу партнера для прогулок и веселых игр в парке.",
-        "Interests": "Люблю бегать за мячом, играть с другими собаками и спать на удобных подушках.",
-        "City": "Санкт-Петербург",
-        "Country": "Россия",
-        "Photos": [
-            {
-                "Url": "https://sun9-58.userapi.com/impg/NzQFGOYaKJxrUU_u35-N0X-khGDlLmQZxChIKQ/EzaSievb2y4.jpg?size=1736x1548&quality=95&sign=935762e14493a49c32e23778b96e6e36&type=album",
-                "IsMain": true
-            }
-        ]
-    },
-    {
-        "UserName": "ralf",
-        "Email": "layka@mail.ru",
-        "Gender": "female",
-        "DateOfBirth": "2019-11-20",
-        "KnownAs": "Ральф-Шутник",
-        "Created": "2021-11-01",
-        "LastActive": "2021-11-02",
-        "Introduction": "Привет! Я Ральф, корги-шутник, всегда готов поднять настроение своими выходками.",
-        "LookingFor": "Ищу игрока в догфрисби для активных игр и безудержного веселья.",
-        "Interests": "Люблю прыгать через препятствия, ловить мяч и устраивать корги-пати с друзьями.",
-        "City": "Санкт-Петербург",
-        "Country": "Россия",
-        "Photos": [
-            {
-                "Url": "https://sun9-26.userapi.com/impg/9dNf5eof8AynOMISyCs6x8d1l0TCvTW7h91jug/hpXllYKtMzA.jpg?size=1470x1450&quality=95&sign=cd2a3b2b12fef64ec69da54103b09bca&type=album",
                 "IsMain": true
             }
         ]

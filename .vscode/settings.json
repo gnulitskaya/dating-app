@@ -17,8 +17,8 @@
                 "name": "Linux",
                 "description": "SFTP folder",
 
-                "host": "80.78.242.174", "port": 22,
-                "user": "root", "password": "bWwaU58iJpA2UAy9",
+                "host": "80.78.243.205", "port": 22,
+                "user": "root", "password": "IOTBG5ZwU0EiW3YC",
 
                 "dir": "/var/datingapp",
                 "mappings": {

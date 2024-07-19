@@ -67,6 +67,19 @@
         <input [formControlName]="questionnaireData[6].controlName" matInput>
       </mat-form-field>
     </ng-container>
+    <ng-container *ngIf="step$.value == 7">
+      <mat-form-field class="form-field">
+        <mat-label>Город</mat-label>
+        <input type="text" formControlName="city" matInput
+               (input)="getCitySuggestions($event)" [matAutocomplete]="auto2">
+        <mat-autocomplete autoActiveFirstOption #auto2="matAutocomplete">
+
+            <mat-option *ngFor="let item of cities?.suggestions"
+                        [value]="item.data.city">{{item.data.city}}</mat-option>
+
+        </mat-autocomplete>
+    </mat-form-field>
+    </ng-container>
   </div>
 
   <!-- <div class="questionnaire__form">
@@ -78,7 +91,13 @@
   <div class="questionnaire__navigations">
     <button [disabled]="step$.value==0" class="btn" mat-stroked-button color="primary"
       (click)="switchStepBack()">Назад</button>
-    <button [disabled]="step$.value==6" class="btn" mat-flat-button color="primary"
-      (click)="switchStepNext()">Далее</button>
+    <ng-container *ngIf="step$.value < 7; else saveBtn">
+      <button [disabled]="step$.value==7" class="btn" mat-flat-button color="primary"
+        (click)="switchStepNext()">Далее</button>
+    </ng-container>
+    <ng-template #saveBtn>
+      <button class="btn" mat-flat-button color="primary" (click)="updateMember()">Сохранить</button>
+    </ng-template>
+
   </div>
 </div>

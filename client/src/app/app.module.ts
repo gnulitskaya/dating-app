@@ -71,6 +71,9 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { DictionaryService } from './services/dictionary.service';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { GetValueByNamePipe } from './pipes/get-value-by-name.pipe';
+import { MemberInfoComponent } from './components/members/member-info/member-info.component';
+import { GetColorByNamePipe } from './pipes/get-color-by-name.pipe';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/locale/', '.json');
@@ -110,6 +113,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     GenderColorDirective,
     QuizProfileComponent,
     FormButtonToggleComponent,
+    GetValueByNamePipe,
+    MemberInfoComponent,
+    GetColorByNamePipe
   ],
   imports: [
     BrowserModule,

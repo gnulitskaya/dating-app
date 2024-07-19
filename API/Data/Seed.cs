@@ -35,7 +35,8 @@ namespace API.Data
             }
             foreach (var user in users)
             {
-                user.UserName = user.UserName.ToLower();
+                // user.UserName = user.UserName.ToLower();
+                user.Email = user.Email.ToLower();
                 await userManager.CreateAsync(user, "Pa$$w0rd");
                 await userManager.AddToRoleAsync(user, "Member");
             }

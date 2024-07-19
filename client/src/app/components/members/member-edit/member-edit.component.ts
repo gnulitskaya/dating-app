@@ -6,6 +6,7 @@ import { MembersService } from '../../../services/members.service';
 import { take } from 'rxjs';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SnackbarService } from '../../../services/snackbar.service';
+import { DictionaryService } from '../../../services/dictionary.service';
 
 @Component({
   selector: 'app-member-edit',
@@ -23,15 +24,15 @@ export class MemberEditComponent implements OnInit {
   }
 
   form: FormGroup = new FormGroup({
-    description: new FormControl(null, [
-      Validators.required,
-    ]),
-    lookingFor: new FormControl(null, [
-      Validators.required,
-    ]),
-    interests: new FormControl(null, [
-      Validators.required,
-    ]),
+    // description: new FormControl(null, [
+    //   Validators.required,
+    // ]),
+    // lookingFor: new FormControl(null, [
+    //   Validators.required,
+    // ]),
+    // interests: new FormControl(null, [
+    //   Validators.required,
+    // ]),
     city: new FormControl(null, [
       Validators.required,
     ]),
@@ -40,7 +41,7 @@ export class MemberEditComponent implements OnInit {
     ]),
   });
 
-  constructor(private accountService: AccountService, 
+  constructor(private accountService: AccountService,
     private memberService: MembersService,
     public snackbarService: SnackbarService) {
     this.accountService.currentUser$.pipe(take(1)).subscribe(user => {

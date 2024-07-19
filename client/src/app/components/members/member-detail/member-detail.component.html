@@ -7,19 +7,30 @@
                     <div class="card-body">
                         <div class="btn-group">
                             <button class="btn-icon" (click)="addLike(member)" mat-raised-button color="primary">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                    <path
+                                        d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" />
+                                </svg>
                                 {{ 'NAVIGATION.LIKE' | translate }}</button>
                             <button class="btn-icon" (click)="selectTab(3)" mat-raised-button color="accent">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M64 0C28.7 0 0 28.7 0 64V352c0 35.3 28.7 64 64 64h96v80c0 6.1 3.4 11.6 8.8 14.3s11.9 2.1 16.8-1.5L309.3 416H448c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H64z"/></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                    <path
+                                        d="M64 0C28.7 0 0 28.7 0 64V352c0 35.3 28.7 64 64 64h96v80c0 6.1 3.4 11.6 8.8 14.3s11.9 2.1 16.8-1.5L309.3 416H448c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H64z" />
+                                </svg>
                                 {{ 'NAVIGATION.MESSAGES' | translate }}</button>
                         </div>
 
                         <div class="card-body__header">
                             <img [src]="member.imageData ? 'data:image/png;base64,' + member.imageData : '../../../../assets/images/user.png'"
-                            alt="{{member.knownAs}}" class="card-img-top img-thumbnail">
+                                alt="{{member.knownAs}}" class="card-img-top img-thumbnail">
                             <h2 class="member-name">
-                                <span [gender]="member.gender" genderColor>{{member.knownAs}}</span>
-    
+                                <div>
+                                    <div [gender]="member.gender" genderColor>{{member.knownAs}}</div>
+                                    <div class="member-breed">{{member.breed}}</div>
+                                </div>
+
                                 <div class="card-sex" [ngClass]="{'male': member.gender === 'male'}">
                                     <!-- {{member.gender}} -->
                                     <ng-container *ngIf="member.gender === 'male'; else female">
@@ -39,25 +50,15 @@
                                 </div>
                             </h2>
                         </div>
-                        
+
                         <div class="status" *ngIf="(presence.onlineUsers$ | async)?.includes(member.username)">
                             <div class="icon-status is-online"></div>
                             <span>Online now</span>
                         </div>
 
-                        <div class="card-body__inner">
-                            <div class="card-body__item">
-                                <strong>{{ 'ABOUT.LOCATION' | translate }}</strong>
-                                <p>{{member.city}}</p>
-                            </div>
-                            <div class="card-body__item">
-                                <strong>{{ 'ABOUT.AGE' | translate }}</strong>
-                                <p>{{member.age}}</p>
-                            </div>
-                            <div class="card-body__item">
-                                <strong>{{ 'ABOUT.COLOR' | translate }}</strong>
-                                <p>белый</p>
-                            </div>
+                        <div>
+                            <app-member-info [member]="member"></app-member-info>
+
                             <!-- <div class="card-body__item">
                                 <strong>Last Active</strong>
                                 <p>{{member.lastActive | date: 'dd MMM yyyy'}}</p>
@@ -76,12 +77,12 @@
                                     {{ 'NAVIGATION.ABOUT' | translate }}
                                 </ng-template>
                                 <div class="detail">
-                                    <h3>{{ 'NAVIGATION.DESCRIPTION' | translate }}</h3>
-                                    <p>{{member.introduction}}</p>
-                                    <h3>{{ 'NAVIGATION.LOOKING_FOR' | translate }}</h3>
-                                    <p>{{member.lookingFor}}</p>
-                                    <h3>{{ 'NAVIGATION.INTERESTS' | translate }}</h3>
-                                    <p>{{member.interests}}</p>
+                                    <!-- <h3>{{ 'NAVIGATION.DESCRIPTION' | translate }}</h3> -->
+                                    <!-- <p>{{member.introduction}}</p> -->
+                                    <!-- <h3>{{ 'NAVIGATION.LOOKING_FOR' | translate }}</h3> -->
+                                    <!-- <p>{{member.lookingFor}}</p> -->
+                                    <!-- <h3>{{ 'NAVIGATION.INTERESTS' | translate }}</h3> -->
+                                    <!-- <p>{{member.interests}}</p> -->
                                 </div>
                             </mat-tab>
 
