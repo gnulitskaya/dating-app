@@ -57,7 +57,7 @@ namespace API
             app.UseRouting();
 
             app.UseCors(x => 
-            x.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins("https://localhost:4200"));
+            x.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins("http://localhost:5001"));
 // https://pawmatch.ru
 // https://localhost:4200
             app.UseAuthentication();

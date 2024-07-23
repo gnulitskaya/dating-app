@@ -15,6 +15,8 @@ import { AdminBarComponent } from './admin-bar/admin-bar.component';
 import { AdminGuard } from './guards/admin.guard';
 import { HomeComponent } from './pages/home/home.component';
 import { QuizProfileComponent } from './pages/quiz-profile/quiz-profile.component';
+import { ContactsComponent } from './pages/contacts/contacts.component';
+import { MemberMessagesComponent } from './components/members/member-messages/member-messages.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -22,6 +24,7 @@ const routes: Routes = [
   { path: 'not-found', component: NotFoundComponent },
   { path: 'server-error', component: ServerErrorComponent },
   { path: 'quiz', component: QuizProfileComponent },
+  { path: 'contacts', component: ContactsComponent },
   {
     path: '',
     canActivate: [authGuard],
@@ -30,7 +33,8 @@ const routes: Routes = [
       { path: 'members/:username', component: MemberDetailComponent, resolve: {member: MemberDetailResolver} },
       { path: 'member/edit', component: MemberEditComponent, canDeactivate: [PreventUnsavedChangesGuard]},
       { path: 'likes', component: ListsComponent },
-      { path: 'messages', component: MessagesComponent },
+      { path: 'messages-history', component: MessagesComponent },
+      { path: 'messages/:name', component: MemberMessagesComponent },
       { path: 'admin', component: AdminBarComponent, canActivate: [AdminGuard]},
     ]
   },

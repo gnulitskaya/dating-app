@@ -74,6 +74,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { GetValueByNamePipe } from './pipes/get-value-by-name.pipe';
 import { MemberInfoComponent } from './components/members/member-info/member-info.component';
 import { GetColorByNamePipe } from './pipes/get-color-by-name.pipe';
+import { ContactsComponent } from './pages/contacts/contacts.component';
+import { AnimatedDogComponent } from './shared/animated-dog/animated-dog.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/locale/', '.json');
@@ -115,7 +117,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     FormButtonToggleComponent,
     GetValueByNamePipe,
     MemberInfoComponent,
-    GetColorByNamePipe
+    GetColorByNamePipe,
+    ContactsComponent,
+    AnimatedDogComponent
   ],
   imports: [
     BrowserModule,

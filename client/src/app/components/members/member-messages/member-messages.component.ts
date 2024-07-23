@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
 import { Message } from '../../../models/message';
 import { MessageService } from '../../../services/message.service';
 import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-member-messages',
@@ -20,7 +21,18 @@ export class MemberMessagesComponent implements OnInit {
     ]),
   });
 
-  constructor(public messageService: MessageService) {}
+  constructor(public messageService: MessageService,
+    public route: ActivatedRoute
+  ) {
+    this.checkRoute();
+  }
+
+  checkRoute() {
+    this.route.params.subscribe(params => {
+      console.log('params', params);
+      this.username = params['name'];
+    });
+  }
 
   ngOnInit() {
   }

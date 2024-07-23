@@ -52,7 +52,7 @@ export class AccountService {
     const roles = this.getDecodedToken(user.token).role;
     Array.isArray(roles) ? user.roles = roles : user.roles.push(roles);
     localStorage.setItem('user', JSON.stringify(user));
-
+    console.log('-----', user);
     this.currentUserSource.next(user);
     this.isAuth$ = this.currentUser$;
   }

@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, HostListener, OnDestroy } from '@angular/core';
 import { Member } from '../../../models/member';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GalleryItem } from '@daelmaak/ngx-gallery';
@@ -22,6 +22,17 @@ export class MemberDetailComponent implements OnDestroy {
   selectedTab: number = 0;
   messages: Message[] = [];
   user!: User;
+  isDesktop: boolean = true;
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event) {
+    const width = (event.target as Window).innerWidth;
+    this.checkDeviceType(width);
+  }
+
+  private checkDeviceType(width: number) {
+    this.isDesktop = width > 944;
+  }
 
   constructor(
     public presence: PresenceService,
@@ -62,6 +73,10 @@ export class MemberDetailComponent implements OnDestroy {
       })
     }
     return imageUrls;
+  }
+
+  goTo(route: string) {
+    this.router.navigate(['/' + route + '/' + this.member.username]);
   }
 
   loadMessages() {

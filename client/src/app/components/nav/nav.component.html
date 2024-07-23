@@ -27,7 +27,7 @@
     <nav *ngIf="isAuth | async">
         <div class="nav-item" routerLink="/members" routerLinkActive="active" (click)="openMenu(false)">{{ 'NAVIGATION.MATCHES' | translate }}</div>
         <div class="nav-item" routerLink="/likes" routerLinkActive="active" (click)="openMenu(false)">{{ 'NAVIGATION.LIKES' | translate }}</div>
-        <div class="nav-item" routerLink="/messages" routerLinkActive="active" (click)="openMenu(false)">{{ 'NAVIGATION.MESSAGES' | translate }}</div>
+        <div class="nav-item" routerLink="/messages-history" routerLinkActive="active" (click)="openMenu(false)">{{ 'NAVIGATION.MESSAGES' | translate }}</div>
         <div *appHasRole="['Admin', 'Moderator']" class="nav-item" routerLink="/admin" routerLinkActive="active"
             (click)="openMenu(false)">
             Admin</div>

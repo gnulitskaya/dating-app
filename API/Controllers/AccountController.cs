@@ -83,11 +83,11 @@ namespace API.Controllers
 
         [HttpPost("login")]
         public async Task<ActionResult<UserDto>> Login(LoginDto loginDto) {
-            // var user = await _userManager.Users
-            // .Include(x => x.Photos)
-            // .SingleOrDefaultAsync(x => x.UserName == loginDto.Username.ToLower());
+            var user = await _userManager.Users
+            .Include(x => x.Photos)
+            .SingleOrDefaultAsync(x => x.Email == loginDto.Email);
 
-            var user = await _userManager.FindByEmailAsync(loginDto.Email);
+            // var user = await _userManager.FindByEmailAsync(loginDto.Email);
 
             if (user == null) return Unauthorized("Email address is in use!");
 
@@ -96,14 +96,16 @@ namespace API.Controllers
             var result = await _signInManager
                 .CheckPasswordSignInAsync(user, loginDto.Password, false);
             if(!result.Succeeded) return Unauthorized("Invalid password!");
+
+            Console.WriteLine("Сумма x и y: " + user.Photos);
             
             return new UserDto
             {
                 Username = user.UserName,
                 Token = await _tokenService.CreateToken(user),
                 // PhotoUrl = user.Photos.FirstOrDefault(x => x.IsMain)?.Url,
-                // ImageData = user.Photos.FirstOrDefault(x => x.IsMain)?.ImageData,
-                // KnownAs = user.KnownAs,
+                ImageData = user.Photos.FirstOrDefault(x => x.IsMain)?.ImageData,
+                KnownAs = user.KnownAs,
                 // Gender = user.Gender,
             };
         }
