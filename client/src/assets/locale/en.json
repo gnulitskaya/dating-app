@@ -62,8 +62,6 @@
     "LOCATION": "Location",
     "AGE": "Age",
     "COLOR": "Color",
-    "CHARACTER": "Character",
-    "SIZE": "Size",
     "ADD_PHOTOS": "Add Photos",
     "SEND_PHOTO": "Send photo",
     "PHOTO_UPLOAD_DRAG": "Drag and drop files or click here",
