@@ -76,6 +76,7 @@ import { MemberInfoComponent } from './components/members/member-info/member-inf
 import { GetColorByNamePipe } from './pipes/get-color-by-name.pipe';
 import { ContactsComponent } from './pages/contacts/contacts.component';
 import { AnimatedDogComponent } from './shared/animated-dog/animated-dog.component';
+import { BreakpointsService } from './services/breakpoints.service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/locale/', '.json');
@@ -168,6 +169,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     PostsService,
     ConfettiService,
     DictionaryService,
+    BreakpointsService,
     provideAnimationsAsync(),
     {
       provide: HTTP_INTERCEPTORS,

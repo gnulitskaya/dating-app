@@ -1,5 +1,9 @@
 .questionnaire {
     padding: 20px 60px;
+
+    @media (max-width: 700px) {
+        padding: 10px;
+    }
 }
 .questionnaire {
     &__title {
@@ -23,6 +27,9 @@
     }
     .form-field {
         min-width: 50%;
+        @media (max-width: 700px) {
+            min-width: 100%;
+        }
     }
     .slider {
         margin-top: 20px;

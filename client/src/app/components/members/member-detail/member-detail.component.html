@@ -70,6 +70,12 @@
                         </div>
                     </div>
 
+                    <ng-container *ngIf="isMobileDevice$$ | async">
+                        <div class="row row-mobile">
+                            <app-member-messages [username]="member.username"></app-member-messages>
+                        </div>
+                    </ng-container>
+
                     <div class="card-tabs">
                         <mat-tab-group [selectedIndex]="selectedTab" (selectedIndexChange)="selectTab($event)">
                             <mat-tab>
@@ -91,17 +97,20 @@
                                     {{ 'NAVIGATION.PHOTOS' | translate }}
                                 </ng-template>
                                 <div class="detail">
+                                    <!-- <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery> -->
                                     <gallery [thumbs]="false" [items]="images"></gallery>
                                 </div>
 
                             </mat-tab>
+                            <ng-container *ngIf="isDesktopDevice$$ | async">
+                                <mat-tab>
+                                    <ng-template mat-tab-label>
+                                        {{ 'NAVIGATION.MESSAGES' | translate }}
+                                    </ng-template>
+                                    <app-member-messages [username]="member.username"></app-member-messages>
+                                </mat-tab>
+                            </ng-container>
 
-                            <mat-tab>
-                                <ng-template mat-tab-label>
-                                    {{ 'NAVIGATION.MESSAGES' | translate }}
-                                </ng-template>
-                                <app-member-messages [username]="member.username"></app-member-messages>
-                            </mat-tab>
                         </mat-tab-group>
                     </div>
                 </div>

@@ -10,6 +10,8 @@ import { User } from '../../../models/user.model';
 import { take } from 'rxjs/operators';
 import { MembersService } from '../../../services/members.service';
 import { DictionaryService } from '../../../services/dictionary.service';
+import { Observable } from 'rxjs';
+import { BreakpointsService } from '../../../services/breakpoints.service';
 
 @Component({
   selector: 'app-member-detail',
@@ -23,6 +25,9 @@ export class MemberDetailComponent implements OnDestroy {
   messages: Message[] = [];
   user!: User;
 
+  isMobileDevice$$: Observable<boolean> = this._breakpointService.isMobileDevice$();
+  isDesktopDevice$$: Observable<boolean> = this._breakpointService.isDesktopDevice$();
+
   constructor(
     public presence: PresenceService,
     private route: ActivatedRoute,
@@ -30,7 +35,8 @@ export class MemberDetailComponent implements OnDestroy {
     private accountService: AccountService,
     private membersService: MembersService,
     public dic: DictionaryService,
-    private router: Router) {
+    private router: Router,
+    private _breakpointService: BreakpointsService) {
       this.accountService.currentUser$.pipe(take(1)).subscribe(user => {
         if(user) this.user = user;
       });
