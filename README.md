@@ -53,6 +53,9 @@ PawMatch - это веб-приложение, разработанное для
 - Интеграция с системами аналитики (Яндекс.Метрика)
 - Оптимизация производительности и SEO
 
+
+
+------------------------------------------------
 // Data source=datingapp.db
 
 // Server=localhost; Port=5432; User Id=appuser; Password=Pa26937w0rd; Database=datingapp
