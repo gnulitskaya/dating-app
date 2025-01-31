@@ -54,10 +54,12 @@ PawMatch - это веб-приложение, разработанное для
 - Оптимизация производительности и SEO
 
 // Data source=datingapp.db
+
 // Server=localhost; Port=5432; User Id=appuser; Password=Pa26937w0rd; Database=datingapp
 
 // собирает wwwroot
 ng build --configuration=production
+
 // делает папку publish
 dotnet publish -c Release -o publish dating-app.sln
 
